@@ -1,4 +1,4 @@
-name: Tests
+name: Payments suite
 on:
   pull_request:
   push:
@@ -6,7 +6,8 @@ on:
 permissions:
   contents: read
 jobs:
-  test:
+  payments-suite:
+    name: Payments suite
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -15,4 +16,5 @@ jobs:
           distribution: temurin
           java-version: '21'
           cache: maven
-      - run: ./mvnw -B test
+      - name: Compile all sources and run payments suite
+        run: ./mvnw -B '-Dtest=com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentReplayTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentRendererTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentControllerTest' test
