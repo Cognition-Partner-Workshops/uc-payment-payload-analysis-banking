@@ -1,5 +1,6 @@
 package com.cbarkinozer.onlinebankingrestapi.app.kafka.consumer;
 
+import com.cbarkinozer.onlinebankingrestapi.app.gen.util.AccountDisclosure;
 import com.cbarkinozer.onlinebankingrestapi.app.kafka.dto.LogMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.log.mapper.LogMapper;
 import com.cbarkinozer.onlinebankingrestapi.app.log.entity.LogDetail;
@@ -24,7 +25,7 @@ public class KafkaListenerService {
     )
     public void listen(@Payload LogMessage logMessage){
 
-        log.info("Message received by consumer... " + logMessage.getMessage());
+        log.info("Message received by consumer... {}", AccountDisclosure.redact(logMessage.getMessage()));
 
         saveLogToDb(logMessage);
     }
