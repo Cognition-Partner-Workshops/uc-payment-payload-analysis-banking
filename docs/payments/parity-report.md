@@ -1,5 +1,7 @@
 # Payment address parity report
 
+Masked regions: MT103 party address blocks; pacs.008 PstlAdr nodes; event address nodes plus the schemaVersion line (1 to 2). All other bytes must match.
+
 | Format | Payloads compared | Identical | Changed only where rule says | Mismatches |
 |---|---:|---:|---:|---:|
 | MT103 | 240 | 0 | 234 | 6 |

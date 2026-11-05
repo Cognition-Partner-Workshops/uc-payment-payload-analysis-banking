@@ -15,8 +15,9 @@ public final class PostalAddressStructurer {
     private static final Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
     private static final Set<String> COUNTRIES = new HashSet<>(Arrays.asList(Locale.getISOCountries()));
     private static final Pattern BOX = Pattern.compile("(?i)^P\\.O\\. Box \\d+$");
-    private static final Pattern STREET = Pattern.compile("^([0-9]+)\\s+(.+?\\b(?:Lane|Street|Road|Avenue|Way|Drive|Close|Court|Place|Square|Boulevard|Terrace|Park|Road|Gardens|Crescent))(?:(?:,\\s*|\\s+)(.*))?$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern STREET = Pattern.compile("^([0-9]+[A-Za-z]?)\\s+(.+?\\b(?:Lane|Street|Road|Avenue|Way|Drive|Close|Court|Place|Square|Boulevard|Terrace|Park|Road|Gardens|Crescent))(?:(?:,\\s*|\\s+)(.*))?$", Pattern.CASE_INSENSITIVE);
     private static final Pattern POSTCODE = Pattern.compile("\\d{4,5}");
+    private static final Pattern UK_POSTCODE = Pattern.compile("(?i)(?<![A-Za-z0-9])(?:GIR\\s+0AA|(?:[A-PR-UWYZ][0-9][0-9]?|[A-PR-UWYZ][A-HK-Y][0-9][0-9]?|[A-PR-UWYZ][0-9][A-HJKPSTUW]|[A-PR-UWYZ][A-HK-Y][0-9][ABEHMNPRVWXY])\\s+[0-9][ABD-HJLNP-UW-Z]{2})(?![A-Za-z0-9])");
 
     private PostalAddressStructurer() { }
 
@@ -49,6 +50,9 @@ public final class PostalAddressStructurer {
                 }
             }
         }
+        int directTownIndex = streetIndex + 1;
+        boolean directTownAfterStreet = streetIndex >= 0 && directTownIndex < remaining.size()
+                && isLoneTown(remaining.get(directTownIndex));
         for (int i = 0; i < remaining.size(); i++) {
             Matcher street = STREET.matcher(remaining.get(i));
             if (street.matches()) {
@@ -60,6 +64,9 @@ public final class PostalAddressStructurer {
                 break;
             }
         }
+        if (directTownAfterStreet) {
+            town = town(town, remaining.remove(streetIndex), role);
+        }
         for (int i = 0; i < remaining.size(); i++) {
             if (BOX.matcher(remaining.get(i)).matches()) {
                 address.setPostBox(remaining.remove(i));
@@ -67,8 +74,16 @@ public final class PostalAddressStructurer {
             }
         }
         for (int i = 0; i < remaining.size(); i++) {
-            if (POSTCODE.matcher(remaining.get(i).trim()).find()) {
-                town = parseLocality(remaining.get(i).trim(), address, town, role);
+            if (hasPostcode(remaining.get(i).trim())) {
+                String line = remaining.get(i).trim();
+                boolean postcodeOnly = isPostcodeOnly(line);
+                town = parseLocality(line, address, town, role);
+                if (postcodeOnly && i > 0 && isLoneTown(remaining.get(i - 1))) {
+                    town = town(town, remaining.remove(i - 1), role);
+                    i--;
+                } else if (postcodeOnly && i + 1 < remaining.size() && isLoneTown(remaining.get(i + 1))) {
+                    town = town(town, remaining.remove(i + 1), role);
+                }
                 remaining.remove(i);
                 i--;
             }
@@ -84,13 +99,15 @@ public final class PostalAddressStructurer {
     }
 
     private static String parseLocality(String value, PostalAddress address, String existing, String role) {
-        String[] words = value.split("\\s+");
-        int postcodeIndex = -1;
-        for (int i = 0; i < words.length; i++) if (words[i].matches("\\d{4,5}")) { postcodeIndex = i; break; }
-        if (postcodeIndex < 0) return town(existing, value, role);
-        address.setPostCode(words[postcodeIndex]);
-        List<String> before = new ArrayList<>(Arrays.asList(words).subList(0, postcodeIndex));
-        List<String> after = new ArrayList<>(Arrays.asList(words).subList(postcodeIndex + 1, words.length));
+        Matcher postcode = UK_POSTCODE.matcher(value);
+        boolean uk = postcode.find();
+        if (!uk) postcode = POSTCODE.matcher(value);
+        if (!uk && !postcode.find()) return town(existing, value, role);
+        int start = postcode.start();
+        String code = postcode.group().replaceAll("\\s+", " ");
+        address.setPostCode(uk ? code.toUpperCase(Locale.ROOT) : code);
+        List<String> before = words(value.substring(0, start));
+        List<String> after = words(value.substring(postcode.end()));
         if (!after.isEmpty() && COUNTRIES.contains(after.get(after.size() - 1).toUpperCase(Locale.ROOT))) {
             address.setCountry(after.remove(after.size() - 1).toUpperCase(Locale.ROOT));
         }
@@ -99,6 +116,23 @@ public final class PostalAddressStructurer {
         }
         List<String> locality = !before.isEmpty() ? before : after;
         return locality.isEmpty() ? existing : town(existing, String.join(" ", locality), role);
+    }
+
+    private static List<String> words(String value) {
+        String trimmed = value.trim();
+        return trimmed.isEmpty() ? new ArrayList<>() : new ArrayList<>(Arrays.asList(trimmed.split("\\s+")));
+    }
+
+    private static boolean hasPostcode(String value) {
+        return UK_POSTCODE.matcher(value).find() || POSTCODE.matcher(value).find();
+    }
+
+    private static boolean isPostcodeOnly(String value) {
+        return UK_POSTCODE.matcher(value).matches() || POSTCODE.matcher(value).matches();
+    }
+
+    private static boolean isLoneTown(String value) {
+        return value.matches("[A-Za-z]+(?: [A-Za-z]+)*") && !COUNTRIES.contains(value.toUpperCase(Locale.ROOT));
     }
 
     private static String town(String existing, String candidate, String role) {

@@ -21,6 +21,43 @@ class PostalAddressStructurerTest {
     }
 
     @Test
+    void structuresUkPostcodesInStreetAndLocalityLines() {
+        PostalAddress inline = structure("GB", "10 Downing Street, London SW1A 2AA", "GB");
+        assertEquals("10", inline.getBuildingNumber()); assertEquals("Downing Street", inline.getStreetName());
+        assertEquals("London", inline.getTownName()); assertEquals("SW1A 2AA", inline.getPostCode());
+        assertEquals("GB", inline.getCountry());
+
+        PostalAddress separate = structure("GB", "221B Baker Street", "London", "NW1 6XE");
+        assertEquals("221B", separate.getBuildingNumber()); assertEquals("Baker Street", separate.getStreetName());
+        assertEquals("London", separate.getTownName()); assertEquals("NW1 6XE", separate.getPostCode());
+
+        PostalAddress townBeforeCode = structure("GB", "221B Baker Street", "London NW1 6XE");
+        PostalAddress codeBeforeTown = structure("GB", "221B Baker Street", "NW1 6XE London");
+        assertEquals("London", townBeforeCode.getTownName()); assertEquals("London", codeBeforeTown.getTownName());
+        assertEquals("NW1 6XE", townBeforeCode.getPostCode()); assertEquals("NW1 6XE", codeBeforeTown.getPostCode());
+
+        assertEquals("M1 1AE", structure("GB", "M1 1AE", "Manchester").getPostCode());
+        assertEquals("EC1V 9HX", structure("GB", "EC1V 9HX London").getPostCode());
+        assertEquals("B33 8TH", structure("GB", "B33 8TH", "Birmingham").getPostCode());
+        assertEquals("M1 1AE", structure("GB", "m1 1ae", "Manchester").getPostCode());
+    }
+
+    @Test
+    void acceptsUkPostcodeOnlyLinesAdjacentToTheirTown() {
+        PostalAddress townBefore = structure("GB", "NW1 6XE", "London");
+        PostalAddress townAfter = structure("GB", "London", "NW1 6XE");
+        PostalAddress afterStreet = structure("GB", "221B Baker Street", "London", "NW1 6XE");
+        assertEquals("London", townBefore.getTownName()); assertEquals("London", townAfter.getTownName());
+        assertEquals("London", afterStreet.getTownName()); assertEquals("NW1 6XE", afterStreet.getPostCode());
+    }
+
+    @Test
+    void rejectsUkPostcodeWithoutAnAcceptedTown() {
+        assertThrows(AddressIncompleteException.class, () -> structure("GB", "Unit 4", "SW1A 2AA", "GB"));
+        assertThrows(AddressIncompleteException.class, () -> structure("GB", "London", "Unit 4", "GB"));
+    }
+
+    @Test
     void rejectsMissingOrAmbiguousTownAndTooManyLeftovers() {
         assertThrows(AddressIncompleteException.class, () -> structure("FR", "Warehouse Seven", "P.O. Box 540", "FR"));
         AddressIncompleteException ambiguous = assertThrows(AddressIncompleteException.class,

@@ -145,7 +145,7 @@ public class PaymentRenderer {
 
     private String event(PaymentInstruction p, PostalAddress debtor, PostalAddress creditor) {
         Map<String, Object> event = new LinkedHashMap<>();
-        event.put("eventType", "OutboundPaymentCreated"); event.put("schemaVersion", 1);
+        event.put("eventType", "OutboundPaymentCreated"); event.put("schemaVersion", 2);
         Map<String, Object> payment = new LinkedHashMap<>();
         payment.put("debtor", eventParty(p.getDebtor(), debtor)); payment.put("creditor", eventParty(p.getCreditor(), creditor));
         payment.put("amount", p.getAmount()); payment.put("currency", p.getCurrency()); payment.put("valueDate", p.getValueDate());

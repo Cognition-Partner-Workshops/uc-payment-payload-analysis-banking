@@ -95,6 +95,8 @@ class PaymentReplayTest {
                 }
                 assertEquals(2, count);
             } else {
+                assertEquals(1, PaymentCorpus.MAPPER.readTree(before).get("schemaVersion").asInt());
+                assertEquals(2, PaymentCorpus.MAPPER.readTree(after).get("schemaVersion").asInt());
                 assertEquals(maskEvent(before), maskEvent(after));
                 JsonNode payment = PaymentCorpus.MAPPER.readTree(after).get("payment");
                 for (String role : List.of("debtor", "creditor")) {
@@ -103,7 +105,8 @@ class PaymentReplayTest {
                     assertTrue(!address.has("addressLines") || address.get("addressLines").size() <= 2);
                 }
             }
-            rows.add(new Row(id, format, before.equals(after) ? "identical" : "changed-only-per-rule", "address region only"));
+            rows.add(new Row(id, format, before.equals(after) ? "identical" : "changed-only-per-rule",
+                    format.equals("event") ? "address nodes plus schemaVersion line only" : "address region only"));
         } catch (AssertionError failure) {
             String reason = failure.getMessage() == null ? "parity assertion failed" : failure.getMessage().replace('\n', ' ');
             rows.add(new Row(id, format, "mismatch", reason)); unexpected.add(id + " " + format + ": " + reason);
@@ -148,7 +151,8 @@ class PaymentReplayTest {
     }
 
     private String maskEvent(String value) {
-        return value.replaceAll("(?m)^      \\\"addressLines\\\" : \\[.*]$", "      \\\"ADDRESS\\\" : MASKED")
+        return value.replaceAll("(?m)^  \\\"schemaVersion\\\" : [12],$", "  \\\"schemaVersion\\\" : MASKED,")
+                .replaceAll("(?m)^      \\\"addressLines\\\" : \\[.*]$", "      \\\"ADDRESS\\\" : MASKED")
                 .replaceAll("(?s)(?m)^      \\\"postalAddress\\\" : \\{.*?^      \\}$", "      \\\"ADDRESS\\\" : MASKED");
     }
 
@@ -161,6 +165,7 @@ class PaymentReplayTest {
                 .append('"').append(row.reason.replace("\"", "\"\"")).append("\"\n");
         Files.writeString(target.resolve("parity.csv"), csv);
         StringBuilder report = new StringBuilder("# Payment address parity report\n\n")
+                .append("Masked regions: MT103 party address blocks; pacs.008 PstlAdr nodes; event address nodes plus the schemaVersion line (1 to 2). All other bytes must match.\n\n")
                 .append("| Format | Payloads compared | Identical | Changed only where rule says | Mismatches |\n")
                 .append("|---|---:|---:|---:|---:|\n");
         for (String format : List.of("MT103", "pacs.008", "event", "total")) {

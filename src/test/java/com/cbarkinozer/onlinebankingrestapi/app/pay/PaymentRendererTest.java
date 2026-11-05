@@ -1,5 +1,6 @@
 package com.cbarkinozer.onlinebankingrestapi.app.pay;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.List;
@@ -28,6 +29,21 @@ class PaymentRendererTest {
         assertTrue(output.getMt103().contains(":50F:/")); assertTrue(output.getMt103().contains(":59F:/"));
         assertTrue(output.getEvent().contains("\"postalAddress\""));
         assertFalse(output.getEvent().contains("\"addressLines\" :"));
+    }
+
+    @Test
+    void rendersUkPostcodeAsStructuredAddress() throws Exception {
+        PaymentInstruction p = PaymentCorpus.instruction(3, new Random(7));
+        p.getDebtor().setAddressLines(List.of("10 Downing Street, London SW1A 2AA", "GB"));
+        PaymentPayloads output = renderer.render(p);
+        assertTrue(output.getMt103().contains("3/GB/London"));
+        assertTrue(output.getPacs008().contains("<PstCd>SW1A 2AA</PstCd><TwnNm>London</TwnNm><Ctry>GB</Ctry>"));
+        JsonNode event = PaymentCorpus.MAPPER.readTree(output.getEvent());
+        assertEquals(2, event.get("schemaVersion").asInt());
+        JsonNode address = event.get("payment").get("debtor").get("postalAddress");
+        assertEquals("SW1A 2AA", address.get("postCode").asText());
+        assertEquals("London", address.get("townName").asText());
+        assertEquals("GB", address.get("country").asText());
     }
 
     @Test
