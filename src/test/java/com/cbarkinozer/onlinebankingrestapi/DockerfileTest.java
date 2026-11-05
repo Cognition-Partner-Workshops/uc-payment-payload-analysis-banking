@@ -14,15 +14,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DockerfileTest {
 
     @Test
-    void dockerfileUsesNonRootFinalStageAndCanonicalEnvSyntax() throws IOException {
+    void dockerfileUsesCanonicalEnvSyntax() throws IOException {
         List<String> lines = Files.readAllLines(Path.of("Dockerfile"));
-        int lastFrom = -1;
         boolean appHomeFound = false;
-        for (int i = 0; i < lines.size(); i++) {
-            String line = lines.get(i).trim();
-            if (line.toUpperCase().startsWith("FROM ")) {
-                lastFrom = i;
-            }
+        for (String instruction : lines) {
+            String line = instruction.trim();
             if (line.toUpperCase().startsWith("ENV ")) {
                 String assignment = line.substring("ENV ".length()).trim();
                 assertCanonicalEnvInstruction(assignment);
@@ -33,8 +29,19 @@ class DockerfileTest {
             }
         }
 
-        assertTrue(lastFrom >= 0, "Dockerfile must contain a build stage");
         assertTrue(appHomeFound, "Dockerfile must define APP_HOME=/usr/app");
+    }
+
+    @Test
+    void dockerfileUsesNonRootFinalStage() throws IOException {
+        List<String> lines = Files.readAllLines(Path.of("Dockerfile"));
+        int lastFrom = -1;
+        for (int i = 0; i < lines.size(); i++) {
+            if (lines.get(i).trim().toUpperCase().startsWith("FROM ")) {
+                lastFrom = i;
+            }
+        }
+        assertTrue(lastFrom >= 0, "Dockerfile must contain a build stage");
 
         int userLine = -1;
         int commandLine = -1;
@@ -47,15 +54,14 @@ class DockerfileTest {
             }
             if (line.toUpperCase().startsWith("ENTRYPOINT ") || line.toUpperCase().startsWith("CMD ")) {
                 commandLine = i;
-                break;
             }
         }
 
         assertTrue(userLine >= 0, "Final build stage must declare a USER");
         assertTrue(commandLine >= 0, "Final build stage must declare ENTRYPOINT or CMD");
         assertTrue(userLine < commandLine, "USER must appear before ENTRYPOINT or CMD");
-        assertFalse(user.equalsIgnoreCase("root") || user.equals("0"),
-                "Final build stage must use a non-root user");
+        assertTrue(user.matches("[1-9][0-9]*(?::[0-9]+)?"),
+                "Final build stage must use a numeric non-root user");
     }
 
     private void assertCanonicalEnvInstruction(String assignment) {
