@@ -30,6 +30,22 @@ class AccountDisclosureTest {
     private final ObjectMapper json = PaymentCorpus.MAPPER;
 
     @Test
+    void asteriskPrefixesCannotHideFullAccountNumbers() throws Exception {
+        for (String value : new String[] {"*12345678", "****12345678", "**1234567890123456", "*GB82WEST12345698765432"}) {
+            String expected = value.endsWith("5432") ? "****5432" : value.endsWith("3456") ? "****3456" : "****5678";
+            assertEquals(expected, AccountDisclosure.redact(value));
+            LogMessage message = new LogMessage();
+            message.setMessage(value);
+            assertEquals(expected, json.readTree(json.writeValueAsString(message)).get("message").asText());
+            assertEquals(value, message.getMessage());
+        }
+        assertEquals("****5678", AccountDisclosure.redact("****5678"));
+        assertEquals("****5678 ****3456", AccountDisclosure.redact("****5678 1234567890123456"));
+        assertEquals("*150.00", AccountDisclosure.redact("*150.00"));
+        assertEquals("****", AccountDisclosure.redact("****"));
+    }
+
+    @Test
     void commaAdjacentAccountsAreSeparateTokensNotDecimalAmounts() throws Exception {
         assertEquals("****5432,****6789",
                 AccountDisclosure.redact("TR12000620000000000698765432,TR34000620000000000123456789"));

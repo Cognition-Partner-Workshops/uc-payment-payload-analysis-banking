@@ -25,22 +25,35 @@ public final class AccountDisclosure {
         StringBuilder result = new StringBuilder();
         int index = 0;
         while (index < text.length()) {
-            if (tokenStart(text, index)) {
-                int ibanEnd = ibanEnd(text, index);
-                if (ibanEnd > index) {
+            if (text.charAt(index) == '*' || tokenStart(text, index)) {
+                int start = index;
+                while (start < text.length() && text.charAt(start) == '*') start++;
+                if (start == text.length()) {
+                    result.append(text, index, start);
+                    break;
+                }
+                int ibanEnd = ibanEnd(text, start);
+                if (ibanEnd > start) {
                     result.append(mask(text.substring(index, ibanEnd)));
                     index = ibanEnd;
                     continue;
                 }
-                if (digit(text.charAt(index))) {
+                if (digit(text.charAt(start))) {
                     boolean labelled = accountLabel(text, index);
-                    NumberToken token = numberToken(text, index, labelled);
+                    int suffixEnd = digitsEnd(text, start);
+                    boolean maskedSuffix = start - index == 4 && suffixEnd - start == 4;
+                    NumberToken token = maskedSuffix ? new NumberToken(suffixEnd, 4) : numberToken(text, start, labelled);
                     boolean account = token.digits >= 13 || (token.digits >= 5
-                            && (labelled || commaNeighbour(text, index, token.end)));
+                            && (start > index || labelled || commaNeighbour(text, index, token.end)));
                     boolean boundary = token.end == text.length() || !Character.isLetterOrDigit(text.charAt(token.end));
                     String value = text.substring(index, token.end);
                     result.append(account && boundary && !token.amount && !amountLabel(text, index) ? mask(value) : value);
                     index = token.end;
+                    continue;
+                }
+                if (start > index) {
+                    result.append(text, index, start);
+                    index = start;
                     continue;
                 }
             }
@@ -52,7 +65,7 @@ public final class AccountDisclosure {
     private static boolean tokenStart(String text, int index) {
         if (index == 0) return true;
         char previous = text.charAt(index - 1);
-        return previous != '*' && !Character.isLetterOrDigit(previous)
+        return !Character.isLetterOrDigit(previous)
                 && !(previous == '.' && index > 1 && digit(text.charAt(index - 2)));
     }
 
