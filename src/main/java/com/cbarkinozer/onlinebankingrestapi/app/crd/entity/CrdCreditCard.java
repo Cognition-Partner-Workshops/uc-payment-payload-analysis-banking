@@ -57,4 +57,7 @@ public class CrdCreditCard extends BaseEntity {
 
     @Column(name = "CANCEL_DATE")
     private LocalDateTime cancelDate;
+
+    @Column(name = "FAILED_CVV_ATTEMPT_COUNT", nullable = false)
+    private Integer failedCvvAttemptCount = 0;
 }

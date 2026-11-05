@@ -17,6 +17,12 @@ public interface AccAccountDao extends JpaRepository<AccAccount,Long> {
 
     List<AccAccount> findAllByCustomerId(Long customerId);
 
+    List<AccAccount> findAllByCustomerIdAndStatusType(Long customerId, GenStatusType statusType);
+
+    Optional<AccAccount> findByIdAndCustomerId(Long id, Long customerId);
+
+    Optional<AccAccount> findByIbanNoAndCustomerId(String ibanNo, Long customerId);
+
     @Query(
             "SELECT " +
                     "account "+

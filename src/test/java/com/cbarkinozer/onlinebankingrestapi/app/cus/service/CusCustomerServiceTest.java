@@ -10,6 +10,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.IllegalFieldException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundException;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.access.AccessDeniedException;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -42,6 +43,7 @@ class CusCustomerServiceTest {
 
         List<CusCustomerDto> expectedResult = createDummyCusCustomerDtoList();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.findAllCustomers()).thenReturn(cusCustomerList);
 
         List<CusCustomerDto> result = cusCustomerService.findAllCustomers();
@@ -98,6 +100,7 @@ class CusCustomerServiceTest {
         Long cusCustomerId = cusCustomer.getId();
         CusCustomerDto expectedResult = createDummyCusCustomerDto();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(cusCustomerId)).thenReturn(cusCustomer);
 
         CusCustomerDto result = cusCustomerService.findCustomerById(cusCustomerId);
@@ -111,10 +114,11 @@ class CusCustomerServiceTest {
 
         ItemNotFoundException itemNotFoundException = new ItemNotFoundException(GenErrorMessage.ITEM_NOT_FOUND);
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(anyLong())).thenThrow(itemNotFoundException);
 
         ItemNotFoundException result = assertThrows(ItemNotFoundException.class,
-                () -> cusCustomerService.findCustomerById(anyLong()));
+                () -> cusCustomerService.findCustomerById(1L));
 
         assertEquals(itemNotFoundException, result);
         assertEquals(itemNotFoundException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());
@@ -191,12 +195,18 @@ class CusCustomerServiceTest {
         CusCustomerDto cusCustomerDto = createDummyCusCustomerDto();
         CusCustomer cusCustomer = createDummyCusCustomer();
 
-        when(cusCustomerEntityService.saveCustomer(any())).thenReturn(cusCustomer);
+        CusCustomerUpdateDto cusCustomerUpdateDto = createDummyCusCustomerUpdateDto();
 
-        CusCustomerDto result = cusCustomerService.saveCustomer(any());
+        when(cusCustomerEntityService.getCurrentCustomerId()).thenReturn(cusCustomer.getId());
+        when(cusCustomerEntityService.getByIdWithControl(cusCustomer.getId())).thenReturn(cusCustomer);
+        when(cusCustomerEntityService.saveCustomer(cusCustomer)).thenReturn(cusCustomer);
 
-        assertEquals(cusCustomerDto, result);
+        CusCustomerDto result = cusCustomerService.updateCustomer(cusCustomerUpdateDto);
+
         assertNotNull(result);
+        assertEquals(cusCustomerDto.getId(), result.getId());
+        assertEquals(cusCustomerUpdateDto.getName(), result.getName());
+        assertEquals(cusCustomerUpdateDto.getSurname(), result.getSurname());
     }
 
     @Test
@@ -221,11 +231,8 @@ class CusCustomerServiceTest {
 
         CusCustomerUpdateDto cusCustomerUpdateDto = new CusCustomerUpdateDto();
 
-        cusCustomerUpdateDto.setId(1L);
         cusCustomerUpdateDto.setName("testName");
         cusCustomerUpdateDto.setSurname("testSurname");
-        cusCustomerUpdateDto.setIdentityNo(11111111111L);
-        cusCustomerUpdateDto.setPassword("test1234");
 
         return cusCustomerUpdateDto;
     }
@@ -254,9 +261,10 @@ class CusCustomerServiceTest {
 
         CusCustomer cusCustomer = createDummyCusCustomer();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(anyLong())).thenReturn(cusCustomer);
 
-        cusCustomerService.deleteCustomer(anyLong());
+        cusCustomerService.deleteCustomer(1L);
 
         verify(cusCustomerEntityService).getByIdWithControl(anyLong());
     }
@@ -281,4 +289,35 @@ class CusCustomerServiceTest {
         assertNotNull(result);
     }
 
+
+    @Test
+    void shouldNotFindAllCustomers_WhenCurrentCustomerIsNotAdmin() {
+
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(AccessDeniedException.class, () -> cusCustomerService.findAllCustomers());
+
+        verify(cusCustomerEntityService, never()).findAllCustomers();
+    }
+
+    @Test
+    void shouldNotFindCustomerById_WhenCustomerIsNotCurrentCustomer() {
+
+        when(cusCustomerEntityService.getCurrentCustomerId()).thenReturn(2L);
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(ItemNotFoundException.class, () -> cusCustomerService.findCustomerById(1L));
+
+        verify(cusCustomerEntityService, never()).getByIdWithControl(anyLong());
+    }
+
+    @Test
+    void shouldNotDeleteCustomer_WhenCurrentCustomerIsNotAdmin() {
+
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(AccessDeniedException.class, () -> cusCustomerService.deleteCustomer(1L));
+
+        verify(cusCustomerEntityService, never()).delete(any());
+    }
 }

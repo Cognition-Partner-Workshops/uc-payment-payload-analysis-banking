@@ -115,11 +115,8 @@ public class CusCustomerControllerIntegrationTest extends BaseTest {
     void shouldUpdateCustomer() throws Exception {
 
         CusCustomerUpdateDto cusCustomerUpdateDto = new CusCustomerUpdateDto();
-        cusCustomerUpdateDto.setId(2L);
         cusCustomerUpdateDto.setName("Test");
         cusCustomerUpdateDto.setSurname("Test");
-        cusCustomerUpdateDto.setIdentityNo(11111111111L);
-        cusCustomerUpdateDto.setPassword("test1234");
 
         String content = objectMapper.writeValueAsString(cusCustomerUpdateDto);
 
@@ -139,8 +136,6 @@ public class CusCustomerControllerIntegrationTest extends BaseTest {
 
         cusCustomerUpdateDto.setName(" ");
         cusCustomerUpdateDto.setSurname("");
-        cusCustomerUpdateDto.setIdentityNo(null);
-        cusCustomerUpdateDto.setPassword(null);
 
         String content = objectMapper.writeValueAsString(cusCustomerUpdateDto);
 
@@ -159,8 +154,6 @@ public class CusCustomerControllerIntegrationTest extends BaseTest {
         CusCustomerUpdateDto cusCustomerUpdateDto = new CusCustomerUpdateDto();
         cusCustomerUpdateDto.setName("Test4");
         cusCustomerUpdateDto.setSurname("Test4");
-        cusCustomerUpdateDto.setIdentityNo(11111111111L);
-        cusCustomerUpdateDto.setPassword("123456");
 
         String content = objectMapper.writeValueAsString(cusCustomerUpdateDto);
 

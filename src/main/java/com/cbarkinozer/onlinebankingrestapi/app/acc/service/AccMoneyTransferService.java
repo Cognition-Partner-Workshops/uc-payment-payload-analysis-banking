@@ -6,6 +6,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccMoneyTransfer;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccAccountActivityType;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccMoneyTransferEntityService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class AccMoneyTransferService {
     private final AccMoneyTransferEntityService accMoneyTransferEntityService;
     private final AccAccountActivityService accAccountActivityService;
     private final AccAccountValidationService accAccountValidationService;
+    private final AccAccountEntityService accAccountEntityService;
 
     public AccMoneyTransferDto transferMoney(AccMoneyTransferSaveDto accMoneyTransferSaveDto) {
 
@@ -36,7 +38,7 @@ public class AccMoneyTransferService {
         BigDecimal amount = accMoneyTransfer.getAmount();
 
         accAccountValidationService.controlIsAmountPositive(amount);
-        accAccountValidationService.controlIsAccountIdExist(accountIdFrom);
+        accAccountEntityService.getOwnedAccountOrThrow(accountIdFrom);
         accAccountValidationService.controlIsAccountIdExist(accountIdTo);
 
         AccMoneyActivityDto accMoneyActivityDtoOut = AccMoneyActivityDto.builder()

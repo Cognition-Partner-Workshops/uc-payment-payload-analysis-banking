@@ -41,6 +41,10 @@ export SPRING_DATASOURCE_PASSWORD=[your postgresql password here]
 export JWT_SIGNING_KEY=$(openssl rand -base64 64) # HS512 signing key; keep it stable across restarts
 ```
 `spring.jpa.hibernate.ddl-auto=create` in src>main>resources>"application.properties" recreates the schema on each start.
+The JWT signing key must be at least 64 bytes; the application refuses to start otherwise.
+
+Accounts with the `ADMIN` role (column `ROLE_TYPE` in `CUS_CUSTOMER`) can list and delete customers; self-registration always creates `USER` accounts.
+
 **From here, you can run the application if you will not use kafka messaging feature**
 For Kafka, I used a docker container.   
 Create a "docker-compose.yml" file and add the following code in it.  

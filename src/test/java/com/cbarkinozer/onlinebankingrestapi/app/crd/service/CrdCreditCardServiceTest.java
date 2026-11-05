@@ -66,7 +66,7 @@ class CrdCreditCardServiceTest {
         CrdCreditCard crdCreditCard = mock(CrdCreditCard.class);
         when(crdCreditCard.getId()).thenReturn(id);
 
-        when(crdCreditCardEntityService.getByIdWithControl(id)).thenReturn(crdCreditCard);
+        when(crdCreditCardEntityService.getOwnedCardOrThrow(id)).thenReturn(crdCreditCard);
 
         CrdCreditCardDto crdCreditCardDto = crdCreditCardService.findCreditCardById(id);
 
@@ -106,11 +106,11 @@ class CrdCreditCardServiceTest {
 
         CrdCreditCard crdCreditCard = mock(CrdCreditCard.class);
 
-        when(crdCreditCardEntityService.getByIdWithControl(anyLong())).thenReturn(crdCreditCard);
+        when(crdCreditCardEntityService.getOwnedCardOrThrow(anyLong())).thenReturn(crdCreditCard);
 
         crdCreditCardService.cancelCreditCard(anyLong());
 
-        verify(crdCreditCardEntityService).getByIdWithControl(anyLong());
+        verify(crdCreditCardEntityService).getOwnedCardOrThrow(anyLong());
         verify(crdCreditCardEntityService).save(any());
     }
 

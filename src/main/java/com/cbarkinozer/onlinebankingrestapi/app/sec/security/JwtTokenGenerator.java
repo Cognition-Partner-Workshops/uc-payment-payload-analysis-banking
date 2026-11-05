@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Component
@@ -19,6 +21,17 @@ public class JwtTokenGenerator {
     @Value("${onlinebankingrestapi.jwt.security.expire.time}")
     private Long EXPIRE_TIME;
 
+    private static final int MIN_APP_KEY_BYTES = 64;
+
+    @PostConstruct
+    void validateAppKey() {
+        if (APP_KEY == null || APP_KEY.isBlank()
+                || APP_KEY.getBytes(StandardCharsets.UTF_8).length < MIN_APP_KEY_BYTES) {
+            throw new IllegalStateException("JWT signing key (JWT_SIGNING_KEY) must be set and at least "
+                    + MIN_APP_KEY_BYTES + " bytes long");
+        }
+    }
+
     public String generateJwtToken(Authentication authentication){
 
         JwtUserDetails jwtUserDetails = (JwtUserDetails) authentication.getPrincipal();
@@ -28,7 +41,7 @@ public class JwtTokenGenerator {
                 .setSubject(Long.toString(jwtUserDetails.getId()))
                 .setIssuedAt(new Date())
                 .setExpiration(expireDate)
-                .signWith(SignatureAlgorithm.HS512, APP_KEY)
+                .signWith(SignatureAlgorithm.HS512, APP_KEY.getBytes(StandardCharsets.UTF_8))
                 .compact();
 
         return token;
@@ -47,7 +60,7 @@ public class JwtTokenGenerator {
 
     private Jws<Claims> parseToken(String token) {
         Jws<Claims> claimsJws = Jwts.parser()
-                .setSigningKey(APP_KEY)
+                .setSigningKey(APP_KEY.getBytes(StandardCharsets.UTF_8))
                 .parseClaimsJws(token);
         return claimsJws;
     }

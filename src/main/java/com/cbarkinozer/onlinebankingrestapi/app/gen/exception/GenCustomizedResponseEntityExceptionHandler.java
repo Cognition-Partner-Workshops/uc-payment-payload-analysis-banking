@@ -7,6 +7,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundExcep
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -33,6 +34,21 @@ public class GenCustomizedResponseEntityExceptionHandler extends ResponseEntityE
         restResponse.setMessages(message);
 
         return new ResponseEntity<>(restResponse, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler
+    public final ResponseEntity<Object> handleAccessDeniedException(AccessDeniedException ex, WebRequest webRequest){
+
+        Date errorDate = new Date();
+        String message = "Access denied";
+        String description = webRequest.getDescription(false);
+
+        GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
+
+        RestResponse<GenExceptionResponse> restResponse = RestResponse.error(genExceptionResponse);
+        restResponse.setMessages(message);
+
+        return new ResponseEntity<>(restResponse, HttpStatus.FORBIDDEN);
     }
 
     @ExceptionHandler

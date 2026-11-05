@@ -33,7 +33,7 @@ public class AccAccountActivityService {
         BigDecimal amount = accMoneyActivityDto.getAmount();
         AccAccountActivityType activityType = accMoneyActivityDto.getActivityType();
 
-        AccAccount accAccount = accAccountEntityService.getByIdWithControl(accountId);
+        AccAccount accAccount = accAccountEntityService.getOwnedAccountOrThrow(accountId);
         BigDecimal newBalance = accAccount.getCurrentBalance().subtract(amount);
 
         accAccountValidationService.controlIsAmountPositive(amount);
@@ -98,7 +98,7 @@ public class AccAccountActivityService {
         Long accAccountId = accMoneyActivityRequestDto.getAccountId();
         BigDecimal amount = accMoneyActivityRequestDto.getAmount();
 
-        accAccountValidationService.controlIsAccountIdExist(accAccountId);
+        accAccountEntityService.getOwnedAccountOrThrow(accAccountId);
         accAccountValidationService.controlIsAmountPositive(amount);
 
         AccMoneyActivityDto accMoneyActivityDto = AccMoneyActivityDto.builder()

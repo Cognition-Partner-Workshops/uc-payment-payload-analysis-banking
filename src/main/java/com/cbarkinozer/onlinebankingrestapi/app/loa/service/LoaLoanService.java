@@ -67,7 +67,7 @@ public class LoaLoanService {
 
     public LoaCalculateLateFeeResponseDto calculateLateFee(Long id) {
 
-        LoaLoan loaLoan = loaLoanEntityService.getByIdWithControl(id);
+        LoaLoan loaLoan = loaLoanEntityService.getOwnedLoanOrThrow(id);
 
         LoaCalculateLateFeeResponseDto loaCalculateLateFeeResponseDto = calculateLateFeeAndUpdateLoan(loaLoan);
 
@@ -116,10 +116,10 @@ public class LoaLoanService {
 
     public LoaLoanDto findLoanById(Long id) {
 
-        LoaLoan loaLoan = loaLoanEntityService.getByIdWithControl(id);
+        LoaLoan loaLoan = loaLoanEntityService.getOwnedLoanOrThrow(id);
 
         updateLoanIfDueDatePast(loaLoan);
-        loaLoan = loaLoanEntityService.getByIdWithControl(id);
+        loaLoan = loaLoanEntityService.getOwnedLoanOrThrow(id);
 
         LoaLoanDto loaLoanDto = LoaLoanMapper.INSTANCE.convertToLoaLoanDto(loaLoan);
 
@@ -181,7 +181,7 @@ public class LoaLoanService {
 
     public LoaPayInstallmentResponseDto payInstallment(Long id) {
 
-        LoaLoan loaLoan = loaLoanEntityService.getByIdWithControl(id);
+        LoaLoan loaLoan = loaLoanEntityService.getOwnedLoanOrThrow(id);
 
         updateLoanIfDueDatePast(loaLoan);
 
@@ -242,7 +242,7 @@ public class LoaLoanService {
 
     public LoaPayLoanOffResponseDto payLoanOff(Long id) {
 
-        LoaLoan loaLoan = loaLoanEntityService.getByIdWithControl(id);
+        LoaLoan loaLoan = loaLoanEntityService.getOwnedLoanOrThrow(id);
 
         updateLoanIfDueDatePast(loaLoan);
 
