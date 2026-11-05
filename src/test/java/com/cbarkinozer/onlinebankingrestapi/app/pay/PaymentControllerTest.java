@@ -24,6 +24,20 @@ class PaymentControllerTest {
     }
 
     @Test
+    void refusesAddressWithoutTownAndPublishesNothing() throws Exception {
+        PaymentPublisher publisher = mock(PaymentPublisher.class);
+        var mvc = MockMvcBuilders.standaloneSetup(new PaymentController(new PaymentRenderer(), publisher)).build();
+        PaymentInstruction p = PaymentCorpus.instruction(1, new Random(7));
+        p.getCreditor().setAddressLines(java.util.List.of("Warehouse Seven", "P.O. Box 301", "FR"));
+        mvc.perform(post("/api/v1/outbound-payments").contentType(MediaType.APPLICATION_JSON)
+                        .content(PaymentCorpus.MAPPER.writeValueAsString(p)))
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(jsonPath("$.success").value(false))
+                .andExpect(jsonPath("$.data").value(org.hamcrest.Matchers.containsString("creditor address: no town")));
+        verifyNoInteractions(publisher);
+    }
+
+    @Test
     void rejectsEmptyAndMalformedRequests() throws Exception {
         PaymentPublisher publisher = mock(PaymentPublisher.class);
         var mvc = MockMvcBuilders.standaloneSetup(new PaymentController(new PaymentRenderer(), publisher)).build();
