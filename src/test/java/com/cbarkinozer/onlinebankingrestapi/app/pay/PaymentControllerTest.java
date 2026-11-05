@@ -33,4 +33,16 @@ class PaymentControllerTest {
         }
         verifyNoInteractions(publisher);
     }
+
+    @Test
+    void rejectsMissingTownWithoutPublishing() throws Exception {
+        PaymentPublisher publisher = mock(PaymentPublisher.class);
+        var mvc = MockMvcBuilders.standaloneSetup(new PaymentController(new PaymentRenderer(), publisher)).build();
+        PaymentInstruction p = PaymentCorpus.instruction(0, new Random(PaymentCorpus.SEED));
+        mvc.perform(post("/api/v1/outbound-payments").contentType(MediaType.APPLICATION_JSON)
+                        .content(PaymentCorpus.MAPPER.writeValueAsString(p)))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string(org.hamcrest.Matchers.containsString("town name is missing")));
+        verifyNoInteractions(publisher);
+    }
 }

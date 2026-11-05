@@ -6,6 +6,7 @@ import java.util.List;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Data
 public class PaymentInstruction {
@@ -34,7 +35,15 @@ public class PaymentInstruction {
         private String iban;
         @NotNull @Pattern(regexp = "[A-Z]{6}[A-Z0-9]{2}([A-Z0-9]{3})?")
         private String bic;
-        @NotEmpty @Size(max = 3)
+        @Size(min = 1, max = 3)
         private List<@NotBlank @Size(max = 35) @Pattern(regexp = "[A-Za-z0-9 /?:().,'+&-]+") String> addressLines;
+        @Valid
+        private PostalAddress postalAddress;
+
+        @JsonIgnore
+        @AssertTrue(message = "exactly one of addressLines or postalAddress must be supplied")
+        public boolean hasExactlyOneAddressForm() {
+            return (addressLines != null) ^ (postalAddress != null);
+        }
     }
 }

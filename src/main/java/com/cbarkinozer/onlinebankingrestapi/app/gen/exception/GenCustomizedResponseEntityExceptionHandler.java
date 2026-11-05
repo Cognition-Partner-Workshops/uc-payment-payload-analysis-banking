@@ -1,6 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.gen.exception;
 
 import com.cbarkinozer.onlinebankingrestapi.app.gen.dto.RestResponse;
+import com.cbarkinozer.onlinebankingrestapi.app.pay.AddressIncompleteException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.GenBusinessException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.IllegalFieldException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundException;
@@ -19,6 +20,11 @@ import java.util.Date;
 @RestController
 @ControllerAdvice
 public class GenCustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
+
+    @ExceptionHandler(AddressIncompleteException.class)
+    public final ResponseEntity<Object> handleAddressIncomplete(AddressIncompleteException ex, WebRequest request) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 
     @ExceptionHandler
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest webRequest){
