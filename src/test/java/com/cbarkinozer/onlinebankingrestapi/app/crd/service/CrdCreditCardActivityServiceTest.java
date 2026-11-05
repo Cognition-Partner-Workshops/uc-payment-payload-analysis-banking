@@ -31,6 +31,9 @@ class CrdCreditCardActivityServiceTest {
     @Mock
     private CrdCreditCardActivityEntityService crdCreditCardActivityEntityService;
 
+    @Mock
+    private CrdCreditCardActivityValidationService crdCreditCardActivityValidationService;
+
     @InjectMocks
     private CrdCreditCardActivityService crdCreditCardActivityService;
 
@@ -42,13 +45,13 @@ class CrdCreditCardActivityServiceTest {
 
         List<CrdCreditCardActivity> crdCreditCardActivityList = createDummyCrdCreditCardActivityList();
 
-        List<CrdCreditCardActivity> expectedResult = createDummyCrdCreditCardActivityList();
 
         when(crdCreditCardActivityEntityService.findCreditCardActivityByAmountInterval(min,max)).thenReturn(crdCreditCardActivityList);
 
-        List<CrdCreditCardActivity> result = crdCreditCardActivityEntityService.findCreditCardActivityByAmountInterval(min,max);
+        List<CrdCreditCardActivityDto> result = crdCreditCardActivityService.findCreditCardActivityByAmountInterval(min,max);
 
-        assertEquals(expectedResult, result);
+        assertEquals(1, result.size());
+        assertEquals(BigDecimal.valueOf(9000), result.get(0).getAmount());
         assertNotNull(result);
     }
 
@@ -62,7 +65,7 @@ class CrdCreditCardActivityServiceTest {
 
     private CrdCreditCardActivity createDummyCrdCreditCardActivity() {
 
-        CrdCreditCardActivity crdCreditCardActivity = mock(CrdCreditCardActivity.class);
+        CrdCreditCardActivity crdCreditCardActivity = new CrdCreditCardActivity();
         crdCreditCardActivity.setId(1L);
         crdCreditCardActivity.setCrdCreditCardId(1L);
         crdCreditCardActivity.setAmount(BigDecimal.valueOf(9000));
@@ -78,13 +81,12 @@ class CrdCreditCardActivityServiceTest {
 
         List<CrdCreditCardActivityAnalysisDto> crdCreditCardActivityAnalysisDtoList = createDummyCrdCreditCardActivityAnalysisDtoList();
 
-        List<CrdCreditCardActivityAnalysisDto> expectedResult = createDummyCrdCreditCardActivityAnalysisDtoList();
 
         when(crdCreditCardActivityEntityService.getCardActivityAnalysis(1L)).thenReturn(crdCreditCardActivityAnalysisDtoList);
 
-        List<CrdCreditCardActivityAnalysisDto> result = crdCreditCardActivityEntityService.getCardActivityAnalysis(1L);
+        List<CrdCreditCardActivityAnalysisDto> result = crdCreditCardActivityService.getCardActivityAnalysis(1L);
 
-        assertEquals(expectedResult, result);
+        assertEquals(crdCreditCardActivityAnalysisDtoList, result);
         assertNotNull(result);
 
     }

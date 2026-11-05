@@ -1,10 +1,14 @@
 package com.cbarkinozer.onlinebankingrestapi.app.gen;
 
 import com.cbarkinozer.onlinebankingrestapi.app.gen.dto.RestResponse;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.test.web.servlet.MvcResult;
 
 import java.io.UnsupportedEncodingException;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BaseTest {
 
@@ -13,9 +17,11 @@ public class BaseTest {
     protected boolean isSuccess(MvcResult result) throws com.fasterxml.jackson.core.JsonProcessingException,
             UnsupportedEncodingException {
 
-        RestResponse restResponse = getRestResponse(result);
-
-        return isSuccess(restResponse);
+        JsonNode success = objectMapper.readTree(
+                result.getResponse().getContentAsString()).get("success");
+        assertNotNull(success);
+        assertTrue(success.isBoolean());
+        return success.booleanValue();
     }
 
     protected RestResponse getRestResponse(MvcResult result) throws com.fasterxml.jackson.core.JsonProcessingException, UnsupportedEncodingException {

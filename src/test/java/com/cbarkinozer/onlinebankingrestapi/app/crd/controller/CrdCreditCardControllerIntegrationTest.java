@@ -3,7 +3,7 @@ package com.cbarkinozer.onlinebankingrestapi.app.crd.controller;
 import com.cbarkinozer.onlinebankingrestapi.OnlinebankingrestapiApplication;
 import com.cbarkinozer.onlinebankingrestapi.app.config.H2TestProfileJPAConfig;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.dto.*;
-import com.cbarkinozer.onlinebankingrestapi.app.gen.BaseTest;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.IntegrationTestBase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,7 +29,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = {OnlinebankingrestapiApplication.class, H2TestProfileJPAConfig.class})
-class CrdCreditCardControllerIntegrationTest extends BaseTest {
+class CrdCreditCardControllerIntegrationTest extends IntegrationTestBase {
 
 
     private static final String BASE_PATH = "/api/v1/credit-cards";
@@ -86,7 +86,7 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
     void findCreditCardActivityBetweenDates() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+"/1L"+"/activities").content("1L").param("startDate", "2022-05-15")
+                get(BASE_PATH+"/1"+"/activities").content("1L").param("startDate", "2022-05-15")
                 .param("endDate", "2022-05-15").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
@@ -99,7 +99,7 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
     void getCardActivityAnalysis() throws  Exception{
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+"/get-card-activity-analysis"+"/1L").content("1L").contentType(MediaType.APPLICATION_JSON)
+                get(BASE_PATH+"/get-card-activity-analysis"+"/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -112,7 +112,7 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
     void getCardDetails() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+"/1L"+"/cardDetails").content("1L").contentType(MediaType.APPLICATION_JSON)
+                get(BASE_PATH+"/1"+"/cardDetails").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -146,12 +146,12 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
         crdCreditCardSpendDto.setAmount(BigDecimal.valueOf(100));
         crdCreditCardSpendDto.setDescription("Here some money");
         crdCreditCardSpendDto.setCvvNo(111L);
-        crdCreditCardSpendDto.setExpireDate(LocalDate.now());
+        crdCreditCardSpendDto.setExpireDate(LocalDate.now().plusYears(1));
 
         String content = objectMapper.writeValueAsString(crdCreditCardSpendDto);
 
         MvcResult result = mockMvc.perform(
-                post(BASE_PATH+"/save-credit-card").content(content).contentType(MediaType.APPLICATION_JSON)
+                post(BASE_PATH+"/spend-money").content(content).contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -163,7 +163,7 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
     void refundMoney() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                post(BASE_PATH+"/refund"+"/1L").content("1L").contentType(MediaType.APPLICATION_JSON)
+                post(BASE_PATH+"/refund"+"/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -193,7 +193,7 @@ class CrdCreditCardControllerIntegrationTest extends BaseTest {
     void cancelCreditCard() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                patch(BASE_PATH+"/cancel"+"/1L").content("1L").contentType(MediaType.APPLICATION_JSON)
+                patch(BASE_PATH+"/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);

@@ -78,6 +78,9 @@ class CrdCreditCardServiceTest {
 
         CrdCreditCardDetailsDto crdCreditCardDetailsDto = mock(CrdCreditCardDetailsDto.class);
 
+        CrdCreditCard card = card();
+        when(crdCreditCardEntityService.getByIdWithControl(1L)).thenReturn(card);
+
         when(crdCreditCardEntityService.getCreditCardDetails(1L)).thenReturn(crdCreditCardDetailsDto);
 
         CrdCreditCardDetailsDto result = crdCreditCardService.getCardDetails(1L);
@@ -89,6 +92,8 @@ class CrdCreditCardServiceTest {
     void shouldSaveCreditCard() {
 
         CrdCreditCardSaveDto crdCreditCardSaveDto = mock(CrdCreditCardSaveDto.class);
+        when(crdCreditCardSaveDto.getEarning()).thenReturn(BigDecimal.valueOf(1000));
+        when(crdCreditCardSaveDto.getCutOffDay()).thenReturn(15);
 
         CrdCreditCard crdCreditCard = mock(CrdCreditCard.class);
 
@@ -108,7 +113,7 @@ class CrdCreditCardServiceTest {
 
         when(crdCreditCardEntityService.getOwnedCardOrThrow(anyLong())).thenReturn(crdCreditCard);
 
-        crdCreditCardService.cancelCreditCard(anyLong());
+        crdCreditCardService.cancelCreditCard(1L);
 
         verify(crdCreditCardEntityService).getOwnedCardOrThrow(anyLong());
         verify(crdCreditCardEntityService).save(any());
@@ -122,15 +127,15 @@ class CrdCreditCardServiceTest {
         crdCreditCardActivityList.add(crdCreditCardActivity);
 
         Long id =1L;
-        LocalDateTime startDate =LocalDateTime.now().minusDays(1);
-        LocalDateTime endDate =LocalDateTime.now().plusMonths(1);
+        LocalDate startDate = LocalDate.now().minusDays(1);
+        LocalDate endDate = LocalDate.now().plusMonths(1);
 
         when(crdCreditCardActivityEntityService.findCreditCardActivityBetweenDates(
-                id,startDate,endDate)
+                id,startDate.atStartOfDay(),endDate.atStartOfDay())
         ).thenReturn(crdCreditCardActivityList);
 
         List<CrdCreditCardActivityDto> result = crdCreditCardService.findCreditCardActivityBetweenDates(
-                id,LocalDate.now(),LocalDate.now().plusMonths(24));
+                id,startDate,endDate);
 
         assertEquals(1, result.size());
     }
@@ -139,10 +144,11 @@ class CrdCreditCardServiceTest {
     void shouldSpendMoney() {
 
         CrdCreditCardSpendDto crdCreditCardSpendDto = mock(CrdCreditCardSpendDto.class);
-        CrdCreditCardActivityDto crdCreditCardActivityDto = mock(CrdCreditCardActivityDto.class);
+        CrdCreditCard card = card();
+        when(crdCreditCardEntityService.findByCardNoAndCvvNoAndExpireDate(0L, 0L, null)).thenReturn(card);
+        stubSaves(card);
 
         when(crdCreditCardSpendDto.getAmount()).thenReturn(BigDecimal.valueOf(200));
-        when(crdCreditCardActivityDto.getAmount()).thenReturn(BigDecimal.valueOf(200));
 
         CrdCreditCardActivityDto result = crdCreditCardService.spendMoney(crdCreditCardSpendDto);
 
@@ -152,9 +158,13 @@ class CrdCreditCardServiceTest {
     @Test
     void shouldRefundMoney() {
 
-        CrdCreditCardActivityDto crdCreditCardActivityDto = mock(CrdCreditCardActivityDto.class);
-
-        when(crdCreditCardActivityDto.getAmount()).thenReturn(BigDecimal.valueOf(200));
+        CrdCreditCard card = card();
+        CrdCreditCardActivity activity = new CrdCreditCardActivity();
+        activity.setCrdCreditCardId(1L);
+        activity.setAmount(BigDecimal.valueOf(200));
+        when(crdCreditCardActivityEntityService.getByIdWithControl(1L)).thenReturn(activity);
+        when(crdCreditCardEntityService.getByIdWithControl(1L)).thenReturn(card);
+        stubSaves(card);
 
         CrdCreditCardActivityDto result = crdCreditCardService.refundMoney(1L);
 
@@ -165,6 +175,10 @@ class CrdCreditCardServiceTest {
     void shouldReceivePayment() {
 
         CrdCreditCardPaymentDto crdCreditCardPaymentDto = mock(CrdCreditCardPaymentDto.class);
+        CrdCreditCard card = card();
+        when(crdCreditCardPaymentDto.getCrdCreditCardId()).thenReturn(1L);
+        when(crdCreditCardEntityService.getByIdWithControl(1L)).thenReturn(card);
+        stubSaves(card);
 
         when(crdCreditCardPaymentDto.getAmount()).thenReturn(BigDecimal.valueOf(200));
 
@@ -172,5 +186,18 @@ class CrdCreditCardServiceTest {
 
         assertEquals(BigDecimal.valueOf(200),result.getAmount());
 
+    }
+    private CrdCreditCard card() {
+        CrdCreditCard card = new CrdCreditCard();
+        card.setId(1L);
+        card.setCutoffDate(LocalDate.now().plusMonths(1));
+        card.setCurrentDebt(BigDecimal.valueOf(500));
+        card.setAvailableCardLimit(BigDecimal.valueOf(1000));
+        return card;
+    }
+
+    private void stubSaves(CrdCreditCard card) {
+        when(crdCreditCardEntityService.save(card)).thenReturn(card);
+        when(crdCreditCardActivityEntityService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
     }
 }

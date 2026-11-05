@@ -2,6 +2,7 @@ package com.cbarkinozer.onlinebankingrestapi.app.acc.service;
 
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccAccountActivityDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyActivityRequestDto;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccAccount;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountActivityEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountEntityService;
@@ -38,9 +39,7 @@ class AccAccountActivityServiceTest {
     void shouldWithdraw() {
 
         AccMoneyActivityRequestDto accMoneyActivityRequestDto = mock(AccMoneyActivityRequestDto.class);
-        AccAccountActivityDto accAccountActivityDto = mock(AccAccountActivityDto.class);
-
-        when(accAccountActivityDto.getCurrentBalance()).thenReturn(BigDecimal.valueOf(200));
+        stubAccount(BigDecimal.valueOf(200));
         when(accMoneyActivityRequestDto.getAmount()).thenReturn(BigDecimal.valueOf(100));
 
         AccAccountActivityDto result = accAccountActivityService.withdraw(accMoneyActivityRequestDto);
@@ -53,7 +52,7 @@ class AccAccountActivityServiceTest {
 
         GenBusinessException genBusinessException = new GenBusinessException(GenErrorMessage.PARAMETER_CANNOT_BE_NULL);
 
-        doThrow(GenBusinessException.class).when(accAccountValidationService).controlIsMoneyActivityRequestDtoNotNull(null);
+        doThrow(genBusinessException).when(accAccountValidationService).controlIsMoneyActivityRequestDtoNotNull(null);
 
         GenBusinessException result = assertThrows(GenBusinessException.class,
                 () -> accAccountActivityService.withdraw(null));
@@ -69,10 +68,10 @@ class AccAccountActivityServiceTest {
 
         IllegalFieldException illegalFieldException = new IllegalFieldException(AccErrorMessage.ACCOUNT_NOT_FOUND);
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAccountIdExist(0L);
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAccountIdExist(0L);
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
-                () -> accAccountActivityService.withdraw(null));
+                () -> accAccountActivityService.withdraw(mock(AccMoneyActivityRequestDto.class)));
 
         assertEquals(illegalFieldException, result);
         assertEquals(illegalFieldException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());
@@ -85,10 +84,13 @@ class AccAccountActivityServiceTest {
 
         IllegalFieldException illegalFieldException = new IllegalFieldException(AccErrorMessage.ACCOUNT_NOT_FOUND);
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
+
+        AccMoneyActivityRequestDto request = new AccMoneyActivityRequestDto();
+        request.setAmount(BigDecimal.valueOf(-1));
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
-                () -> accAccountActivityService.withdraw(null));
+                () -> accAccountActivityService.withdraw(request));
 
         assertEquals(illegalFieldException, result);
         assertEquals(illegalFieldException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());
@@ -101,9 +103,7 @@ class AccAccountActivityServiceTest {
     void shouldDeposit() {
 
         AccMoneyActivityRequestDto accMoneyActivityRequestDto = mock(AccMoneyActivityRequestDto.class);
-        AccAccountActivityDto accAccountActivityDto = mock(AccAccountActivityDto.class);
-
-        when(accAccountActivityDto.getCurrentBalance()).thenReturn(BigDecimal.valueOf(100));
+        stubAccount(BigDecimal.valueOf(100));
         when(accMoneyActivityRequestDto.getAmount()).thenReturn(BigDecimal.valueOf(100));
 
         AccAccountActivityDto result = accAccountActivityService.deposit(accMoneyActivityRequestDto);
@@ -116,7 +116,7 @@ class AccAccountActivityServiceTest {
 
         GenBusinessException genBusinessException = new GenBusinessException(GenErrorMessage.PARAMETER_CANNOT_BE_NULL);
 
-        doThrow(GenBusinessException.class).when(accAccountValidationService).controlIsMoneyActivityRequestDtoNotNull(null);
+        doThrow(genBusinessException).when(accAccountValidationService).controlIsMoneyActivityRequestDtoNotNull(null);
 
         GenBusinessException result = assertThrows(GenBusinessException.class,
                 () -> accAccountActivityService.deposit(null));
@@ -136,7 +136,7 @@ class AccAccountActivityServiceTest {
 
         when(accMoneyActivityRequestDto.getAccountId()).thenReturn(0L);
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAccountIdExist(0L);
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAccountIdExist(0L);
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> accAccountActivityService.deposit(accMoneyActivityRequestDto));
@@ -157,7 +157,7 @@ class AccAccountActivityServiceTest {
 
         when(accMoneyActivityRequestDto.getAmount()).thenReturn(BigDecimal.valueOf(-1));
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> accAccountActivityService.deposit(accMoneyActivityRequestDto));
@@ -167,5 +167,11 @@ class AccAccountActivityServiceTest {
         assertEquals(illegalFieldException.getBaseErrorMessage().getDetailMessage(), result.getBaseErrorMessage().getDetailMessage());
         assertNotNull(result);
 
+    }
+    private void stubAccount(BigDecimal balance) {
+        AccAccount account = new AccAccount();
+        account.setCurrentBalance(balance);
+        when(accAccountEntityService.getByIdWithControl(0L)).thenReturn(account);
+        when(accAccountActivityEntityService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
     }
 }

@@ -271,9 +271,9 @@ class CrdCreditCardControllerTest {
     @Test
     void shouldCancelCreditCard() {
 
-        doNothing().when(crdCreditCardService.findCreditCardById(1L));
+        doNothing().when(crdCreditCardService).cancelCreditCard(1L);
 
-        ResponseEntity<RestResponse<CrdCreditCardDto>> result = crdCreditCardController.findCreditCardById(1L);
+        ResponseEntity<RestResponse<?>> result = crdCreditCardController.cancelCreditCard(1L);
 
         assertTrue(Objects.requireNonNull(result.getBody()).isSuccess());
         assertNull(result.getBody().getData());

@@ -3,6 +3,7 @@ package com.cbarkinozer.onlinebankingrestapi.app.acc.service;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccAccountActivityDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyActivityRequestDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferDto;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccMoneyTransfer;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccErrorMessage;
@@ -41,14 +42,18 @@ class AccMoneyTransferServiceTest {
     @Test
     void transferMoney() {
 
-        AccMoneyTransfer accMoneyTransfer = mock(AccMoneyTransfer.class);
         AccMoneyTransferSaveDto accMoneyTransferSaveDto = mock(AccMoneyTransferSaveDto.class);
 
-        when(accMoneyTransfer.getAmount()).thenReturn(BigDecimal.valueOf(100));
+        when(accMoneyTransferSaveDto.getAmount()).thenReturn(BigDecimal.valueOf(100));
+        when(accMoneyTransferEntityService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
-        accMoneyTransferService.transferMoney(accMoneyTransferSaveDto);
+        AccMoneyTransferDto result =
+                accMoneyTransferService.transferMoney(accMoneyTransferSaveDto);
 
-        verify(accMoneyTransferEntityService.save(accMoneyTransfer));
+        assertEquals(BigDecimal.valueOf(100), result.getAmount());
+        verify(accMoneyTransferEntityService).save(any());
+        verify(accAccountActivityService).moneyOut(any());
+        verify(accAccountActivityService).moneyIn(any());
     }
 
     @Test
@@ -56,7 +61,7 @@ class AccMoneyTransferServiceTest {
 
         GenBusinessException genBusinessException = new GenBusinessException(GenErrorMessage.PARAMETER_CANNOT_BE_NULL);
 
-        doThrow(GenBusinessException.class).when(accAccountValidationService).controlIsMoneyTransferSaveDtoIsNull(null);
+        doThrow(genBusinessException).when(accAccountValidationService).controlIsMoneyTransferSaveDtoIsNull(null);
 
         GenBusinessException result = assertThrows(GenBusinessException.class,
                 () -> accMoneyTransferService.transferMoney(null));
@@ -77,7 +82,7 @@ class AccMoneyTransferServiceTest {
         when(accMoneyTransferSaveDto.getAccountIdFrom()).thenReturn(0L);
         when(accMoneyTransferSaveDto.getAccountIdTo()).thenReturn(0L);
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAccountIdExist(0L);
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAccountIdExist(0L);
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> accMoneyTransferService.transferMoney(accMoneyTransferSaveDto));
@@ -91,16 +96,16 @@ class AccMoneyTransferServiceTest {
     @Test
     void shouldNotDeposit_WhenAmount_IsPositive(){
 
-        AccMoneyActivityRequestDto accMoneyActivityRequestDto = mock(AccMoneyActivityRequestDto.class);
+        AccMoneyTransferSaveDto request = new AccMoneyTransferSaveDto();
 
         IllegalFieldException illegalFieldException = new IllegalFieldException(AccErrorMessage.ACCOUNT_NOT_FOUND);
 
-        when(accMoneyActivityRequestDto.getAmount()).thenReturn(BigDecimal.valueOf(0L));
+        request.setAmount(BigDecimal.valueOf(-1));
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
+        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAmountPositive(BigDecimal.valueOf(-1));
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
-                () -> accAccountActivityService.deposit(accMoneyActivityRequestDto));
+                () -> accMoneyTransferService.transferMoney(request));
 
         assertEquals(illegalFieldException, result);
         assertEquals(illegalFieldException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());

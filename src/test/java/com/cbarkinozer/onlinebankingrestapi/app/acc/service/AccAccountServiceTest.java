@@ -127,44 +127,37 @@ class AccAccountServiceTest {
     void shouldNotSaveAccount_WhenCustomer_DoesNotExist(){
 
         AccAccountSaveDto accAccountSaveDto = mock(AccAccountSaveDto.class);
-        AccAccount accAccount = mock(AccAccount.class);
-
         doThrow(IllegalFieldException.class).when(accAccountValidationService)
-                .controlIsCustomerExist(accAccount.getCustomerId());
+                .controlIsCustomerExist(any());
 
         assertThrows(IllegalFieldException.class, () -> accAccountService.saveAccount(accAccountSaveDto));
 
-        verify(accAccountValidationService).controlAreFieldsNotNull(accAccount);
+        verify(accAccountValidationService).controlIsCustomerExist(any());
     }
 
     @Test
     void shouldNotSaveAccount_WhenFields_AreNull(){
 
         AccAccountSaveDto accAccountSaveDto = mock(AccAccountSaveDto.class);
-        AccAccount accAccount = mock(AccAccount.class);
-
         doThrow(IllegalFieldException.class).when(accAccountValidationService)
-                .controlAreFieldsNotNull(accAccount);
+                .controlAreFieldsNotNull(any());
 
         assertThrows(IllegalFieldException.class, () -> accAccountService.saveAccount(accAccountSaveDto));
 
-        verify(accAccountValidationService).controlAreFieldsNotNull(accAccount);
+        verify(accAccountValidationService).controlAreFieldsNotNull(any());
     }
 
     @Test
     void shouldNotSaveAccount_WhenBalance_IsNotNegative(){
 
         AccAccountSaveDto accAccountSaveDto = mock(AccAccountSaveDto.class);
-        AccAccount accAccount = mock(AccAccount.class);
-
-        when(accAccount.getCurrentBalance()).thenReturn(BigDecimal.valueOf(-1));
         when(accAccountSaveDto.getCurrentBalance()).thenReturn(BigDecimal.valueOf(-1));
 
-        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsBalanceNotNegative(accAccount);
+        doThrow(IllegalFieldException.class).when(accAccountValidationService).controlIsBalanceNotNegative(any(AccAccount.class));
 
         assertThrows(IllegalFieldException.class, () -> accAccountService.saveAccount(accAccountSaveDto));
 
-        verify(accAccountValidationService).controlIsBalanceNotNegative(accAccount);
+        verify(accAccountValidationService).controlIsBalanceNotNegative(any(AccAccount.class));
     }
 
     @Test
