@@ -12,7 +12,9 @@ debtor and creditor to `PaymentInstruction.Party`. A party supplies exactly one 
 `PostalAddressStructurer.structure` is the single normalization point. It returns supplied structured data unchanged,
 or deterministically extracts only values supported by legacy text, including numeric and two-token UK postcodes
 (`SW1A 2AA`, `M1 1AE`, `EC1V 9HX`, `B33 8TH`). It takes country from the IBAN only when the text does not contain
-one, and rejects missing or conflicting towns and more than two hybrid leftovers.
+one. A stated ISO country (including supplied structured data) must match the IBAN country; otherwise normalization
+fails with `stated country X conflicts with IBAN country Y`. Non-ISO region tokens such as `NY` and `TX` are retained
+in locality text, never used as countries. Missing or conflicting towns and more than two hybrid leftovers are rejected.
 
 ## Outbound writers
 
@@ -26,6 +28,11 @@ All writers are in `PaymentRenderer.render` and receive the same normalized debt
 
 If normalization or MT103 line limits fail, `AddressIncompleteException` identifies the party and reason.
 `PaymentController` returns HTTP 400 before `PaymentPublisher.publish` can run.
+
+MT103 numbered lines are limited to 35 characters. Detail fields are joined with spaces and packed across `2/` lines
+without truncation. Long towns use a first `3/CC/` line followed by `3/` continuations, splitting at word boundaries
+where possible. All name, detail, and town lines count toward the four-line limit; overflow is rejected with
+`address too long for MT103 option F`, distinct from `town name is missing`.
 
 ## Parity evidence
 

@@ -2,6 +2,8 @@
 
 Masked regions: MT103 party address blocks; pacs.008 PstlAdr nodes; event address nodes plus the schemaVersion line (1 to 2). All other bytes must match.
 
+MT103 detail fields are space-packed into 35-character numbered lines; town continuations repeat 3/ without repeating the country. Stated countries must match the IBAN country.
+
 | Format | Payloads compared | Identical | Changed only where rule says | Mismatches |
 |---|---:|---:|---:|---:|
 | MT103 | 240 | 0 | 234 | 6 |

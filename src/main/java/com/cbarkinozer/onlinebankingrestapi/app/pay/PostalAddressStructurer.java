@@ -24,6 +24,7 @@ public final class PostalAddressStructurer {
     public static PostalAddress structure(PaymentInstruction.Party party, String role) {
         if (party.getPostalAddress() != null) {
             validate(party.getPostalAddress(), role);
+            checkCountry(party.getPostalAddress().getCountry(), party.getIban().substring(0, 2), role);
             return party.getPostalAddress();
         }
         List<String> remaining = new ArrayList<>(party.getAddressLines());
@@ -31,9 +32,13 @@ public final class PostalAddressStructurer {
         String country = null;
         for (int i = remaining.size() - 1; i >= 0; i--) {
             String line = remaining.get(i).trim();
-            if (COUNTRIES.contains(line.toUpperCase(Locale.ROOT))) {
-                country = line.toUpperCase(Locale.ROOT);
-                remaining.remove(i);
+            int lastSpace = line.lastIndexOf(' ');
+            String token = line.substring(lastSpace + 1).toUpperCase(Locale.ROOT);
+            if (COUNTRIES.contains(token)) {
+                checkCountry(token, party.getIban().substring(0, 2), role);
+                country = token;
+                if (lastSpace < 0) remaining.remove(i);
+                else remaining.set(i, line.substring(0, lastSpace));
             }
         }
         String town = null;
@@ -56,7 +61,7 @@ public final class PostalAddressStructurer {
                 address.setBuildingNumber(street.group(1));
                 address.setStreetName(street.group(2));
                 if (street.group(3) != null && !street.group(3).trim().isEmpty())
-                    town = parseLocality(street.group(3).replaceFirst("^,\\s*", "").trim(), address, town, role);
+                    town = parseLocality(street.group(3).replaceFirst("^,\\s*", "").trim(), address, town, party.getIban().substring(0, 2), role);
                 remaining.remove(i);
                 break;
             }
@@ -71,7 +76,7 @@ public final class PostalAddressStructurer {
             if (hasPostcode(remaining.get(i).trim())) {
                 String line = remaining.get(i).trim();
                 boolean postcodeOnly = isPostcodeOnly(line);
-                town = parseLocality(line, address, town, role);
+                town = parseLocality(line, address, town, party.getIban().substring(0, 2), role);
                 if (postcodeOnly && i > 0 && isLoneTown(remaining.get(i - 1))) {
                     town = town(town, remaining.remove(i - 1), role);
                     i--;
@@ -86,13 +91,14 @@ public final class PostalAddressStructurer {
         address.setTownName(town);
         address.setCountry(country != null ? country : (address.getCountry() != null
                 ? address.getCountry() : party.getIban().substring(0, 2)));
+        checkCountry(address.getCountry(), party.getIban().substring(0, 2), role);
         if (!remaining.isEmpty()) address.setAddressLines(new ArrayList<>(remaining));
         if (remaining.size() > 2) throw new AddressIncompleteException(role, "more than two hybrid address lines remain");
         validate(address, role);
         return address;
     }
 
-    private static String parseLocality(String value, PostalAddress address, String existing, String role) {
+    private static String parseLocality(String value, PostalAddress address, String existing, String ibanCountry, String role) {
         Matcher postcode = UK_POSTCODE.matcher(value);
         boolean uk = postcode.find();
         if (!uk) postcode = POSTCODE.matcher(value);
@@ -103,13 +109,20 @@ public final class PostalAddressStructurer {
         List<String> before = words(value.substring(0, start));
         List<String> after = words(value.substring(postcode.end()));
         if (!after.isEmpty() && COUNTRIES.contains(after.get(after.size() - 1).toUpperCase(Locale.ROOT))) {
+            checkCountry(after.get(after.size() - 1).toUpperCase(Locale.ROOT), ibanCountry, role);
             address.setCountry(after.remove(after.size() - 1).toUpperCase(Locale.ROOT));
         }
         if (!before.isEmpty() && COUNTRIES.contains(before.get(before.size() - 1).toUpperCase(Locale.ROOT))) {
+            checkCountry(before.get(before.size() - 1).toUpperCase(Locale.ROOT), ibanCountry, role);
             address.setCountry(before.remove(before.size() - 1).toUpperCase(Locale.ROOT));
         }
-        List<String> locality = !before.isEmpty() ? before : after;
-        return locality.isEmpty() ? existing : town(existing, String.join(" ", locality), role);
+        before.addAll(after);
+        return before.isEmpty() ? existing : town(existing, String.join(" ", before), role);
+    }
+
+    private static void checkCountry(String stated, String ibanCountry, String role) {
+        if (!stated.equals(ibanCountry))
+            throw new AddressIncompleteException(role, "stated country " + stated + " conflicts with IBAN country " + ibanCountry);
     }
 
     private static List<String> words(String value) {

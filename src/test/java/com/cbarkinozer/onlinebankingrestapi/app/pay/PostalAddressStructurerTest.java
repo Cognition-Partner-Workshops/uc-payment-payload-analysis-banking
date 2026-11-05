@@ -72,9 +72,24 @@ class PostalAddressStructurerTest {
     }
 
     @Test
-    void textCountryWinsOtherwiseIbanCountryIsUsed() {
-        assertEquals("DE", structure("GB", "1 Willow Lane", "Lindenfels 10000 DE").getCountry());
+    void statedCountryMustMatchIbanOtherwiseIbanCountryIsUsed() {
+        assertEquals("DE", structure("DE", "1 Willow Lane", "Lindenfels 10000 DE").getCountry());
         assertEquals("GB", structure("GB", "1 Willow Lane", "Merewick 10000").getCountry());
+        AddressIncompleteException conflict = assertThrows(AddressIncompleteException.class,
+                () -> structure("DE", "1 Main Street, Springfield CA"));
+        assertEquals("stated country CA conflicts with IBAN country DE", conflict.getReason());
+        assertEquals("Springfield", structure("CA", "1 Main Street, Springfield CA").getTownName());
+        assertThrows(AddressIncompleteException.class, () -> structure("DE", "1 Main Street", "Springfield 12345 CA"));
+        assertThrows(AddressIncompleteException.class, () -> structure("DE", "1 Main Street", "Springfield CA 12345 DE"));
+        assertThrows(AddressIncompleteException.class, () -> structure("DE", "1 Main Street, Springfield", "CA"));
+    }
+
+    @Test
+    void preservesNonIsoRegionTokensInsteadOfUsingThemAsCountry() {
+        PostalAddress comma = structure("DE", "1 Main Street, Springfield NY");
+        assertEquals("DE", comma.getCountry()); assertEquals("Springfield NY", comma.getTownName());
+        PostalAddress postcode = structure("DE", "1 Main Street", "Springfield 12345 TX");
+        assertEquals("DE", postcode.getCountry()); assertEquals("Springfield TX", postcode.getTownName());
     }
 
     @Test
@@ -88,6 +103,10 @@ class PostalAddressStructurerTest {
         assertFalse(Validation.buildDefaultValidatorFactory().getValidator().validate(party).isEmpty());
         party.setAddressLines(null); party.setPostalAddress(null);
         assertFalse(Validation.buildDefaultValidatorFactory().getValidator().validate(party).isEmpty());
+        party.setPostalAddress(supplied); supplied.setCountry("DE");
+        AddressIncompleteException conflict = assertThrows(AddressIncompleteException.class,
+                () -> PostalAddressStructurer.structure(party, "debtor"));
+        assertEquals("stated country DE conflicts with IBAN country GB", conflict.getReason());
     }
 
     private PostalAddress structure(String ibanCountry, String... lines) {

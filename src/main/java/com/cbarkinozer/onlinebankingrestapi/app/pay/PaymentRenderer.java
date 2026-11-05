@@ -39,7 +39,7 @@ public class PaymentRenderer {
     }
 
     private String mtParty(String role, PaymentInstruction.Party party, PostalAddress address) {
-        List<String> lines = new ArrayList<>(numbered("1/", party.getName(), 33));
+        List<String> lines = new ArrayList<>(numbered("1/", party.getName(), 35));
         List<String> details = new ArrayList<>();
         if (address.getBuildingName() != null) details.add(address.getBuildingName());
         if (address.getBuildingNumber() != null || address.getStreetName() != null)
@@ -48,29 +48,13 @@ public class PaymentRenderer {
         if (address.getPostCode() != null) details.add(address.getPostCode());
         if (address.getAddressLines() != null) details.addAll(address.getAddressLines());
         if (!details.isEmpty()) lines.addAll(numberedDetails(details));
-        lines.add("3/" + address.getCountry() + "/" + address.getTownName());
-        if (lines.size() > 4) throw new AddressIncompleteException(role, "MT103 address exceeds four numbered lines");
+        lines.addAll(numbered("3/" + address.getCountry() + "/", "3/", address.getTownName(), 35));
+        if (lines.size() > 4) throw new AddressIncompleteException(role, "address too long for MT103 option F");
         return String.join("\n", lines);
     }
 
     private List<String> numberedDetails(List<String> details) {
-        List<String> lines = new ArrayList<>();
-        String current = "";
-        for (String detail : details) {
-            String candidate = current.isEmpty() ? detail : current + ", " + detail;
-            if (candidate.length() <= 31) {
-                current = candidate;
-            } else {
-                if (!current.isEmpty()) lines.add("2/" + current);
-                if (detail.length() > 31) {
-                    List<String> split = numbered("2/", detail, 33);
-                    lines.addAll(split.subList(0, split.size() - 1));
-                    current = split.get(split.size() - 1).substring(2);
-                } else current = detail;
-            }
-        }
-        if (!current.isEmpty()) lines.add("2/" + current);
-        return lines;
+        return numbered("2/", String.join(" ", details), 35);
     }
 
     private String join(String first, String second, String separator) {
@@ -80,6 +64,10 @@ public class PaymentRenderer {
     }
 
     private List<String> numbered(String prefix, String value, int maxLength) {
+        return numbered(prefix, prefix, value, maxLength);
+    }
+
+    private List<String> numbered(String prefix, String continuationPrefix, String value, int maxLength) {
         List<String> result = new ArrayList<>();
         String remaining = value;
         int width = maxLength - prefix.length();
@@ -87,7 +75,9 @@ public class PaymentRenderer {
             int cut = remaining.lastIndexOf(' ', width);
             if (cut <= 0) cut = width;
             result.add(prefix + remaining.substring(0, cut));
-            remaining = remaining.substring(cut).trim();
+            remaining = remaining.substring(cut + (remaining.charAt(cut) == ' ' ? 1 : 0));
+            prefix = continuationPrefix;
+            width = maxLength - prefix.length();
         }
         result.add(prefix + remaining);
         return result;

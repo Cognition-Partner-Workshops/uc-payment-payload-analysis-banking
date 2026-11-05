@@ -166,6 +166,7 @@ class PaymentReplayTest {
         Files.writeString(target.resolve("parity.csv"), csv);
         StringBuilder report = new StringBuilder("# Payment address parity report\n\n")
                 .append("Masked regions: MT103 party address blocks; pacs.008 PstlAdr nodes; event address nodes plus the schemaVersion line (1 to 2). All other bytes must match.\n\n")
+                .append("MT103 detail fields are space-packed into 35-character numbered lines; town continuations repeat 3/ without repeating the country. Stated countries must match the IBAN country.\n\n")
                 .append("| Format | Payloads compared | Identical | Changed only where rule says | Mismatches |\n")
                 .append("|---|---:|---:|---:|---:|\n");
         for (String format : List.of("MT103", "pacs.008", "event", "total")) {
