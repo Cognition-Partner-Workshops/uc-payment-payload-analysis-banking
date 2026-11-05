@@ -33,14 +33,14 @@ https://ibb.co/phwhSBX
 ### To Run  
 Pull the project.
 Create a database named "online-banking-rest-api" in postgresql.  
-Secrets are not stored in the repository; supply them as environment variables before starting the
-application (it refuses to start without them):
+Provide configuration through environment variables (do not put credentials in settings files):
+```sh
+export DB_URL=jdbc:postgresql://localhost:5432/online-banking-rest-api
+export DB_USERNAME=postgres
+export DB_PASSWORD  # supply through the local secret store
+export JWT_SIGNING_KEY  # supply through the local secret store
+export DB_DDL_AUTO=create  # initial local schema only; defaults to validate
 ```
-export SPRING_DATASOURCE_USERNAME=postgres        # optional, defaults to postgres
-export SPRING_DATASOURCE_PASSWORD=[your postgresql password here]
-export JWT_SIGNING_KEY=$(openssl rand -base64 64) # HS512 signing key; keep it stable across restarts
-```
-`spring.jpa.hibernate.ddl-auto=create` in src>main>resources>"application.properties" recreates the schema on each start.
 The JWT signing key must be at least 64 bytes; the application refuses to start otherwise.
 
 Accounts with the `ADMIN` role (column `ROLE_TYPE` in `CUS_CUSTOMER`) can list and delete customers; self-registration always creates `USER` accounts.
@@ -73,6 +73,37 @@ Run command "docker compose up -d".
 Now, a container that has kafka in it is running.  
 Run the project.
 Open your browser and enter following URL : http://localhost:8080/swagger-ui/index.html
+
+### Platform container
+
+The caller workflow pins the OtterWorks chart, policies and reusable pipeline to
+`19392116c2197d713811213778a7a1d75eb90cc0`. The first Docker stage runs the full
+Maven verification lifecycle; building the runtime depends on that stage passing.
+The existing Payments suite workflow is unchanged.
+
+```sh
+docker build --target test .
+docker build -t banking:local .
+docker run --rm --read-only --tmpfs /tmp:rw,nosuid,nodev,size=32m \
+  --memory=256m --cpus=0.5 --cap-drop=ALL --security-opt=no-new-privileges \
+  --env-file /path/to/runtime.env -p 8080:8080 banking:local
+curl --fail http://localhost:8080/health
+```
+
+`GET /health` is public and checks database connectivity and application readiness;
+it returns 503 when the service is refusing traffic. Other banking endpoints keep
+their authentication requirements. Health details and other actuator endpoints are
+not exposed. Application logs are JSON on stdout, with no file appender; SQL stdout
+and the text banner are disabled.
+
+`deploy/values.yaml` references the externally populated `banking-config` Secret
+for `DB_USERNAME`, `DB_PASSWORD` and `JWT_SIGNING_KEY`. Override database/broker
+addresses for the target environment. Provision the database schema before starting
+with the default `DB_DDL_AUTO=validate`. `deploy/values-ci.yaml` uses an ephemeral H2
+database and disables Kafka listeners only for kind smoke tests; its synthetic
+credentials live in `deploy/kind-secrets.env` and must never be used in production.
+The runtime runs as uid/gid 10001, with `/tmp` as its only writable volume and JVM
+memory sized for the chart's 256Mi container limit.
 
 ### Documentation    
 
