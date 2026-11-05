@@ -7,6 +7,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.*;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exception.GenCustomizedResponseEntityExceptionHandler;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.util.AccountDisclosure;
 import com.cbarkinozer.onlinebankingrestapi.app.kafka.consumer.KafkaListenerService;
 import com.cbarkinozer.onlinebankingrestapi.app.kafka.dto.LogMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.log.service.entityservice.LogDetailEntityService;
@@ -27,6 +28,41 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class AccountDisclosureTest {
     private static final String IBAN = "GB82WEST12345698765432";
     private final ObjectMapper json = PaymentCorpus.MAPPER;
+
+    @Test
+    void groupedNumbersAreMaskedInTextAndSerializedMessagesWithoutChangingInputs() throws Exception {
+        for (String value : new String[] {"1234 5678 9012 3456", "1234-5678-9012-3456",
+                "1234 5678-9012 3456", "123 456 789 0123456"}) {
+            assertEquals("Payer ****3456", AccountDisclosure.redact("Payer " + value));
+            LogMessage message = new LogMessage();
+            message.setMessage("Payer " + value + "; bill 12345678; amount 12.34");
+            assertEquals("Payer ****3456; bill 12345678; amount 12.34",
+                    json.readTree(json.writeValueAsString(message)).get("message").asText());
+            assertEquals("Payer " + value + "; bill 12345678; amount 12.34", message.getMessage());
+        }
+        assertEquals("IBAN ****5432", AccountDisclosure.redact("IBAN GB82-WEST-1234-5698-7654-32"));
+        assertEquals("Payer ****2345", AccountDisclosure.redact("Payer 123 456 789 012 345"));
+        assertEquals("Payer ****3456.", AccountDisclosure.redact("Payer 1234-5678-9012-3456."));
+        assertEquals("Payer ****3456.", AccountDisclosure.redact("Payer 1234567890123456."));
+        assertEquals("account: ****3456, thanks.", AccountDisclosure.redact("account: 1234567890123456, thanks."));
+    }
+
+    @Test
+    void labelledGroupedAccountsAreMaskedEvenWhenShorterThanThirteenDigits() {
+        assertEquals("account: ****5678", AccountDisclosure.redact("account: 1234 5678"));
+        assertEquals("card no. ****5678", AccountDisclosure.redact("card no. 1234-5678"));
+    }
+
+    @Test
+    void ordinaryShortNumbersAmountsDatesAndEmptyTextAreUnchanged() {
+        for (String value : new String[] {"", "1234", "bill 12345678", "codes 1234 5678",
+                "Amount 12.34", "Amount 1234.56", "Amount 1 234.56",
+                "Amount 1 234 567 890 123.45", "Amount 1 234 567 890 123", "Amount 1,234,567.89",
+                "Amount 1234567890123.45", "Date 2026-11-05", "****3456"}) {
+            assertEquals(value, AccountDisclosure.redact(value));
+        }
+        assertNull(AccountDisclosure.redact(null));
+    }
 
     @Test
     void accountEndpointsMaskOutputIncludingHateoasButNotModelValues() throws Exception {
