@@ -50,9 +50,6 @@ public final class PostalAddressStructurer {
                 }
             }
         }
-        int directTownIndex = streetIndex + 1;
-        boolean directTownAfterStreet = streetIndex >= 0 && directTownIndex < remaining.size()
-                && isLoneTown(remaining.get(directTownIndex));
         for (int i = 0; i < remaining.size(); i++) {
             Matcher street = STREET.matcher(remaining.get(i));
             if (street.matches()) {
@@ -63,9 +60,6 @@ public final class PostalAddressStructurer {
                 remaining.remove(i);
                 break;
             }
-        }
-        if (directTownAfterStreet) {
-            town = town(town, remaining.remove(streetIndex), role);
         }
         for (int i = 0; i < remaining.size(); i++) {
             if (BOX.matcher(remaining.get(i)).matches()) {

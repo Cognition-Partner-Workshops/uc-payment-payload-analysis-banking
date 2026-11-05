@@ -55,6 +55,9 @@ class PostalAddressStructurerTest {
     void rejectsUkPostcodeWithoutAnAcceptedTown() {
         assertThrows(AddressIncompleteException.class, () -> structure("GB", "Unit 4", "SW1A 2AA", "GB"));
         assertThrows(AddressIncompleteException.class, () -> structure("GB", "London", "Unit 4", "GB"));
+        AddressIncompleteException guessedTown = assertThrows(AddressIncompleteException.class,
+                () -> structure("FR", "8 Willow Lane", "Old Mill", "FR"));
+        assertTrue(guessedTown.getReason().contains("town name is missing"));
     }
 
     @Test
