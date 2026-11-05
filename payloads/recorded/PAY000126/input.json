@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "NL49OTTR0000100125",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "128 Willow Lane, Rietdam", "10125 NL" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "GB63OTTR00000000100365",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "35 Willow Lane, Merewick", "10365 GB" ]
+  },
+  "amount" : 78211.42,
+  "currency" : "USD",
+  "valueDate" : "2026-10-18",
+  "remittanceInfo" : "Invoice 76125 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000126"
+}

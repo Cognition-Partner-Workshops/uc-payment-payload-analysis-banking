@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "FR5483001000000000000100058",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Juniper House", "60 Willow Lane", "Valbrune 10058 FR" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "GB29OTTR00000000100298",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "Juniper House", "69 Willow Lane", "Merewick 10298 GB" ]
+  },
+  "amount" : 44115.08,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-09",
+  "remittanceInfo" : "Invoice 76058 / materials",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000059"
+}

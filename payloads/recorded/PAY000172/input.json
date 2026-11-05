@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components & Sons",
+    "iban" : "IE36OTTR00000000100171",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "P.O. Box 371", "Glenmere 10171", "IE" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "DE08830017420000100411",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 611", "Lindenfels 10411", "DE" ]
+  },
+  "amount" : 22988.32,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-23",
+  "remittanceInfo" : "Invoice 76171 / services",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000172"
+}

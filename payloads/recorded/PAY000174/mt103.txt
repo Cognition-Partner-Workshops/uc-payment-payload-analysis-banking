@@ -1,0 +1,19 @@
+{4:
+:20:PAY000174
+:23B:CRED
+:32A:261018GBP6245,08
+:50K:/DE32830017420000100173
+Bracken Ceramics Ltd
+Juniper House
+51 Willow Lane
+Lindenfels 10173 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE98OTTR00000000100413
+Bracken Ceramics Ltd
+Juniper House
+51 Willow Lane
+Glenmere 10413 IE
+:70:Invoice 76173 / freight
+:71A:BEN
+-}

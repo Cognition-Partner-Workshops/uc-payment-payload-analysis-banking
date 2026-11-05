@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics & Sons",
+      "iban" : "NL73OTTR0000100081",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 281", "Rietdam 10081", "NL" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "FR3483001000000000000100321",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 521", "Valbrune 10321", "FR" ]
+    },
+    "amount" : 36747.27,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-03",
+    "remittanceInfo" : "Invoice 76081 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000082"
+  }
+}

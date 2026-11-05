@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "GB36OTTR00000000100075",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "39 Willow Lane, Merewick", "10075 GB" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics & Sons",
+    "iban" : "IE28OTTR00000000100315",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "116 Willow Lane, Glenmere", "10315 IE" ]
+  },
+  "amount" : 72304.43,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76075 / services",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000076"
+}

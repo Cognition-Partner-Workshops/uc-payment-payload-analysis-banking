@@ -1,0 +1,19 @@
+{4:
+:20:PAY000149
+:23B:CRED
+:32A:261022GBP15237,26
+:50K:/DE28830017420000100148
+Ember Glass Ltd
+Juniper House
+141 Willow Lane
+Lindenfels 10148 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE94OTTR00000000100388
+Fernlight Goods Ltd
+Juniper House
+46 Willow Lane
+Glenmere 10388 IE
+:70:Invoice 76148 / parts
+:71A:OUR
+-}

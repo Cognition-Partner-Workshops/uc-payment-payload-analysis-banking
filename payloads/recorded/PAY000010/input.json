@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles & Sons",
+    "iban" : "ES8383010000000000100009",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "10 Willow Lane Solavilla 10009" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "GB91OTTR00000000100249",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "66 Willow Lane Merewick 10249" ]
+  },
+  "amount" : 18469.82,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-21",
+  "remittanceInfo" : "Invoice 76009 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000010"
+}

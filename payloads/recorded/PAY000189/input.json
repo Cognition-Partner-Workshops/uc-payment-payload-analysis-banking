@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "GB89OTTR00000000100188",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "Juniper House", "125 Willow Lane", "Merewick 10188 GB" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "NL16OTTR0000100428",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "Juniper House", "65 Willow Lane", "Rietdam 10428 NL" ]
+  },
+  "amount" : 79647.86,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76188 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000189"
+}

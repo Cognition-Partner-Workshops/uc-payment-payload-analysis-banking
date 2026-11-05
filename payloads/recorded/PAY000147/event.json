@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL64OTTR0000100146",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 346", "Rietdam 10146", "NL" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "FR2583001000000000000100386",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 586", "Valbrune 10386", "FR" ]
+    },
+    "amount" : 18933.84,
+    "currency" : "USD",
+    "valueDate" : "2026-10-29",
+    "remittanceInfo" : "Invoice 76146 / materials",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000147"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "NL87OTTR0000100217",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "121 Willow Lane", "10217 Rietdam" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "FR4883001000000000000100457",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "113 Willow Lane", "10457 Valbrune" ]
+    },
+    "amount" : 85032.40,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-06",
+    "remittanceInfo" : "Invoice 76217 / freight",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000218"
+  }
+}

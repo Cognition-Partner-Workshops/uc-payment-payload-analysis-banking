@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components & Sons",
+    "iban" : "DE89830017420000100117",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "94 Willow Lane", "10117 Lindenfels" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "NL90OTTR0000100357",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "144 Willow Lane", "10357 Rietdam" ]
+  },
+  "amount" : 30286.76,
+  "currency" : "USD",
+  "valueDate" : "2026-10-13",
+  "remittanceInfo" : "Invoice 76117 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000118"
+}

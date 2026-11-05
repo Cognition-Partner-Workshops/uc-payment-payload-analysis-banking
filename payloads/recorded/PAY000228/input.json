@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "ES1783010000000000100227",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "101 Willow Lane", "10227 Solavilla" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "FR6983001000000000000100467",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "174 Willow Lane", "10467 Valbrune" ]
+  },
+  "amount" : 66353.73,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-17",
+  "remittanceInfo" : "Invoice 76227 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000228"
+}

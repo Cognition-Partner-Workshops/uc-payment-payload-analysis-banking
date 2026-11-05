@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "NL37OTTR0000100050",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "4 Willow Lane, Rietdam", "10050 NL" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "GB51OTTR00000000100290",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "149 Willow Lane, Merewick", "10290 GB" ]
+  },
+  "amount" : 30490.17,
+  "currency" : "USD",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76050 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000051"
+}

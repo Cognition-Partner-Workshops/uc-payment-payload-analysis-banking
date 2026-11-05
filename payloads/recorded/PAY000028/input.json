@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools & Sons",
+    "iban" : "GB71OTTR00000000100027",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "66 Willow Lane", "10027 Merewick" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "NL95OTTR0000100267",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "7 Willow Lane", "10267 Rietdam" ]
+  },
+  "amount" : 53566.12,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-14",
+  "remittanceInfo" : "Invoice 76027 / services",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000028"
+}

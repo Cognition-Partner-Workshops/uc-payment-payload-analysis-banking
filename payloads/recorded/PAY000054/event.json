@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "DE71830017420000100053",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "Juniper House", "61 Willow Lane", "Lindenfels 10053 DE" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "NL72OTTR0000100293",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "166 Willow Lane", "Rietdam 10293 NL" ]
+    },
+    "amount" : 12202.80,
+    "currency" : "USD",
+    "valueDate" : "2026-10-11",
+    "remittanceInfo" : "Invoice 76053 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000054"
+  }
+}

@@ -1,0 +1,17 @@
+{4:
+:20:PAY000173
+:23B:CRED
+:32A:261008EUR2635,25
+:50K:/NL41OTTR0000100172
+Larkspur Parts Ltd
+71 Willow Lane
+10172 Rietdam
+:52A:OTTRNL2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE78830017420000100412
+Bracken Ceramics Ltd
+42 Willow Lane
+10412 Lindenfels
+:70:Invoice 76172 / parts
+:71A:OUR
+-}

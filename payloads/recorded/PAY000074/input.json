@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "IE63OTTR00000000100073",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "Juniper House", "89 Willow Lane", "Glenmere 10073 IE" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "ES2383010000000000100313",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "Juniper House", "50 Willow Lane", "Solavilla 10313 ES" ]
+  },
+  "amount" : 43541.37,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-09",
+  "remittanceInfo" : "Invoice 76073 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000074"
+}

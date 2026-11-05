@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "DE37830017420000100083",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "Juniper House", "155 Willow Lane", "Lindenfels 10083 DE" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "ES4483010000000000100323",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "Juniper House", "9 Willow Lane", "Solavilla 10323 ES" ]
+    },
+    "amount" : 6528.96,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-05",
+    "remittanceInfo" : "Invoice 76083 / services",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000084"
+  }
+}

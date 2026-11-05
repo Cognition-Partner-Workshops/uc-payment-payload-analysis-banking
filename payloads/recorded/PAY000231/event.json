@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "ES3383010000000000100230",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "76 Willow Lane, Solavilla", "10230 ES" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "GB41OTTR00000000100470",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "83 Willow Lane, Merewick", "10470 GB" ]
+    },
+    "amount" : 43556.59,
+    "currency" : "USD",
+    "valueDate" : "2026-10-28",
+    "remittanceInfo" : "Invoice 76230 / materials",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000231"
+  }
+}

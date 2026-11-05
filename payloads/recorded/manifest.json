@@ -1,0 +1,967 @@
+{
+  "seed" : 20261101,
+  "count" : 240,
+  "noTownCount" : 6,
+  "recordCommand" : "./mvnw -B -Dtest=PaymentCorpusRecorderTest -Dpayments.record=true test",
+  "payments" : [ {
+    "id" : "PAY000001",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000002",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000003",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000004",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000005",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000006",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000007",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000008",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000009",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000010",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000011",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000012",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000013",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000014",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000015",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000016",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000017",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000018",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000019",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000020",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000021",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000022",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000023",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000024",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000025",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000026",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000027",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000028",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000029",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000030",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000031",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000032",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000033",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000034",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000035",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000036",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000037",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000038",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000039",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000040",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000041",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000042",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000043",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000044",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000045",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000046",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000047",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000048",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000049",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000050",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000051",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000052",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000053",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000054",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000055",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000056",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000057",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000058",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000059",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000060",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000061",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000062",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000063",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000064",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000065",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000066",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000067",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000068",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000069",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000070",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000071",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000072",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000073",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000074",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000075",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000076",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000077",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000078",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000079",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000080",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000081",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000082",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000083",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000084",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000085",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000086",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000087",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000088",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000089",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000090",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000091",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000092",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000093",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000094",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000095",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000096",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000097",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000098",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000099",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000100",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000101",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000102",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000103",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000104",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000105",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000106",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000107",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000108",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000109",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000110",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000111",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000112",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000113",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000114",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000115",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000116",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000117",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000118",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000119",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000120",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000121",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000122",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000123",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000124",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000125",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000126",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000127",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000128",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000129",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000130",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000131",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000132",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000133",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000134",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000135",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000136",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000137",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000138",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000139",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000140",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000141",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000142",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000143",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000144",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000145",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000146",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000147",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000148",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000149",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000150",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000151",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000152",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000153",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000154",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000155",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000156",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000157",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000158",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000159",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000160",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000161",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000162",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000163",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000164",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000165",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000166",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000167",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000168",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000169",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000170",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000171",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000172",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000173",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000174",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000175",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000176",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000177",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000178",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000179",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000180",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000181",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000182",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000183",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000184",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000185",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000186",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000187",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000188",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000189",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000190",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000191",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000192",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000193",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000194",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000195",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000196",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000197",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000198",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000199",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000200",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000201",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : false
+  }, {
+    "id" : "PAY000202",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000203",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000204",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000205",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000206",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000207",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000208",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000209",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000210",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000211",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000212",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000213",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000214",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000215",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000216",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000217",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000218",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000219",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000220",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000221",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000222",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000223",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000224",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000225",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000226",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000227",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000228",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000229",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000230",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000231",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000232",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000233",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000234",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000235",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000236",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000237",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000238",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000239",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  }, {
+    "id" : "PAY000240",
+    "debtorTownPresent" : true,
+    "creditorTownPresent" : true
+  } ]
+}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "ES2183010000000000100155",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "12 Willow Lane, Solavilla", "10155 ES" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "DE52830017420000100395",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "107 Willow Lane, Lindenfels", "10395 DE" ]
+  },
+  "amount" : 57893.62,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-07",
+  "remittanceInfo" : "Invoice 76155 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000156"
+}

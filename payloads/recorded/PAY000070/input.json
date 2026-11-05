@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "DE27830017420000100069",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "126 Willow Lane Lindenfels 10069" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "IE93OTTR00000000100309",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "81 Willow Lane Glenmere 10309" ]
+  },
+  "amount" : 42615.60,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-07",
+  "remittanceInfo" : "Invoice 76069 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000070"
+}

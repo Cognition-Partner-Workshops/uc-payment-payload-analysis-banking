@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "GB70OTTR00000000100142",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "99 Willow Lane", "10142 Merewick" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "ES0383010000000000100382",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "33 Willow Lane", "10382 Solavilla" ]
+    },
+    "amount" : 70890.21,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-23",
+    "remittanceInfo" : "Invoice 76142 / materials",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000143"
+  }
+}

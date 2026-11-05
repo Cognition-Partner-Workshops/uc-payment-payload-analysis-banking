@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "ES0983010000000000100177",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "103 Willow Lane", "10177 Solavilla" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "GB17OTTR00000000100417",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "51 Willow Lane", "10417 Merewick" ]
+    },
+    "amount" : 26028.17,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-06",
+    "remittanceInfo" : "Invoice 76177 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000178"
+  }
+}

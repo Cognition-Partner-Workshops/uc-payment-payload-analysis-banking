@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "ES4083010000000000100201",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 401", "Solavilla 10201", "ES" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods & Sons",
+      "iban" : "FR9283001000000000000100441",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 641", "Valbrune 10441", "FR" ]
+    },
+    "amount" : 16201.66,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-22",
+    "remittanceInfo" : "Invoice 76201 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000202"
+  }
+}

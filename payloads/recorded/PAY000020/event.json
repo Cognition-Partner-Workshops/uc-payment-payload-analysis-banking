@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "IE66OTTR00000000100019",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "172 Willow Lane Glenmere 10019" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "FR5983001000000000000100259",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "34 Willow Lane Valbrune 10259" ]
+    },
+    "amount" : 7332.54,
+    "currency" : "USD",
+    "valueDate" : "2026-10-28",
+    "remittanceInfo" : "Invoice 76019 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000020"
+  }
+}

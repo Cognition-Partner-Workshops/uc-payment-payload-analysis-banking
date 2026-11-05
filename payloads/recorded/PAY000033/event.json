@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "GB33OTTR00000000100032",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "101 Willow Lane", "10032 Merewick" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "NL57OTTR0000100272",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "124 Willow Lane", "10272 Rietdam" ]
+    },
+    "amount" : 24129.32,
+    "currency" : "USD",
+    "valueDate" : "2026-10-22",
+    "remittanceInfo" : "Invoice 76032 / parts",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000033"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "DE64830017420000100082",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "86 Willow Lane", "10082 Lindenfels" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "IE33OTTR00000000100322",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "4 Willow Lane", "10322 Glenmere" ]
+    },
+    "amount" : 78921.42,
+    "currency" : "USD",
+    "valueDate" : "2026-10-17",
+    "remittanceInfo" : "Invoice 76082 / materials",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000083"
+  }
+}

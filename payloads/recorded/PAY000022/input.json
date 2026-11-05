@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "NL44OTTR0000100021",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "P.O. Box 221", "Rietdam 10021", "NL" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass & Sons",
+    "iban" : "GB58OTTR00000000100261",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "P.O. Box 461", "Merewick 10261", "GB" ]
+  },
+  "amount" : 36178.83,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-28",
+  "remittanceInfo" : "Invoice 76021 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000022"
+}

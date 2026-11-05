@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "IE70OTTR00000000100044",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "41 Willow Lane Glenmere 10044" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "ES3083010000000000100284",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "128 Willow Lane Solavilla 10284" ]
+  },
+  "amount" : 35616.47,
+  "currency" : "USD",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76044 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000045"
+}

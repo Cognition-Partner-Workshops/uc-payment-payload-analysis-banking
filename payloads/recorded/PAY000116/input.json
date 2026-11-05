@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "FR6783001000000000000100115",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "9 Willow Lane, Valbrune", "10115 FR" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "DE65830017420000100355",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "159 Willow Lane, Lindenfels", "10355 DE" ]
+  },
+  "amount" : 54057.95,
+  "currency" : "USD",
+  "valueDate" : "2026-10-23",
+  "remittanceInfo" : "Invoice 76115 / services",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000116"
+}

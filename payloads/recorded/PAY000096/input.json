@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "IE51OTTR00000000100095",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "84 Willow Lane, Glenmere", "10095 IE" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "FR4483001000000000000100335",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "153 Willow Lane, Valbrune", "10335 FR" ]
+  },
+  "amount" : 68028.37,
+  "currency" : "USD",
+  "valueDate" : "2026-10-21",
+  "remittanceInfo" : "Invoice 76095 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000096"
+}

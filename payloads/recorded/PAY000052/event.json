@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "ES1683010000000000100051",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 251", "Solavilla 10051", "ES" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "FR6883001000000000000100291",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 491", "Valbrune 10291", "FR" ]
+    },
+    "amount" : 83123.75,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-29",
+    "remittanceInfo" : "Invoice 76051 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000052"
+  }
+}

@@ -1,0 +1,19 @@
+{4:
+:20:PAY000089
+:23B:CRED
+:32A:261003GBP81879,97
+:50K:/DE96830017420000100088
+Wren Paper Ltd
+Juniper House
+131 Willow Lane
+Lindenfels 10088 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRES2LXXX
+:59:/ES0683010000000000100328
+Cinder Tools Ltd
+Juniper House
+85 Willow Lane
+Solavilla 10328 ES
+:70:Invoice 76088 / parts
+:71A:OUR
+-}

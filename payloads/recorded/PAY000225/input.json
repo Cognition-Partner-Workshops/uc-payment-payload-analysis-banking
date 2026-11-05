@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB87OTTR00000000100224",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "175 Willow Lane Merewick 10224" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "ES2083010000000000100464",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "107 Willow Lane Solavilla 10464" ]
+  },
+  "amount" : 46786.64,
+  "currency" : "USD",
+  "valueDate" : "2026-10-26",
+  "remittanceInfo" : "Invoice 76224 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000225"
+}

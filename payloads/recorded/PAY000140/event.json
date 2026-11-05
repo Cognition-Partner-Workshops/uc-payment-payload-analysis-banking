@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "IE27OTTR00000000100139",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "137 Willow Lane Glenmere 10139" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR2083001000000000000100379",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "131 Willow Lane Valbrune 10379" ]
+    },
+    "amount" : 1483.48,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-19",
+    "remittanceInfo" : "Invoice 76139 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000140"
+  }
+}

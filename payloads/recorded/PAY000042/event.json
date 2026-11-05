@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "ES9283010000000000100041",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 241", "Solavilla 10041", "ES" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "NL08OTTR0000100281",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 481", "Rietdam 10281", "NL" ]
+    },
+    "amount" : 30985.33,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-08",
+    "remittanceInfo" : "Invoice 76041 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000042"
+  }
+}

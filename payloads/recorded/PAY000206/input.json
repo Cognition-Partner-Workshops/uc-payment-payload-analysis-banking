@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "DE41830017420000100205",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "123 Willow Lane, Lindenfels", "10205 DE" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "NL42OTTR0000100445",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "96 Willow Lane, Rietdam", "10445 NL" ]
+  },
+  "amount" : 8741.70,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-03",
+  "remittanceInfo" : "Invoice 76205 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000206"
+}

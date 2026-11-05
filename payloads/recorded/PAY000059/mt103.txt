@@ -1,0 +1,19 @@
+{4:
+:20:PAY000059
+:23B:CRED
+:32A:261009GBP44115,08
+:50K:/FR5483001000000000000100058
+Cinder Tools Ltd
+Juniper House
+60 Willow Lane
+Valbrune 10058 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB29OTTR00000000100298
+Fernlight Goods Ltd
+Juniper House
+69 Willow Lane
+Merewick 10298 GB
+:70:Invoice 76058 / materials
+:71A:OUR
+-}

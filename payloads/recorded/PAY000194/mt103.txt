@@ -1,0 +1,19 @@
+{4:
+:20:PAY000194
+:23B:CRED
+:32A:261013GBP54691,76
+:50K:/NL56OTTR0000100193
+Ember Glass Ltd
+Juniper House
+1 Willow Lane
+Rietdam 10193 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE43OTTR00000000100433
+Fernlight Goods Ltd
+Juniper House
+60 Willow Lane
+Glenmere 10433 IE
+:70:Invoice 76193 / freight
+:71A:OUR
+-}

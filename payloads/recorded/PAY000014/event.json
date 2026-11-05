@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "NL66OTTR0000100013",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "71 Willow Lane", "Rietdam 10013 NL" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "FR2783001000000000000100253",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "Juniper House", "173 Willow Lane", "Valbrune 10253 FR" ]
+    },
+    "amount" : 9180.75,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-29",
+    "remittanceInfo" : "Invoice 76013 / freight",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000014"
+  }
+}

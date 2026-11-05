@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "DE72830017420000100229",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "63 Willow Lane Lindenfels 10229" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "FR1583001000000000000100469",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "132 Willow Lane Valbrune 10469" ]
+  },
+  "amount" : 16216.05,
+  "currency" : "USD",
+  "valueDate" : "2026-10-18",
+  "remittanceInfo" : "Invoice 76229 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000230"
+}

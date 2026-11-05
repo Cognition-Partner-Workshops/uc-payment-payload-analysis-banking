@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics & Sons",
+    "iban" : "ES3583010000000000100000",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "47 Willow Lane, Solavilla", "10000 ES" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "FR8783001000000000000100240",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Warehouse Seven", "P.O. Box 540", "FR" ]
+  },
+  "amount" : 23366.01,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-08",
+  "remittanceInfo" : "Invoice 76000 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000001"
+}

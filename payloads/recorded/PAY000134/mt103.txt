@@ -1,0 +1,19 @@
+{4:
+:20:PAY000134
+:23B:CRED
+:32A:261002EUR45366,59
+:50K:/FR6683001000000000000100133
+Aster Components Ltd
+Juniper House
+163 Willow Lane
+Valbrune 10133 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRES2LXXX
+:59:/ES5283010000000000100373
+Bracken Ceramics Ltd
+Juniper House
+125 Willow Lane
+Solavilla 10373 ES
+:70:Invoice 76133 / freight
+:71A:OUR
+-}

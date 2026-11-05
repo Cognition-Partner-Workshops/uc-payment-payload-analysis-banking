@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "FR3483001000000000000100030",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "38 Willow Lane, Valbrune", "10030 FR" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components & Sons",
+    "iban" : "GB09OTTR00000000100270",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "61 Willow Lane, Merewick", "10270 GB" ]
+  },
+  "amount" : 26157.14,
+  "currency" : "USD",
+  "valueDate" : "2026-10-28",
+  "remittanceInfo" : "Invoice 76030 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000031"
+}

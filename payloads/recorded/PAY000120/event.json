@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "ES2383010000000000100119",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "4 Willow Lane Solavilla 10119" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "GB31OTTR00000000100359",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "175 Willow Lane Merewick 10359" ]
+    },
+    "amount" : 45792.08,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-19",
+    "remittanceInfo" : "Invoice 76119 / services",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000120"
+  }
+}

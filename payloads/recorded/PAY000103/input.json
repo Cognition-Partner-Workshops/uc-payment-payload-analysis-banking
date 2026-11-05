@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "IE56OTTR00000000100102",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "33 Willow Lane", "10102 Glenmere" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper & Sons",
+    "iban" : "DE28830017420000100342",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "129 Willow Lane", "10342 Lindenfels" ]
+  },
+  "amount" : 4919.52,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-31",
+  "remittanceInfo" : "Invoice 76102 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000103"
+}

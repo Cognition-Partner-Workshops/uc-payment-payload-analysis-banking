@@ -1,0 +1,19 @@
+{4:
+:20:PAY000224
+:23B:CRED
+:32A:261026GBP1206,43
+:50K:/FR6183001000000000000100223
+Bracken Ceramics Ltd
+Juniper House
+71 Willow Lane
+Valbrune 10223 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE09OTTR00000000100463
+Cinder Tools Ltd
+Juniper House
+92 Willow Lane
+Glenmere 10463 IE
+:70:Invoice 76223 / services
+:71A:OUR
+-}

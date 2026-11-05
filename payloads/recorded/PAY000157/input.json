@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "ES9183010000000000100156",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 356", "Solavilla 10156", "ES" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components & Sons",
+    "iban" : "NL07OTTR0000100396",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "P.O. Box 596", "Rietdam 10396", "NL" ]
+  },
+  "amount" : 82508.91,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-28",
+  "remittanceInfo" : "Invoice 76156 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000157"
+}

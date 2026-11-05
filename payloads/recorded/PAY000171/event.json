@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "ES0483010000000000100170",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "137 Willow Lane, Solavilla", "10170 ES" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR5683001000000000000100410",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "122 Willow Lane, Valbrune", "10410 FR" ]
+    },
+    "amount" : 82522.54,
+    "currency" : "USD",
+    "valueDate" : "2026-10-11",
+    "remittanceInfo" : "Invoice 76170 / materials",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000171"
+  }
+}

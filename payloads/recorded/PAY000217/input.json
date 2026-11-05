@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics & Sons",
+    "iban" : "IE82OTTR00000000100216",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "P.O. Box 416", "Glenmere 10216", "IE" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "GB31OTTR00000000100456",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "P.O. Box 656", "Merewick 10456", "GB" ]
+  },
+  "amount" : 83857.08,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-06",
+  "remittanceInfo" : "Invoice 76216 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000217"
+}

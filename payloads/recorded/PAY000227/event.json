@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "DE56830017420000100226",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 426", "Lindenfels 10226", "DE" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "ES6383010000000000100466",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 666", "Solavilla 10466", "ES" ]
+    },
+    "amount" : 54509.82,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-26",
+    "remittanceInfo" : "Invoice 76226 / materials",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000227"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "GB88OTTR00000000100012",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "62 Willow Lane", "10012 Merewick" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools & Sons",
+      "iban" : "ES2183010000000000100252",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "159 Willow Lane", "10252 Solavilla" ]
+    },
+    "amount" : 59557.67,
+    "currency" : "USD",
+    "valueDate" : "2026-10-05",
+    "remittanceInfo" : "Invoice 76012 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000013"
+  }
+}

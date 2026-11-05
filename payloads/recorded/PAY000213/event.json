@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "DE46830017420000100212",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "78 Willow Lane", "10212 Lindenfels" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "GB42OTTR00000000100452",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "94 Willow Lane", "10452 Merewick" ]
+    },
+    "amount" : 81426.45,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-17",
+    "remittanceInfo" : "Invoice 76212 / parts",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000213"
+  }
+}

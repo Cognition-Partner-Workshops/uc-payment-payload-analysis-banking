@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB11OTTR00000000100040",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "46 Willow Lane, Merewick", "10040 GB" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "FR7483001000000000000100280",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Warehouse Seven", "P.O. Box 580", "FR" ]
+  },
+  "amount" : 47176.87,
+  "currency" : "USD",
+  "valueDate" : "2026-10-29",
+  "remittanceInfo" : "Invoice 76040 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000041"
+}

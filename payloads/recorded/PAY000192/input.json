@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB08OTTR00000000100191",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "P.O. Box 391", "Merewick 10191", "GB" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "ES3883010000000000100431",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 631", "Solavilla 10431", "ES" ]
+  },
+  "amount" : 75066.95,
+  "currency" : "USD",
+  "valueDate" : "2026-10-07",
+  "remittanceInfo" : "Invoice 76191 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000192"
+}

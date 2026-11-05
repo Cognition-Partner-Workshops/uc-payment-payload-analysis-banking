@@ -1,0 +1,19 @@
+{4:
+:20:PAY000049
+:23B:CRED
+:32A:261003GBP20819,86
+:50K:/ES9783010000000000100048
+Bracken Ceramics Ltd
+Juniper House
+71 Willow Lane
+Solavilla 10048 ES
+:52A:OTTRES2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB08OTTR00000000100288
+Ember Glass & Sons
+Juniper House
+92 Willow Lane
+Merewick 10288 GB
+:70:Invoice 76048 / parts
+:71A:SHA
+-}

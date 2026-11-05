@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "FR2083001000000000000100185",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "25 Willow Lane, Valbrune", "10185 FR" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "NL97OTTR0000100425",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "97 Willow Lane, Rietdam", "10425 NL" ]
+  },
+  "amount" : 71334.79,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-22",
+  "remittanceInfo" : "Invoice 76185 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000186"
+}

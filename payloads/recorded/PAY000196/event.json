@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "FR4183001000000000000100195",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "160 Willow Lane, Valbrune", "10195 FR" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "IE86OTTR00000000100435",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "146 Willow Lane, Glenmere", "10435 IE" ]
+    },
+    "amount" : 81526.57,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-24",
+    "remittanceInfo" : "Invoice 76195 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000196"
+  }
+}

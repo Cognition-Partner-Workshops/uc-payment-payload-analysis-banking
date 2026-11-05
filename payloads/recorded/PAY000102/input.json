@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "ES2483010000000000100101",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 301", "Solavilla 10101", "ES" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "NL37OTTR0000100341",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "P.O. Box 541", "Rietdam 10341", "NL" ]
+  },
+  "amount" : 16199.10,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76101 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000102"
+}

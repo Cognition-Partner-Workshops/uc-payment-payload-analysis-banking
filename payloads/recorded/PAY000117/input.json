@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "NL98OTTR0000100116",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "P.O. Box 316", "Rietdam 10116", "NL" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "DE38830017420000100356",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 556", "Lindenfels 10356", "DE" ]
+  },
+  "amount" : 29656.63,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-13",
+  "remittanceInfo" : "Invoice 76116 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000117"
+}

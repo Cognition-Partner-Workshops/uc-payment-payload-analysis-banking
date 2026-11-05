@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "NL03OTTR0000100080",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "42 Willow Lane, Rietdam", "10080 NL" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "DE40830017420000100320",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "Warehouse Seven", "P.O. Box 620", "DE" ]
+    },
+    "amount" : 62820.11,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-09",
+    "remittanceInfo" : "Invoice 76080 / parts",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000081"
+  }
+}

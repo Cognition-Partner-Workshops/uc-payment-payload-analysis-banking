@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "ES2883010000000000100029",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "10 Willow Lane Solavilla 10029" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "GB36OTTR00000000100269",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "178 Willow Lane Merewick 10269" ]
+    },
+    "amount" : 83184.25,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-31",
+    "remittanceInfo" : "Invoice 76029 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000030"
+  }
+}

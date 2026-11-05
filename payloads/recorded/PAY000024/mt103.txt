@@ -1,0 +1,19 @@
+{4:
+:20:PAY000024
+:23B:CRED
+:32A:261020USD87456,94
+:50K:/FR2983001000000000000100023
+Fernlight Goods Ltd
+Juniper House
+80 Willow Lane
+Valbrune 10023 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRES2LXXX
+:59:/ES1583010000000000100263
+Aster Components Ltd
+Juniper House
+116 Willow Lane
+Solavilla 10263 ES
+:70:Invoice 76023 / services
+:71A:BEN
+-}

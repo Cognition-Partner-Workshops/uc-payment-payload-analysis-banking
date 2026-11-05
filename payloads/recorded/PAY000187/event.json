@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "IE19OTTR00000000100186",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "P.O. Box 386", "Glenmere 10186", "IE" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "FR1283001000000000000100426",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 626", "Valbrune 10426", "FR" ]
+    },
+    "amount" : 10679.66,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-15",
+    "remittanceInfo" : "Invoice 76186 / materials",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000187"
+  }
+}

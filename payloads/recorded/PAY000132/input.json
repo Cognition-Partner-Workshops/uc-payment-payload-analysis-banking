@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "ES8783010000000000100131",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 331", "Solavilla 10131", "ES" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "GB95OTTR00000000100371",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "P.O. Box 571", "Merewick 10371", "GB" ]
+  },
+  "amount" : 73713.26,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-09",
+  "remittanceInfo" : "Invoice 76131 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000132"
+}

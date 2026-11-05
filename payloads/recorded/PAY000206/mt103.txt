@@ -1,0 +1,17 @@
+{4:
+:20:PAY000206
+:23B:CRED
+:32A:261003GBP8741,70
+:50K:/DE41830017420000100205
+Fernlight Goods Ltd
+123 Willow Lane, Lindenfels
+10205 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL42OTTR0000100445
+Fernlight Goods Ltd
+96 Willow Lane, Rietdam
+10445 NL
+:70:Invoice 76205 / freight
+:71A:OUR
+-}

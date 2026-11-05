@@ -1,0 +1,19 @@
+{4:
+:20:PAY000199
+:23B:CRED
+:32A:261017EUR8692,58
+:50K:/NL18OTTR0000100198
+Fernlight Goods & Sons
+Juniper House
+31 Willow Lane
+Rietdam 10198 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB32OTTR00000000100438
+Fernlight Goods Ltd
+Juniper House
+65 Willow Lane
+Merewick 10438 GB
+:70:Invoice 76198 / materials
+:71A:SHA
+-}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "FR1683001000000000000100160",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "148 Willow Lane, Valbrune", "10160 FR" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "GB88OTTR00000000100400",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "Warehouse Seven", "P.O. Box 700", "GB" ]
+  },
+  "amount" : 39571.39,
+  "currency" : "USD",
+  "valueDate" : "2026-10-28",
+  "remittanceInfo" : "Invoice 76160 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000161"
+}

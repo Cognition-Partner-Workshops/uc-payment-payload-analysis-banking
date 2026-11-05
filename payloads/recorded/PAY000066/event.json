@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "NL20OTTR0000100065",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "108 Willow Lane, Rietdam", "10065 NL" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "IE07OTTR00000000100305",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "67 Willow Lane, Glenmere", "10305 IE" ]
+    },
+    "amount" : 11457.87,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-17",
+    "remittanceInfo" : "Invoice 76065 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000066"
+  }
+}

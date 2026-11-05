@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "ES9783010000000000100048",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "Juniper House", "71 Willow Lane", "Solavilla 10048 ES" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass & Sons",
+      "iban" : "GB08OTTR00000000100288",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "Juniper House", "92 Willow Lane", "Merewick 10288 GB" ]
+    },
+    "amount" : 20819.86,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-03",
+    "remittanceInfo" : "Invoice 76048 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000049"
+  }
+}

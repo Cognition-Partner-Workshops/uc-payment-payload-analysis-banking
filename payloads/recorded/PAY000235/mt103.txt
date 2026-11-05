@@ -1,0 +1,15 @@
+{4:
+:20:PAY000235
+:23B:CRED
+:32A:261013USD82961,40
+:50K:/DE34830017420000100234
+Fernlight Goods & Sons
+137 Willow Lane Lindenfels 10234
+:52A:OTTRDE2LXXX
+:57A:OTTRES2LXXX
+:59:/ES4183010000000000100474
+Bracken Ceramics Ltd
+38 Willow Lane Solavilla 10474
+:70:Invoice 76234 / materials
+:71A:SHA
+-}

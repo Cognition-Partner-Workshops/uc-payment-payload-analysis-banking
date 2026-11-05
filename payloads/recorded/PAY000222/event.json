@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "DE94830017420000100221",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 421", "Lindenfels 10221", "DE" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL95OTTR0000100461",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 661", "Rietdam 10461", "NL" ]
+    },
+    "amount" : 67067.66,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-11",
+    "remittanceInfo" : "Invoice 76221 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000222"
+  }
+}

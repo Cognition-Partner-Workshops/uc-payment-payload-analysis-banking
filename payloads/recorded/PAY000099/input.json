@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "IE67OTTR00000000100098",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "Juniper House", "136 Willow Lane", "Glenmere 10098 IE" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "DE39830017420000100338",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "Juniper House", "53 Willow Lane", "Lindenfels 10338 DE" ]
+  },
+  "amount" : 26109.93,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-08",
+  "remittanceInfo" : "Invoice 76098 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000099"
+}

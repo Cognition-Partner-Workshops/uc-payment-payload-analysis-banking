@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "IE57OTTR00000000100181",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "P.O. Box 381", "Glenmere 10181", "IE" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "ES1783010000000000100421",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 621", "Solavilla 10421", "ES" ]
+  },
+  "amount" : 27143.93,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-23",
+  "remittanceInfo" : "Invoice 76181 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000182"
+}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "NL31OTTR0000100158",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "92 Willow Lane", "Rietdam 10158 NL" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "IE18OTTR00000000100398",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "Juniper House", "46 Willow Lane", "Glenmere 10398 IE" ]
+    },
+    "amount" : 27226.08,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-05",
+    "remittanceInfo" : "Invoice 76158 / materials",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000159"
+  }
+}

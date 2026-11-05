@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "NL88OTTR0000100199",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "76 Willow Lane Rietdam 10199" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "IE75OTTR00000000100439",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "28 Willow Lane Glenmere 10439" ]
+  },
+  "amount" : 51475.26,
+  "currency" : "USD",
+  "valueDate" : "2026-10-13",
+  "remittanceInfo" : "Invoice 76199 / services",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000200"
+}

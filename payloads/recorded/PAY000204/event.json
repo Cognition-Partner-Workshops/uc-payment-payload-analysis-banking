@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "GB72OTTR00000000100203",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "Juniper House", "26 Willow Lane", "Merewick 10203 GB" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL96OTTR0000100443",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "6 Willow Lane", "Rietdam 10443 NL" ]
+    },
+    "amount" : 62333.31,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-28",
+    "remittanceInfo" : "Invoice 76203 / services",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000204"
+  }
+}

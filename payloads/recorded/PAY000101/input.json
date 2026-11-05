@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "NL45OTTR0000100100",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "64 Willow Lane, Rietdam", "10100 NL" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB59OTTR00000000100340",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "14 Willow Lane, Merewick", "10340 GB" ]
+  },
+  "amount" : 79263.28,
+  "currency" : "USD",
+  "valueDate" : "2026-10-20",
+  "remittanceInfo" : "Invoice 76100 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000101"
+}

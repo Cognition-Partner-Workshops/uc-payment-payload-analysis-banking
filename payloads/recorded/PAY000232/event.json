@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR3983001000000000000100231",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 431", "Valbrune 10231", "FR" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "ES2583010000000000100471",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 671", "Solavilla 10471", "ES" ]
+    },
+    "amount" : 44312.31,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-30",
+    "remittanceInfo" : "Invoice 76231 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000232"
+  }
+}

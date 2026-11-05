@@ -1,0 +1,19 @@
+{4:
+:20:PAY000039
+:23B:CRED
+:32A:261002USD28024,69
+:50K:/FR1283001000000000000100038
+Fernlight Goods Ltd
+Juniper House
+8 Willow Lane
+Valbrune 10038 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE10830017420000100278
+Ember Glass Ltd
+Juniper House
+143 Willow Lane
+Lindenfels 10278 DE
+:70:Invoice 76038 / materials
+:71A:BEN
+-}

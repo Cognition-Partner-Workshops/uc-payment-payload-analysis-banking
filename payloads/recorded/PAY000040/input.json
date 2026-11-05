@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "FR8283001000000000000100039",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "22 Willow Lane Valbrune 10039" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools & Sons",
+    "iban" : "DE80830017420000100279",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "148 Willow Lane Lindenfels 10279" ]
+  },
+  "amount" : 81209.04,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-21",
+  "remittanceInfo" : "Invoice 76039 / services",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000040"
+}

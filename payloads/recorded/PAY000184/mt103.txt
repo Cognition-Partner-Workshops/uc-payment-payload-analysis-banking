@@ -1,0 +1,19 @@
+{4:
+:20:PAY000184
+:23B:CRED
+:32A:261004EUR41360,87
+:50K:/GB30OTTR00000000100183
+Cinder Tools Ltd
+Juniper House
+45 Willow Lane
+Merewick 10183 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE22OTTR00000000100423
+Larkspur Parts & Sons
+Juniper House
+23 Willow Lane
+Glenmere 10423 IE
+:70:Invoice 76183 / services
+:71A:SHA
+-}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "FR3283001000000000000100066",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 266", "Valbrune 10066", "FR" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts & Sons",
+      "iban" : "DE30830017420000100306",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 506", "Lindenfels 10306", "DE" ]
+    },
+    "amount" : 16793.37,
+    "currency" : "USD",
+    "valueDate" : "2026-10-21",
+    "remittanceInfo" : "Invoice 76066 / materials",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000067"
+  }
+}

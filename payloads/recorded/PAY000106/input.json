@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "DE25830017420000100105",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "47 Willow Lane, Lindenfels", "10105 DE" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "IE91OTTR00000000100345",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "125 Willow Lane, Glenmere", "10345 IE" ]
+  },
+  "amount" : 54699.26,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76105 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000106"
+}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "NL18OTTR0000100004",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "74 Willow Lane Rietdam 10004" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "IE05OTTR00000000100244",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "37 Willow Lane Glenmere 10244" ]
+  },
+  "amount" : 43323.15,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-09",
+  "remittanceInfo" : "Invoice 76004 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000005"
+}

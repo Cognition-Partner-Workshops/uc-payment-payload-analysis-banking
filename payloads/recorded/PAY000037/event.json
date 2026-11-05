@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools & Sons",
+      "iban" : "DE45830017420000100036",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 236", "Lindenfels 10036", "DE" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "ES5283010000000000100276",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 476", "Solavilla 10276", "ES" ]
+    },
+    "amount" : 12690.85,
+    "currency" : "USD",
+    "valueDate" : "2026-10-14",
+    "remittanceInfo" : "Invoice 76036 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000037"
+  }
+}

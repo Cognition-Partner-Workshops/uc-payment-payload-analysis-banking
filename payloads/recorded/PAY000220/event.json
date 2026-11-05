@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "FR7283001000000000000100219",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "82 Willow Lane Valbrune 10219" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass & Sons",
+      "iban" : "DE70830017420000100459",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "35 Willow Lane Lindenfels 10459" ]
+    },
+    "amount" : 87897.93,
+    "currency" : "USD",
+    "valueDate" : "2026-10-27",
+    "remittanceInfo" : "Invoice 76219 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000220"
+  }
+}

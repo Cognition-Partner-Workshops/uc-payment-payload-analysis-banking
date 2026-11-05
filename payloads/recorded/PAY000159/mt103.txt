@@ -1,0 +1,19 @@
+{4:
+:20:PAY000159
+:23B:CRED
+:32A:261005EUR27226,08
+:50K:/NL31OTTR0000100158
+Fernlight Goods Ltd
+Juniper House
+92 Willow Lane
+Rietdam 10158 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE18OTTR00000000100398
+Mallow Textiles Ltd
+Juniper House
+46 Willow Lane
+Glenmere 10398 IE
+:70:Invoice 76158 / materials
+:71A:BEN
+-}

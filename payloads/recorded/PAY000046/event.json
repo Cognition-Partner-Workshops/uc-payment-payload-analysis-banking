@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components & Sons",
+      "iban" : "FR1783001000000000000100045",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "18 Willow Lane, Valbrune", "10045 FR" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "GB89OTTR00000000100285",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "38 Willow Lane, Merewick", "10285 GB" ]
+    },
+    "amount" : 49160.84,
+    "currency" : "USD",
+    "valueDate" : "2026-10-12",
+    "remittanceInfo" : "Invoice 76045 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000046"
+  }
+}

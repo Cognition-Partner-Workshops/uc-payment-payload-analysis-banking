@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "GB06OTTR00000000100130",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "8 Willow Lane, Merewick", "10130 GB" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "NL30OTTR0000100370",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "73 Willow Lane, Rietdam", "10370 NL" ]
+  },
+  "amount" : 75929.35,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-25",
+  "remittanceInfo" : "Invoice 76130 / materials",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000131"
+}

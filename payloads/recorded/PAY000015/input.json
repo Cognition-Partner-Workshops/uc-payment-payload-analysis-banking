@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "GB34OTTR00000000100014",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "85 Willow Lane Merewick 10014" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "IE26OTTR00000000100254",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "51 Willow Lane Glenmere 10254" ]
+  },
+  "amount" : 80026.36,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76014 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000015"
+}

@@ -1,0 +1,19 @@
+{4:
+:20:PAY000214
+:23B:CRED
+:32A:261021EUR18112,96
+:50K:/IE66OTTR00000000100213
+Wren Paper Ltd
+Juniper House
+147 Willow Lane
+Glenmere 10213 IE
+:52A:OTTRIE2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB15OTTR00000000100453
+Fernlight Goods Ltd
+Juniper House
+10 Willow Lane
+Merewick 10453 GB
+:70:Invoice 76213 / freight
+:71A:SHA
+-}

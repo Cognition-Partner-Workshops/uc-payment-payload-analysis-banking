@@ -1,0 +1,19 @@
+{4:
+:20:PAY000119
+:23B:CRED
+:32A:261003GBP16048,14
+:50K:/ES5083010000000000100118
+Larkspur Parts Ltd
+Juniper House
+132 Willow Lane
+Solavilla 10118 ES
+:52A:OTTRES2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE81830017420000100358
+Wren Paper Ltd
+Juniper House
+13 Willow Lane
+Lindenfels 10358 DE
+:70:Invoice 76118 / materials
+:71A:OUR
+-}

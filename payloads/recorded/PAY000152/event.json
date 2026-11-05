@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "FR6583001000000000000100151",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 351", "Valbrune 10151", "FR" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "DE63830017420000100391",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 591", "Lindenfels 10391", "DE" ]
+    },
+    "amount" : 25586.02,
+    "currency" : "USD",
+    "valueDate" : "2026-10-10",
+    "remittanceInfo" : "Invoice 76151 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000152"
+  }
+}

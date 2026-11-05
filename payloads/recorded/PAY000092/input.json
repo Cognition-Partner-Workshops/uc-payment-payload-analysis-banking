@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "DE15830017420000100091",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 291", "Lindenfels 10091", "DE" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "IE81OTTR00000000100331",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "P.O. Box 531", "Glenmere 10331", "IE" ]
+  },
+  "amount" : 38940.67,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76091 / services",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000092"
+}

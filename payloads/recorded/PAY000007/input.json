@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "ES6783010000000000100006",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 206", "Solavilla 10006", "ES" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "IE48OTTR00000000100246",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "P.O. Box 446", "Glenmere 10246", "IE" ]
+  },
+  "amount" : 62955.70,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-30",
+  "remittanceInfo" : "Invoice 76006 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000007"
+}

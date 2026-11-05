@@ -15,6 +15,7 @@
 	<description>Online Banking Rest API</description>
 	<properties>
 		<java.version>11</java.version>
+		<lombok.version>1.18.36</lombok.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>

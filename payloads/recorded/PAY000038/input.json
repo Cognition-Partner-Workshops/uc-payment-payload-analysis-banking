@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB92OTTR00000000100037",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "175 Willow Lane", "10037 Merewick" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "ES2583010000000000100277",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "26 Willow Lane", "10277 Solavilla" ]
+  },
+  "amount" : 71124.86,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-12",
+  "remittanceInfo" : "Invoice 76037 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000038"
+}

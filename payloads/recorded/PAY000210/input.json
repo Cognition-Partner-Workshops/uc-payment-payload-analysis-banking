@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "DE30830017420000100209",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "141 Willow Lane Lindenfels 10209" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "IE96OTTR00000000100449",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "134 Willow Lane Glenmere 10449" ]
+  },
+  "amount" : 30042.93,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-15",
+  "remittanceInfo" : "Invoice 76209 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000210"
+}

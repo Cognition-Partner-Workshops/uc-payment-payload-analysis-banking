@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "NL46OTTR0000100179",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "156 Willow Lane Rietdam 10179" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "FR0783001000000000000100419",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "83 Willow Lane Valbrune 10419" ]
+  },
+  "amount" : 71467.62,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76179 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000180"
+}

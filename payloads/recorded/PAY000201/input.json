@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "IE29OTTR00000000100200",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "138 Willow Lane, Glenmere", "10200 IE" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "FR2283001000000000000100440",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Warehouse Seven", "P.O. Box 740", "FR" ]
+  },
+  "amount" : 29124.92,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76200 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000201"
+}

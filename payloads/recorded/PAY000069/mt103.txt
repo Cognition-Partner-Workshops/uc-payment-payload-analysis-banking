@@ -1,0 +1,19 @@
+{4:
+:20:PAY000069
+:23B:CRED
+:32A:261029GBP84582,93
+:50K:/GB31OTTR00000000100068
+Ember Glass Ltd
+Juniper House
+164 Willow Lane
+Merewick 10068 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE73830017420000100308
+Mallow Textiles Ltd
+Juniper House
+152 Willow Lane
+Lindenfels 10308 DE
+:70:Invoice 76068 / parts
+:71A:BEN
+-}

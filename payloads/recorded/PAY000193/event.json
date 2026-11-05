@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "NL83OTTR0000100192",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "24 Willow Lane", "10192 Rietdam" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper & Sons",
+      "iban" : "FR4483001000000000000100432",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "87 Willow Lane", "10432 Valbrune" ]
+    },
+    "amount" : 71534.92,
+    "currency" : "USD",
+    "valueDate" : "2026-10-16",
+    "remittanceInfo" : "Invoice 76192 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000193"
+  }
+}

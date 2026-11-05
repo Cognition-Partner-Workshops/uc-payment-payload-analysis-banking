@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components & Sons",
+      "iban" : "FR1283001000000000000100135",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "175 Willow Lane, Valbrune", "10135 FR" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "IE57OTTR00000000100375",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "24 Willow Lane, Glenmere", "10375 IE" ]
+    },
+    "amount" : 49788.34,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-16",
+    "remittanceInfo" : "Invoice 76135 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000136"
+  }
+}
