@@ -17,4 +17,4 @@ jobs:
           java-version: '21'
           cache: maven
       - name: Compile all sources and run payments suite
-        run: ./mvnw -B '-Dtest=com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentReplayTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentRendererTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentControllerTest' test
+        run: ./mvnw -B '-Dtest=com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentReplayTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentRendererTest,com.cbarkinozer.onlinebankingrestapi.app.pay.PaymentControllerTest,com.cbarkinozer.onlinebankingrestapi.app.kafka.consumer.KafkaListenerServiceTest' test
