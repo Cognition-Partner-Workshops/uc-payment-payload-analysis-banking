@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.junit.jupiter.api.Test;
@@ -18,6 +19,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class PaymentReplayTest {
     private static final Set<String> COUNTRIES = new HashSet<>(Arrays.asList(Locale.getISOCountries()));
+    private static final Pattern CONTENT_TOKEN = Pattern.compile("[A-Za-z]+|\\d+");
 
     @Test
     void replay() throws Exception {
@@ -27,6 +29,7 @@ class PaymentReplayTest {
         List<Row> rows = new ArrayList<>();
         List<String> operations = new ArrayList<>();
         List<String> unexpected = new ArrayList<>();
+        Map<String, String> semanticFailures = new LinkedHashMap<>();
         int ibanCountryCount = 0;
         for (JsonNode entry : manifest.get("payments")) {
             String id = entry.get("id").asText();
@@ -40,6 +43,8 @@ class PaymentReplayTest {
                         ibanCountryCount++;
                 } catch (AddressIncompleteException failure) {
                     operations.add(id + " | " + party.getKey() + " | " + party.getValue().getAddressLines() + " | " + failure.getMessage());
+                } catch (AssertionError failure) {
+                    semanticFailures.put(id, party.getKey() + ": " + failure.getMessage());
                 }
             }
             try {
@@ -50,13 +55,13 @@ class PaymentReplayTest {
                     Files.writeString(dump.resolve("pacs008.xml"), output.getPacs008());
                     Files.writeString(dump.resolve("event.json"), output.getEvent());
                 }
-                compare(rows, unexpected, id, "MT103", Files.readString(directory.resolve("mt103.txt")), output.getMt103(), input);
-                compare(rows, unexpected, id, "pacs.008", Files.readString(directory.resolve("pacs008.xml")), output.getPacs008(), input);
-                compare(rows, unexpected, id, "event", Files.readString(directory.resolve("event.json")), output.getEvent(), input);
+                compare(rows, unexpected, semanticFailures, id, "MT103", Files.readString(directory.resolve("mt103.txt")), output.getMt103(), input);
+                compare(rows, unexpected, semanticFailures, id, "pacs.008", Files.readString(directory.resolve("pacs008.xml")), output.getPacs008(), input);
+                compare(rows, unexpected, semanticFailures, id, "event", Files.readString(directory.resolve("event.json")), output.getEvent(), input);
             } catch (AddressIncompleteException failure) {
                 boolean expected = !entry.get("creditorTownPresent").asBoolean();
                 for (String format : List.of("MT103", "pacs.008", "event"))
-                    rows.add(new Row(id, format, "mismatch", "expected no-town hold: " + failure.getMessage()));
+                    rows.add(new Row(id, format, "mismatch", "held for operations (no town; not guessed): " + failure.getMessage()));
                 if (!expected) unexpected.add(id + ": " + failure.getMessage());
             }
         }
@@ -65,8 +70,14 @@ class PaymentReplayTest {
         assertTrue(unexpected.isEmpty(), String.join("\n", unexpected));
     }
 
-    private void compare(List<Row> rows, List<String> unexpected, String id, String format,
+    private void compare(List<Row> rows, List<String> unexpected, Map<String, String> semanticFailures, String id, String format,
                          String before, String after, PaymentInstruction input) {
+        if (semanticFailures.containsKey(id)) {
+            String reason = "address content was dropped: " + semanticFailures.get(id);
+            rows.add(new Row(id, format, "mismatch", reason));
+            unexpected.add(id + " " + format + ": " + reason);
+            return;
+        }
         try {
             if (format.equals("MT103")) {
                 assertTrue(after.contains(":50F:/" + input.getDebtor().getIban() + "\n1/" + input.getDebtor().getName()));
@@ -107,6 +118,22 @@ class PaymentReplayTest {
         for (String value : Arrays.asList(address.getBuildingName(), address.getStreetName(), address.getBuildingNumber(),
                 address.getPostBox(), address.getPostCode())) if (value != null) assertTrue(original.contains(value), value);
         if (address.getAddressLines() != null) for (String line : address.getAddressLines()) assertTrue(party.getAddressLines().contains(line));
+        String structured = Arrays.asList(address.getBuildingName(), address.getStreetName(), address.getBuildingNumber(),
+                address.getPostBox(), address.getPostCode(), address.getTownName(), address.getCountry(),
+                address.getAddressLines() == null ? "" : String.join(" ", address.getAddressLines()))
+                .stream().filter(value -> value != null).collect(Collectors.joining(" "));
+        for (String line : party.getAddressLines()) {
+            if (COUNTRIES.contains(line.trim().toUpperCase(Locale.ROOT))) {
+                assertEquals(address.getCountry(), line.trim().toUpperCase(Locale.ROOT));
+                continue;
+            }
+            Matcher tokens = CONTENT_TOKEN.matcher(line);
+            while (tokens.find()) {
+                String token = tokens.group();
+                assertTrue(Pattern.compile("(?<![A-Za-z0-9])" + Pattern.quote(token) + "(?![A-Za-z0-9])").matcher(structured).find(),
+                        "missing address token: " + token);
+            }
+        }
         assertTrue(original.matches("(?s).*(^|[ |])" + address.getCountry() + "($|[ |]).*")
                 || address.getCountry().equals(party.getIban().substring(0, 2)));
     }
@@ -143,6 +170,16 @@ class PaymentReplayTest {
                     .append(selected.stream().filter(r -> r.category.equals("changed-only-per-rule")).count()).append(" | ")
                     .append(selected.stream().filter(r -> r.category.equals("mismatch")).count()).append(" |\n");
         }
+        Map<String, List<Row>> byPayment = new LinkedHashMap<>();
+        for (Row row : rows) byPayment.computeIfAbsent(row.id, ignored -> new ArrayList<>()).add(row);
+        long identicalPayments = byPayment.values().stream().filter(payment -> payment.stream().allMatch(r -> r.category.equals("identical"))).count();
+        long changedPayments = byPayment.values().stream().filter(payment -> payment.stream().allMatch(r -> r.category.equals("changed-only-per-rule"))).count();
+        long heldOrMismatchedPayments = byPayment.size() - identicalPayments - changedPayments;
+        report.append("\n## Payment-level summary\n\n")
+                .append("| Payments compared | Identical | Changed only per rule | Held for operations or mismatched |\n")
+                .append("|---:|---:|---:|---:|\n")
+                .append("| ").append(byPayment.size()).append(" | ").append(identicalPayments).append(" | ")
+                .append(changedPayments).append(" | ").append(heldOrMismatchedPayments).append(" |\n");
         report.append("\n## Mismatches\n\n");
         rows.stream().filter(r -> r.category.equals("mismatch")).forEach(r -> report.append("- ").append(r.id).append(" / ").append(r.format).append(": ").append(r.reason).append('\n'));
         report.append("\n## Operations list\n\n"); operations.forEach(op -> report.append("- ").append(op).append('\n'));
