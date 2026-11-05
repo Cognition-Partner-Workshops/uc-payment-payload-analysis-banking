@@ -36,13 +36,10 @@ public class KafkaListenerService {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            log.warn("Interrupted while delaying log persistence; saving immediately");
         }
 
-        System.out.println("**********************************");
-
-        logDetail = logDetailEntityService.save(logDetail);
-
-        System.out.println("end");
+        logDetailEntityService.save(logDetail);
     }
 }
