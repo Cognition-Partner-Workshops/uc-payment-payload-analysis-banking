@@ -10,9 +10,12 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+      # GitHub validates permissions for the template's disabled EKS job too.
+      id-token: write
     uses: Cognition-Partner-Workshops/otterworks/.github/workflows/platform-app-pipeline.yml@19392116c2197d713811213778a7a1d75eb90cc0
     with:
       # The pinned template uses basename(app_dir) for image and release names;
       # this names the checkout root instead of passing the basename ".".
       app_dir: ../uc-payment-payload-analysis-banking
       standards_ref: 19392116c2197d713811213778a7a1d75eb90cc0
+      eks_deploy: false
