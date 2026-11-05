@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.acc.dto;
 
+import com.cbarkinozer.onlinebankingrestapi.app.gen.util.AccountDisclosure;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccMoneyTransferType;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +17,7 @@ public class AccMoneyTransferDto {
     private Long accountIdTo;
     private BigDecimal amount;
     private LocalDate transferDate;
+    @JsonSerialize(using = AccountDisclosure.TextSerializer.class)
     private String description;
     private AccMoneyTransferType transferType;
 }
