@@ -46,6 +46,16 @@ class AccountDisclosureTest {
     }
 
     @Test
+    void anAmountAfterALabelledAccountIsNotPartOfTheAccountToken() {
+        assertEquals("account ****5678 150.00", AccountDisclosure.redact("account 12345678 150.00"));
+        assertEquals("acct: ****5678 150,00", AccountDisclosure.redact("acct: 12345678 150,00"));
+        assertEquals("account ****5678 150.00", AccountDisclosure.redact("account 1234 5678 150.00"));
+        assertEquals("card no. ****5678 150.00", AccountDisclosure.redact("card no. 1234-5678 150.00"));
+        assertEquals("amount 12345678 150.00", AccountDisclosure.redact("amount 12345678 150.00"));
+        assertEquals("account ****5678", AccountDisclosure.redact("account 1234 5678"));
+    }
+
+    @Test
     void groupedNumbersAreMaskedInTextAndSerializedMessagesWithoutChangingInputs() throws Exception {
         for (String value : new String[] {"1234 5678 9012 3456", "1234-5678-9012-3456",
                 "1234 5678-9012 3456", "123 456 789 0123456"}) {

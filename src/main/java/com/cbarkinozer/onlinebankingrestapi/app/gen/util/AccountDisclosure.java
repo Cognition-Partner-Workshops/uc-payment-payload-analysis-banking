@@ -33,8 +33,8 @@ public final class AccountDisclosure {
                     continue;
                 }
                 if (digit(text.charAt(index))) {
-                    NumberToken token = numberToken(text, index);
                     boolean labelled = accountLabel(text, index);
+                    NumberToken token = numberToken(text, index, labelled);
                     boolean account = token.digits >= 13 || (token.digits >= 5
                             && (labelled || commaNeighbour(text, index, token.end)));
                     boolean boundary = token.end == text.length() || !Character.isLetterOrDigit(text.charAt(token.end));
@@ -87,7 +87,7 @@ public final class AccountDisclosure {
         return length >= 15 && length <= 34 ? end : start;
     }
 
-    private static NumberToken numberToken(String text, int start) {
+    private static NumberToken numberToken(String text, int start, boolean labelled) {
         int end = digitsEnd(text, start);
         NumberToken token = new NumberToken(end, end - start);
         boolean thousands = token.digits <= 3;
@@ -100,6 +100,7 @@ public final class AccountDisclosure {
             int groupEnd = digitsEnd(text, next);
             int group = groupEnd - next;
             if (group == 0) break;
+            if (labelled && Character.isWhitespace(separator) && decimalAfter(text, groupEnd)) break;
             if (separator == '.' || (separator == ',' && (group <= 2 || (thousands && group == 3)))) {
                 token.amount = true;
                 token.end = groupEnd;
@@ -113,6 +114,13 @@ public final class AccountDisclosure {
             }
         }
         return token;
+    }
+
+    private static boolean decimalAfter(String text, int end) {
+        if (end >= text.length()) return false;
+        char separator = text.charAt(end);
+        int fraction = digitsEnd(text, end + 1) - end - 1;
+        return fraction > 0 && (separator == '.' || (separator == ',' && fraction <= 2));
     }
 
     private static boolean commaNeighbour(String text, int start, int end) {
