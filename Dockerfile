@@ -12,4 +12,5 @@ WORKDIR /app
 COPY --from=test --chown=10001:10001 /app/target/onlinebankingrestapi-0.0.1-SNAPSHOT.jar app.jar
 USER 10001:10001
 EXPOSE 8080
-ENTRYPOINT ["java", "-XX:MaxRAMPercentage=35.0", "-XX:MaxMetaspaceSize=96m", "-XX:ReservedCodeCacheSize=24m", "-XX:+UseSerialGC", "-Xss512k", "-XX:-UsePerfData", "-Djava.io.tmpdir=/tmp", "-jar", "/app/app.jar"]
+ENV MALLOC_ARENA_MAX=2
+ENTRYPOINT ["java", "-XX:MaxRAMPercentage=35.0", "-XX:MaxMetaspaceSize=128m", "-XX:ReservedCodeCacheSize=32m", "-XX:TieredStopAtLevel=1", "-XX:+UseSerialGC", "-Xss512k", "-XX:-UsePerfData", "-Djava.io.tmpdir=/tmp", "-jar", "/app/app.jar"]
