@@ -33,13 +33,14 @@ https://ibb.co/phwhSBX
 ### To Run  
 Pull the project.
 Create a database named "online-banking-rest-api" in postgresql.  
-Open src>main>resources>"application.properties" file.
-Change following:   
+Secrets are not stored in the repository; supply them as environment variables before starting the
+application (it refuses to start without them):
 ```
-spring.jpa.hibernate.ddl-auto=create  
-spring.datasource.username=[your postgresql username here(probably postgres)]  
-spring.datasource.password=[your postgresql password here]  
+export SPRING_DATASOURCE_USERNAME=postgres        # optional, defaults to postgres
+export SPRING_DATASOURCE_PASSWORD=[your postgresql password here]
+export JWT_SIGNING_KEY=$(openssl rand -base64 64) # HS512 signing key; keep it stable across restarts
 ```
+`spring.jpa.hibernate.ddl-auto=create` in src>main>resources>"application.properties" recreates the schema on each start.
 **From here, you can run the application if you will not use kafka messaging feature**
 For Kafka, I used a docker container.   
 Create a "docker-compose.yml" file and add the following code in it.  
