@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods & Sons",
+      "iban" : "NL72OTTR0000100099",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "16 Willow Lane Rietdam 10099" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "GB86OTTR00000000100339",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "138 Willow Lane Merewick 10339" ]
+    },
+    "amount" : 55137.92,
+    "currency" : "USD",
+    "valueDate" : "2026-10-02",
+    "remittanceInfo" : "Invoice 76099 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000100"
+  }
+}

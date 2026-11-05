@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "NL88OTTR0000100005",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "29 Willow Lane, Rietdam", "10005 NL" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "FR4983001000000000000100245",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "30 Willow Lane, Valbrune", "10245 FR" ]
+    },
+    "amount" : 54638.84,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-23",
+    "remittanceInfo" : "Invoice 76005 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000006"
+  }
+}

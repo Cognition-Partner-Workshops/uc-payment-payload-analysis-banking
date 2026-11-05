@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL30OTTR0000100079",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "120 Willow Lane Rietdam 10079" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "ES5583010000000000100319",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "88 Willow Lane Solavilla 10319" ]
+    },
+    "amount" : 57757.92,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-16",
+    "remittanceInfo" : "Invoice 76079 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000080"
+  }
+}

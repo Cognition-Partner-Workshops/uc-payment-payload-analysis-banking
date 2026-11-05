@@ -1,0 +1,17 @@
+{4:
+:20:PAY000108
+:23B:CRED
+:32A:261007EUR53068,97
+:50K:/GB45OTTR00000000100107
+Mallow Textiles Ltd
+34 Willow Lane
+10107 Merewick
+:52A:OTTRGB2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL69OTTR0000100347
+Aster Components Ltd
+92 Willow Lane
+10347 Rietdam
+:70:Invoice 76107 / services
+:71A:BEN
+-}

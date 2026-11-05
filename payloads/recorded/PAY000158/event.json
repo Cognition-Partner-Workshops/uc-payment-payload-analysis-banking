@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "NL58OTTR0000100157",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "69 Willow Lane", "10157 Rietdam" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "GB72OTTR00000000100397",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "76 Willow Lane", "10397 Merewick" ]
+    },
+    "amount" : 6101.12,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-12",
+    "remittanceInfo" : "Invoice 76157 / freight",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000158"
+  }
+}

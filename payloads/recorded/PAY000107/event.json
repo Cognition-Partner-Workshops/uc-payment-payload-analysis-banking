@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "GB72OTTR00000000100106",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "P.O. Box 306", "Merewick 10106", "GB" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "ES0583010000000000100346",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 546", "Solavilla 10346", "ES" ]
+    },
+    "amount" : 30310.99,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-05",
+    "remittanceInfo" : "Invoice 76106 / materials",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000107"
+  }
+}

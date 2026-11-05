@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "GB38OTTR00000000100233",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "Juniper House", "174 Willow Lane", "Merewick 10233 GB" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "IE30OTTR00000000100473",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "Juniper House", "80 Willow Lane", "Glenmere 10473 IE" ]
+    },
+    "amount" : 88516.77,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-28",
+    "remittanceInfo" : "Invoice 76233 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000234"
+  }
+}

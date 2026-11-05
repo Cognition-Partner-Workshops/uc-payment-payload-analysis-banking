@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "NL55OTTR0000100211",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "P.O. Box 411", "Rietdam 10211", "NL" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "DE92830017420000100451",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 651", "Lindenfels 10451", "DE" ]
+  },
+  "amount" : 23613.98,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-12",
+  "remittanceInfo" : "Invoice 76211 / services",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000212"
+}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "IE36OTTR00000000100074",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "32 Willow Lane Glenmere 10074" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "GB82OTTR00000000100314",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "35 Willow Lane Merewick 10314" ]
+  },
+  "amount" : 69989.16,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-17",
+  "remittanceInfo" : "Invoice 76074 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000075"
+}

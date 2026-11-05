@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "FR5083001000000000000100033",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Juniper House", "52 Willow Lane", "Valbrune 10033 FR" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "IE95OTTR00000000100273",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "Juniper House", "169 Willow Lane", "Glenmere 10273 IE" ]
+  },
+  "amount" : 39466.48,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-05",
+  "remittanceInfo" : "Invoice 76033 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000034"
+}

@@ -1,0 +1,19 @@
+{4:
+:20:PAY000064
+:23B:CRED
+:32A:261019USD47241,30
+:50K:/GB69OTTR00000000100063
+Larkspur Parts & Sons
+Juniper House
+74 Willow Lane
+Merewick 10063 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE61OTTR00000000100303
+Mallow Textiles Ltd
+Juniper House
+168 Willow Lane
+Glenmere 10303 IE
+:70:Invoice 76063 / services
+:71A:SHA
+-}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "FR2483001000000000000100113",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "Juniper House", "179 Willow Lane", "Valbrune 10113 FR" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "IE69OTTR00000000100353",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "Juniper House", "153 Willow Lane", "Glenmere 10353 IE" ]
+    },
+    "amount" : 23369.82,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-03",
+    "remittanceInfo" : "Invoice 76113 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000114"
+  }
+}

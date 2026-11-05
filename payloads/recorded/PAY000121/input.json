@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "ES9383010000000000100120",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "131 Willow Lane, Solavilla", "10120 ES" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass & Sons",
+    "iban" : "DE27830017420000100360",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "Warehouse Seven", "P.O. Box 660", "DE" ]
+  },
+  "amount" : 68551.31,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-26",
+  "remittanceInfo" : "Invoice 76120 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000121"
+}

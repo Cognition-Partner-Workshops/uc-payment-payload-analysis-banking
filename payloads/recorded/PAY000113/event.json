@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "FR5183001000000000000100112",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "97 Willow Lane", "10112 Valbrune" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "DE49830017420000100352",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "42 Willow Lane", "10352 Lindenfels" ]
+    },
+    "amount" : 11561.95,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-07",
+    "remittanceInfo" : "Invoice 76112 / parts",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000113"
+  }
+}

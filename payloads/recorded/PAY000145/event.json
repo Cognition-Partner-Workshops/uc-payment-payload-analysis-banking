@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper & Sons",
+      "iban" : "GB16OTTR00000000100144",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "68 Willow Lane Merewick 10144" ]
+    },
+    "creditor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "NL40OTTR0000100384",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "138 Willow Lane Rietdam 10384" ]
+    },
+    "amount" : 68376.12,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-10",
+    "remittanceInfo" : "Invoice 76144 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000145"
+  }
+}

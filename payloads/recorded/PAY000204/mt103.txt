@@ -1,0 +1,19 @@
+{4:
+:20:PAY000204
+:23B:CRED
+:32A:261028GBP62333,31
+:50K:/GB72OTTR00000000100203
+Mallow Textiles Ltd
+Juniper House
+26 Willow Lane
+Merewick 10203 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL96OTTR0000100443
+Cinder Tools Ltd
+Juniper House
+6 Willow Lane
+Rietdam 10443 NL
+:70:Invoice 76203 / services
+:71A:BEN
+-}

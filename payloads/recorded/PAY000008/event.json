@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "GB29OTTR00000000100007",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "15 Willow Lane", "10007 Merewick" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "ES5983010000000000100247",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "48 Willow Lane", "10247 Solavilla" ]
+    },
+    "amount" : 30079.94,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-16",
+    "remittanceInfo" : "Invoice 76007 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000008"
+  }
+}

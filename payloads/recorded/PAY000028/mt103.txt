@@ -1,0 +1,17 @@
+{4:
+:20:PAY000028
+:23B:CRED
+:32A:261014GBP53566,12
+:50K:/GB71OTTR00000000100027
+Cinder Tools & Sons
+66 Willow Lane
+10027 Merewick
+:52A:OTTRGB2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL95OTTR0000100267
+Bracken Ceramics Ltd
+7 Willow Lane
+10267 Rietdam
+:70:Invoice 76027 / services
+:71A:SHA
+-}

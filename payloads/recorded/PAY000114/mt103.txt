@@ -1,0 +1,19 @@
+{4:
+:20:PAY000114
+:23B:CRED
+:32A:261003GBP23369,82
+:50K:/FR2483001000000000000100113
+Larkspur Parts Ltd
+Juniper House
+179 Willow Lane
+Valbrune 10113 FR
+:52A:OTTRFR2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE69OTTR00000000100353
+Larkspur Parts Ltd
+Juniper House
+153 Willow Lane
+Glenmere 10353 IE
+:70:Invoice 76113 / freight
+:71A:BEN
+-}

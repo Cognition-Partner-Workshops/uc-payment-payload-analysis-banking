@@ -1,0 +1,17 @@
+{4:
+:20:PAY000158
+:23B:CRED
+:32A:261012EUR6101,12
+:50K:/NL58OTTR0000100157
+Larkspur Parts Ltd
+69 Willow Lane
+10157 Rietdam
+:52A:OTTRNL2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB72OTTR00000000100397
+Bracken Ceramics Ltd
+76 Willow Lane
+10397 Merewick
+:70:Invoice 76157 / freight
+:71A:OUR
+-}

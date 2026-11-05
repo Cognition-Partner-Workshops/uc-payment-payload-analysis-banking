@@ -1,0 +1,19 @@
+{4:
+:20:PAY000124
+:23B:CRED
+:32A:261003EUR59020,55
+:50K:/DE24830017420000100123
+Cinder Tools Ltd
+Juniper House
+144 Willow Lane
+Lindenfels 10123 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL25OTTR0000100363
+Larkspur Parts Ltd
+Juniper House
+148 Willow Lane
+Rietdam 10363 NL
+:70:Invoice 76123 / services
+:71A:SHA
+-}

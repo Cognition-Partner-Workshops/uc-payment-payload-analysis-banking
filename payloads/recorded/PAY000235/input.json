@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods & Sons",
+    "iban" : "DE34830017420000100234",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "137 Willow Lane Lindenfels 10234" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "ES4183010000000000100474",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "38 Willow Lane Solavilla 10474" ]
+  },
+  "amount" : 82961.40,
+  "currency" : "USD",
+  "valueDate" : "2026-10-13",
+  "remittanceInfo" : "Invoice 76234 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000235"
+}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass & Sons",
+      "iban" : "IE34OTTR00000000100207",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "93 Willow Lane", "10207 Glenmere" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "GB80OTTR00000000100447",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "147 Willow Lane", "10447 Merewick" ]
+    },
+    "amount" : 19607.44,
+    "currency" : "USD",
+    "valueDate" : "2026-10-13",
+    "remittanceInfo" : "Invoice 76207 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000208"
+  }
+}

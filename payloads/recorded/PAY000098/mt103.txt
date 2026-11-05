@@ -1,0 +1,17 @@
+{4:
+:20:PAY000098
+:23B:CRED
+:32A:261004EUR422,45
+:50K:/IE94OTTR00000000100097
+Fernlight Goods Ltd
+15 Willow Lane
+10097 Glenmere
+:52A:OTTRIE2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL48OTTR0000100337
+Aster Components Ltd
+162 Willow Lane
+10337 Rietdam
+:70:Invoice 76097 / freight
+:71A:OUR
+-}

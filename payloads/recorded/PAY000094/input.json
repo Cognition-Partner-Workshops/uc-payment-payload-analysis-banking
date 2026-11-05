@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "FR7983001000000000000100093",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Juniper House", "176 Willow Lane", "Valbrune 10093 FR" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts & Sons",
+    "iban" : "DE77830017420000100333",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "Juniper House", "77 Willow Lane", "Lindenfels 10333 DE" ]
+  },
+  "amount" : 4460.95,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-08",
+  "remittanceInfo" : "Invoice 76093 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000094"
+}

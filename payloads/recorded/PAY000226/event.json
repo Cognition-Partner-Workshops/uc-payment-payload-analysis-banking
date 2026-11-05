@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics & Sons",
+      "iban" : "IE33OTTR00000000100225",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "98 Willow Lane, Glenmere", "10225 IE" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "FR2683001000000000000100465",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "150 Willow Lane, Valbrune", "10465 FR" ]
+    },
+    "amount" : 55560.40,
+    "currency" : "USD",
+    "valueDate" : "2026-10-25",
+    "remittanceInfo" : "Invoice 76225 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000226"
+  }
+}

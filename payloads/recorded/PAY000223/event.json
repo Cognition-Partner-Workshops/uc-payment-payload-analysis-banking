@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "NL49OTTR0000100222",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "104 Willow Lane", "10222 Rietdam" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "GB63OTTR00000000100462",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "91 Willow Lane", "10462 Merewick" ]
+    },
+    "amount" : 61026.51,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-31",
+    "remittanceInfo" : "Invoice 76222 / materials",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000223"
+  }
+}

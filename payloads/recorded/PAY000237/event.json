@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR9883001000000000000100236",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 436", "Valbrune 10236", "FR" ]
+    },
+    "creditor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "NL78OTTR0000100476",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 676", "Rietdam 10476", "NL" ]
+    },
+    "amount" : 52418.43,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-19",
+    "remittanceInfo" : "Invoice 76236 / parts",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000237"
+  }
+}

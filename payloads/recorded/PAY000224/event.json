@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "FR6183001000000000000100223",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "Juniper House", "71 Willow Lane", "Valbrune 10223 FR" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "IE09OTTR00000000100463",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "Juniper House", "92 Willow Lane", "Glenmere 10463 IE" ]
+    },
+    "amount" : 1206.43,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-26",
+    "remittanceInfo" : "Invoice 76223 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000224"
+  }
+}

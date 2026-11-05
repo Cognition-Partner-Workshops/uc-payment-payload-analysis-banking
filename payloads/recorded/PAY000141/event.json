@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "IE97OTTR00000000100140",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "50 Willow Lane, Glenmere", "10140 IE" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "FR9083001000000000000100380",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "146 Willow Lane, Valbrune", "10380 FR" ]
+    },
+    "amount" : 44354.01,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-21",
+    "remittanceInfo" : "Invoice 76140 / parts",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000141"
+  }
+}

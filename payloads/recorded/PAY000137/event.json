@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR8283001000000000000100136",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "P.O. Box 336", "Valbrune 10136", "FR" ]
+    },
+    "creditor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "NL62OTTR0000100376",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 576", "Rietdam 10376", "NL" ]
+    },
+    "amount" : 65084.57,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-23",
+    "remittanceInfo" : "Invoice 76136 / parts",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000137"
+  }
+}

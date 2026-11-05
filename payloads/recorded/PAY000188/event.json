@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "IE89OTTR00000000100187",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "98 Willow Lane", "10187 Glenmere" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL43OTTR0000100427",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "84 Willow Lane", "10427 Rietdam" ]
+    },
+    "amount" : 35695.30,
+    "currency" : "USD",
+    "valueDate" : "2026-10-30",
+    "remittanceInfo" : "Invoice 76187 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000188"
+  }
+}

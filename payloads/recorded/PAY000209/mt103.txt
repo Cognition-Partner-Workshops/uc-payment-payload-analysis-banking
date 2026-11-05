@@ -1,0 +1,19 @@
+{4:
+:20:PAY000209
+:23B:CRED
+:32A:261023USD68828,98
+:50K:/NL39OTTR0000100208
+Ember Glass Ltd
+Juniper House
+43 Willow Lane
+Rietdam 10208 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB53OTTR00000000100448
+Larkspur Parts Ltd
+Juniper House
+115 Willow Lane
+Merewick 10448 GB
+:70:Invoice 76208 / parts
+:71A:OUR
+-}

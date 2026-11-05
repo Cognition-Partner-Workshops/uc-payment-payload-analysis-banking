@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "NL54OTTR0000100132",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "159 Willow Lane", "10132 Rietdam" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "DE91830017420000100372",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "98 Willow Lane", "10372 Lindenfels" ]
+  },
+  "amount" : 68640.56,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-14",
+  "remittanceInfo" : "Invoice 76132 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000133"
+}

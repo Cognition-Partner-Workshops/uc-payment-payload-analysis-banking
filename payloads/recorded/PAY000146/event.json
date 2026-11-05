@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "IE59OTTR00000000100145",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "61 Willow Lane, Glenmere", "10145 IE" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "FR5283001000000000000100385",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "118 Willow Lane, Valbrune", "10385 FR" ]
+    },
+    "amount" : 10863.87,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-20",
+    "remittanceInfo" : "Invoice 76145 / freight",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000146"
+  }
+}

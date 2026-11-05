@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "DE53830017420000100086",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 286", "Lindenfels 10086", "DE" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "FR9383001000000000000100326",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "P.O. Box 526", "Valbrune 10326", "FR" ]
+  },
+  "amount" : 34450.96,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-26",
+  "remittanceInfo" : "Invoice 76086 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000087"
+}

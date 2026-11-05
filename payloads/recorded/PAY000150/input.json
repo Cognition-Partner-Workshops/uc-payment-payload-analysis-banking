@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "FR2283001000000000000100149",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "13 Willow Lane Valbrune 10149" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "ES0883010000000000100389",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "154 Willow Lane Solavilla 10389" ]
+  },
+  "amount" : 55930.19,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-07",
+  "remittanceInfo" : "Invoice 76149 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000150"
+}

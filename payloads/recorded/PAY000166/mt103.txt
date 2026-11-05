@@ -1,0 +1,17 @@
+{4:
+:20:PAY000166
+:23B:CRED
+:32A:261018USD85577,33
+:50K:/ES4283010000000000100165
+Mallow Textiles Ltd
+9 Willow Lane, Solavilla
+10165 ES
+:52A:OTTRES2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL55OTTR0000100405
+Larkspur Parts & Sons
+93 Willow Lane, Rietdam
+10405 NL
+:70:Invoice 76165 / freight
+:71A:SHA
+-}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper & Sons",
+    "iban" : "NL69OTTR0000100153",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "Juniper House", "147 Willow Lane", "Rietdam 10153 NL" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "IE56OTTR00000000100393",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "Juniper House", "97 Willow Lane", "Glenmere 10393 IE" ]
+  },
+  "amount" : 25853.87,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-16",
+  "remittanceInfo" : "Invoice 76153 / freight",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000154"
+}

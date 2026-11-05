@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "NL57OTTR0000100175",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "36 Willow Lane, Rietdam", "10175 NL" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "ES8283010000000000100415",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "25 Willow Lane, Solavilla", "10415 ES" ]
+    },
+    "amount" : 63652.36,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-28",
+    "remittanceInfo" : "Invoice 76175 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000176"
+  }
+}

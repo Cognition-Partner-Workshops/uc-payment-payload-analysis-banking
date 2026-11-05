@@ -1,0 +1,19 @@
+{4:
+:20:PAY000239
+:23B:CRED
+:32A:261012GBP47728,87
+:50K:/GB97OTTR00000000100238
+Aster Components Ltd
+Juniper House
+88 Willow Lane
+Merewick 10238 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRFR2LXXX
+:59:/FR6383001000000000000100478
+Fernlight Goods Ltd
+Juniper House
+33 Willow Lane
+Valbrune 10478 FR
+:70:Invoice 76238 / materials
+:71A:OUR
+-}

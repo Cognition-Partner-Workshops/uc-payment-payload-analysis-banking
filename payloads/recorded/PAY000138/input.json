@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "IE81OTTR00000000100137",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "137 Willow Lane", "10137 Glenmere" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "NL35OTTR0000100377",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "129 Willow Lane", "10377 Rietdam" ]
+  },
+  "amount" : 54915.35,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-05",
+  "remittanceInfo" : "Invoice 76137 / freight",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000138"
+}

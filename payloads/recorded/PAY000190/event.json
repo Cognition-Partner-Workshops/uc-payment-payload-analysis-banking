@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components & Sons",
+      "iban" : "FR0983001000000000000100189",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "34 Willow Lane Valbrune 10189" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "IE54OTTR00000000100429",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "155 Willow Lane Glenmere 10429" ]
+    },
+    "amount" : 17156.02,
+    "currency" : "USD",
+    "valueDate" : "2026-10-15",
+    "remittanceInfo" : "Invoice 76189 / freight",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000190"
+  }
+}

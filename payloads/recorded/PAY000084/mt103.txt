@@ -1,0 +1,19 @@
+{4:
+:20:PAY000084
+:23B:CRED
+:32A:261005GBP6528,96
+:50K:/DE37830017420000100083
+Bracken Ceramics Ltd
+Juniper House
+155 Willow Lane
+Lindenfels 10083 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRES2LXXX
+:59:/ES4483010000000000100323
+Larkspur Parts Ltd
+Juniper House
+9 Willow Lane
+Solavilla 10323 ES
+:70:Invoice 76083 / services
+:71A:BEN
+-}

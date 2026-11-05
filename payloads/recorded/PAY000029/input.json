@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "FR8883001000000000000100028",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Juniper House", "144 Willow Lane", "Valbrune 10028 FR" ]
+  },
+  "creditor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "IE36OTTR00000000100268",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "Juniper House", "124 Willow Lane", "Glenmere 10268 IE" ]
+  },
+  "amount" : 40432.49,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-08",
+  "remittanceInfo" : "Invoice 76028 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000029"
+}

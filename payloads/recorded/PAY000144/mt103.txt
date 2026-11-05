@@ -1,0 +1,19 @@
+{4:
+:20:PAY000144
+:23B:CRED
+:32A:261027EUR16286,47
+:50K:/DE66830017420000100143
+Ember Glass Ltd
+Juniper House
+4 Willow Lane
+Lindenfels 10143 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRIE2LXXX
+:59:/IE35OTTR00000000100383
+Larkspur Parts Ltd
+Juniper House
+33 Willow Lane
+Glenmere 10383 IE
+:70:Invoice 76143 / services
+:71A:BEN
+-}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "NL86OTTR0000100138",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "70 Willow Lane", "Rietdam 10138 NL" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts & Sons",
+      "iban" : "GB03OTTR00000000100378",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "Juniper House", "6 Willow Lane", "Merewick 10378 GB" ]
+    },
+    "amount" : 34095.01,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-06",
+    "remittanceInfo" : "Invoice 76138 / materials",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000139"
+  }
+}

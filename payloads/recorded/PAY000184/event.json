@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "GB30OTTR00000000100183",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "Juniper House", "45 Willow Lane", "Merewick 10183 GB" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts & Sons",
+      "iban" : "IE22OTTR00000000100423",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "Juniper House", "23 Willow Lane", "Glenmere 10423 IE" ]
+    },
+    "amount" : 41360.87,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-04",
+    "remittanceInfo" : "Invoice 76183 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000184"
+  }
+}

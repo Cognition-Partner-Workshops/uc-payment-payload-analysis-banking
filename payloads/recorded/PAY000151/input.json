@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "DE71830017420000100150",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "159 Willow Lane, Lindenfels", "10150 DE" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "NL72OTTR0000100390",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "6 Willow Lane, Rietdam", "10390 NL" ]
+  },
+  "amount" : 85942.78,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-09",
+  "remittanceInfo" : "Invoice 76150 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000151"
+}

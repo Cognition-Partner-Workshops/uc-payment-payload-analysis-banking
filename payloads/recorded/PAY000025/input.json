@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Wren Paper Ltd",
+    "iban" : "FR0283001000000000000100024",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "99 Willow Lane Valbrune 10024" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "NL79OTTR0000100264",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "11 Willow Lane Rietdam 10264" ]
+  },
+  "amount" : 23333.01,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-07",
+  "remittanceInfo" : "Invoice 76024 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000025"
+}

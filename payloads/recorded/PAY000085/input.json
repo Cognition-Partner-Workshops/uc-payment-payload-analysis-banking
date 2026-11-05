@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "IE57OTTR00000000100084",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "49 Willow Lane Glenmere 10084" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics & Sons",
+    "iban" : "ES1783010000000000100324",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "69 Willow Lane Solavilla 10324" ]
+  },
+  "amount" : 8217.20,
+  "currency" : "USD",
+  "valueDate" : "2026-10-02",
+  "remittanceInfo" : "Invoice 76084 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000085"
+}

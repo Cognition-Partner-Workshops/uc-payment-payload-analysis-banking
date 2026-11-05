@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "FR7283001000000000000100122",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "151 Willow Lane", "10122 Valbrune" ]
+  },
+  "creditor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "IE20OTTR00000000100362",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "28 Willow Lane", "10362 Glenmere" ]
+  },
+  "amount" : 31692.63,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-12",
+  "remittanceInfo" : "Invoice 76122 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000123"
+}

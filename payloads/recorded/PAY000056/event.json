@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "NL96OTTR0000100055",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "87 Willow Lane, Rietdam", "10055 NL" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "ES2483010000000000100295",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "32 Willow Lane, Solavilla", "10295 ES" ]
+    },
+    "amount" : 47816.54,
+    "currency" : "USD",
+    "valueDate" : "2026-10-05",
+    "remittanceInfo" : "Invoice 76055 / services",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000056"
+  }
+}

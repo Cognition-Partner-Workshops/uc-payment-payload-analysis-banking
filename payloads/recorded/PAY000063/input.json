@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "GB96OTTR00000000100062",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "59 Willow Lane", "10062 Merewick" ]
+  },
+  "creditor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "IE88OTTR00000000100302",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "164 Willow Lane", "10302 Glenmere" ]
+  },
+  "amount" : 18303.66,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-29",
+  "remittanceInfo" : "Invoice 76062 / materials",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000063"
+}

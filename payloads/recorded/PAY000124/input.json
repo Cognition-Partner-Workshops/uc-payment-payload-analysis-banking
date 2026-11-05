@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "DE24830017420000100123",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "Juniper House", "144 Willow Lane", "Lindenfels 10123 DE" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "NL25OTTR0000100363",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "Juniper House", "148 Willow Lane", "Rietdam 10363 NL" ]
+  },
+  "amount" : 59020.55,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-03",
+  "remittanceInfo" : "Invoice 76123 / services",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000124"
+}

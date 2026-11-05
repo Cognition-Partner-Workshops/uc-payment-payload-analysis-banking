@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "FR2983001000000000000100023",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "Juniper House", "80 Willow Lane", "Valbrune 10023 FR" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "ES1583010000000000100263",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "Juniper House", "116 Willow Lane", "Solavilla 10263 ES" ]
+  },
+  "amount" : 87456.94,
+  "currency" : "USD",
+  "valueDate" : "2026-10-20",
+  "remittanceInfo" : "Invoice 76023 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000024"
+}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "IE94OTTR00000000100097",
+    "bic" : "OTTRIE2LXXX",
+    "addressLines" : [ "15 Willow Lane", "10097 Glenmere" ]
+  },
+  "creditor" : {
+    "name" : "Aster Components Ltd",
+    "iban" : "NL48OTTR0000100337",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "162 Willow Lane", "10337 Rietdam" ]
+  },
+  "amount" : 422.45,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-04",
+  "remittanceInfo" : "Invoice 76097 / freight",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000098"
+}

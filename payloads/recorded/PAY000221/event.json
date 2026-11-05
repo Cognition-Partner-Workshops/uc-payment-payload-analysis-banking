@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "GB98OTTR00000000100220",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "131 Willow Lane, Merewick", "10220 GB" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "DE43830017420000100460",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "77 Willow Lane, Lindenfels", "10460 DE" ]
+    },
+    "amount" : 88733.27,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-30",
+    "remittanceInfo" : "Invoice 76220 / parts",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000221"
+  }
+}

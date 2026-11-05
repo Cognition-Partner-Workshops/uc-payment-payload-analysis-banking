@@ -1,0 +1,19 @@
+{4:
+:20:PAY000139
+:23B:CRED
+:32A:261006GBP34095,01
+:50K:/NL86OTTR0000100138
+Mallow Textiles Ltd
+Juniper House
+70 Willow Lane
+Rietdam 10138 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRGB2LXXX
+:59:/GB03OTTR00000000100378
+Larkspur Parts & Sons
+Juniper House
+6 Willow Lane
+Merewick 10378 GB
+:70:Invoice 76138 / materials
+:71A:SHA
+-}

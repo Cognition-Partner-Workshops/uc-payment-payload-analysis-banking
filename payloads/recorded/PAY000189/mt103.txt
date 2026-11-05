@@ -1,0 +1,19 @@
+{4:
+:20:PAY000189
+:23B:CRED
+:32A:261004GBP79647,86
+:50K:/GB89OTTR00000000100188
+Larkspur Parts Ltd
+Juniper House
+125 Willow Lane
+Merewick 10188 GB
+:52A:OTTRGB2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL16OTTR0000100428
+Larkspur Parts Ltd
+Juniper House
+65 Willow Lane
+Rietdam 10428 NL
+:70:Invoice 76188 / parts
+:71A:BEN
+-}

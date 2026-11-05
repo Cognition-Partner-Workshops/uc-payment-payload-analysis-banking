@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "DE96830017420000100088",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "Juniper House", "131 Willow Lane", "Lindenfels 10088 DE" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "ES0683010000000000100328",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "Juniper House", "85 Willow Lane", "Solavilla 10328 ES" ]
+    },
+    "amount" : 81879.97,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-03",
+    "remittanceInfo" : "Invoice 76088 / parts",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000089"
+  }
+}

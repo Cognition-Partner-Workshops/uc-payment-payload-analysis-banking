@@ -1,0 +1,19 @@
+{4:
+:20:PAY000044
+:23B:CRED
+:32A:261019GBP73261,20
+:50K:/IE97OTTR00000000100043
+Fernlight Goods Ltd
+Juniper House
+64 Willow Lane
+Glenmere 10043 IE
+:52A:OTTRIE2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE69830017420000100283
+Aster Components Ltd
+Juniper House
+164 Willow Lane
+Lindenfels 10283 DE
+:70:Invoice 76043 / services
+:71A:OUR
+-}

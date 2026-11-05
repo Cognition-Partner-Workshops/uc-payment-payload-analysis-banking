@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "DE97830017420000100167",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "143 Willow Lane", "10167 Lindenfels" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "FR4083001000000000000100407",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "21 Willow Lane", "10407 Valbrune" ]
+  },
+  "amount" : 36858.69,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-10",
+  "remittanceInfo" : "Invoice 76167 / services",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000168"
+}

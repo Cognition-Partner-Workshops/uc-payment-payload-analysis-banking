@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Aster Components Ltd",
+      "iban" : "NL52OTTR0000100168",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "Juniper House", "78 Willow Lane", "Rietdam 10168 NL" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "FR1383001000000000000100408",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "Juniper House", "47 Willow Lane", "Valbrune 10408 FR" ]
+    },
+    "amount" : 83965.76,
+    "currency" : "EUR",
+    "valueDate" : "2026-10-29",
+    "remittanceInfo" : "Invoice 76168 / parts",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000169"
+  }
+}

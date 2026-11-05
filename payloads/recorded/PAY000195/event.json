@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "IE94OTTR00000000100194",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "90 Willow Lane Glenmere 10194" ]
+    },
+    "creditor" : {
+      "name" : "Bracken Ceramics Ltd",
+      "iban" : "GB43OTTR00000000100434",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "4 Willow Lane Merewick 10434" ]
+    },
+    "amount" : 32717.90,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-25",
+    "remittanceInfo" : "Invoice 76194 / materials",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000195"
+  }
+}

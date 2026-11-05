@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Bracken Ceramics Ltd",
+    "iban" : "NL47OTTR0000100064",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "10 Willow Lane Rietdam 10064" ]
+  },
+  "creditor" : {
+    "name" : "Ember Glass Ltd",
+    "iban" : "GB61OTTR00000000100304",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "13 Willow Lane Merewick 10304" ]
+  },
+  "amount" : 22357.10,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-22",
+  "remittanceInfo" : "Invoice 76064 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000065"
+}

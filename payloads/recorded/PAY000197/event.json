@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "ES7883010000000000100196",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 396", "Solavilla 10196", "ES" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "DE12830017420000100436",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "P.O. Box 636", "Lindenfels 10436", "DE" ]
+    },
+    "amount" : 36492.84,
+    "currency" : "USD",
+    "valueDate" : "2026-10-03",
+    "remittanceInfo" : "Invoice 76196 / parts",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000197"
+  }
+}

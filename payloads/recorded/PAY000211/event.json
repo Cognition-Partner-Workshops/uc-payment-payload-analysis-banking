@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "FR2483001000000000000100210",
+      "bic" : "OTTRFR2LXXX",
+      "addressLines" : [ "85 Willow Lane, Valbrune", "10210 FR" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass & Sons",
+      "iban" : "GB96OTTR00000000100450",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "11 Willow Lane, Merewick", "10450 GB" ]
+    },
+    "amount" : 66680.49,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-30",
+    "remittanceInfo" : "Invoice 76210 / materials",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000211"
+  }
+}

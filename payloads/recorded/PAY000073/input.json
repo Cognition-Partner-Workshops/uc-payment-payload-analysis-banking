@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools & Sons",
+    "iban" : "ES3183010000000000100072",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "125 Willow Lane", "10072 Solavilla" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "FR8383001000000000000100312",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "91 Willow Lane", "10312 Valbrune" ]
+  },
+  "amount" : 34555.92,
+  "currency" : "USD",
+  "valueDate" : "2026-10-24",
+  "remittanceInfo" : "Invoice 76072 / parts",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000073"
+}

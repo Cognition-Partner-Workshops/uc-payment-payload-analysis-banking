@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "IE23OTTR00000000100017",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "96 Willow Lane", "10017 Glenmere" ]
+    },
+    "creditor" : {
+      "name" : "Cinder Tools Ltd",
+      "iban" : "DE92830017420000100257",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "131 Willow Lane", "10257 Lindenfels" ]
+    },
+    "amount" : 89477.77,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-19",
+    "remittanceInfo" : "Invoice 76017 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000018"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "FR1383001000000000000100020",
+    "bic" : "OTTRFR2LXXX",
+    "addressLines" : [ "44 Willow Lane, Valbrune", "10020 FR" ]
+  },
+  "creditor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "NL90OTTR0000100260",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "11 Willow Lane, Rietdam", "10260 NL" ]
+  },
+  "amount" : 55411.07,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-22",
+  "remittanceInfo" : "Invoice 76020 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000021"
+}

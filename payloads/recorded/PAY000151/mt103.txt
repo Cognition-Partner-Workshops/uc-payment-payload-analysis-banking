@@ -1,0 +1,17 @@
+{4:
+:20:PAY000151
+:23B:CRED
+:32A:261009GBP85942,78
+:50K:/DE71830017420000100150
+Aster Components Ltd
+159 Willow Lane, Lindenfels
+10150 DE
+:52A:OTTRDE2LXXX
+:57A:OTTRNL2LXXX
+:59:/NL72OTTR0000100390
+Aster Components Ltd
+6 Willow Lane, Rietdam
+10390 NL
+:70:Invoice 76150 / materials
+:71A:SHA
+-}

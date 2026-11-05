@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Larkspur Parts Ltd",
+    "iban" : "DE48830017420000100176",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "P.O. Box 376", "Lindenfels 10176", "DE" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "ES5583010000000000100416",
+    "bic" : "OTTRES2LXXX",
+    "addressLines" : [ "P.O. Box 616", "Solavilla 10416", "ES" ]
+  },
+  "amount" : 65495.78,
+  "currency" : "USD",
+  "valueDate" : "2026-10-16",
+  "remittanceInfo" : "Invoice 76176 / parts",
+  "chargeBearer" : "BEN",
+  "endToEndId" : "PAY000177"
+}

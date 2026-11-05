@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Mallow Textiles Ltd",
+      "iban" : "ES3183010000000000100169",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "122 Willow Lane Solavilla 10169" ]
+    },
+    "creditor" : {
+      "name" : "Larkspur Parts Ltd",
+      "iban" : "IE12OTTR00000000100409",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "35 Willow Lane Glenmere 10409" ]
+    },
+    "amount" : 35608.56,
+    "currency" : "USD",
+    "valueDate" : "2026-10-31",
+    "remittanceInfo" : "Invoice 76169 / freight",
+    "chargeBearer" : "OUR",
+    "endToEndId" : "PAY000170"
+  }
+}

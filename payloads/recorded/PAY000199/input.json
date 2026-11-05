@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Fernlight Goods & Sons",
+    "iban" : "NL18OTTR0000100198",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "Juniper House", "31 Willow Lane", "Rietdam 10198 NL" ]
+  },
+  "creditor" : {
+    "name" : "Fernlight Goods Ltd",
+    "iban" : "GB32OTTR00000000100438",
+    "bic" : "OTTRGB2LXXX",
+    "addressLines" : [ "Juniper House", "65 Willow Lane", "Merewick 10438 GB" ]
+  },
+  "amount" : 8692.58,
+  "currency" : "EUR",
+  "valueDate" : "2026-10-17",
+  "remittanceInfo" : "Invoice 76198 / materials",
+  "chargeBearer" : "SHA",
+  "endToEndId" : "PAY000199"
+}

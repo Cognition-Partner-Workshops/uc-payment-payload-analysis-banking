@@ -1,0 +1,17 @@
+{4:
+:20:PAY000163
+:23B:CRED
+:32A:261007USD26360,32
+:50K:/IE85OTTR00000000100162
+Mallow Textiles & Sons
+35 Willow Lane
+10162 Glenmere
+:52A:OTTRIE2LXXX
+:57A:OTTRES2LXXX
+:59:/ES4583010000000000100402
+Aster Components Ltd
+18 Willow Lane
+10402 Solavilla
+:70:Invoice 76162 / materials
+:71A:SHA
+-}

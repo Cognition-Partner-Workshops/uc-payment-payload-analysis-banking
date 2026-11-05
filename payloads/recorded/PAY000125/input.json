@@ -1,0 +1,20 @@
+{
+  "debtor" : {
+    "name" : "Mallow Textiles Ltd",
+    "iban" : "DE94830017420000100124",
+    "bic" : "OTTRDE2LXXX",
+    "addressLines" : [ "98 Willow Lane Lindenfels 10124" ]
+  },
+  "creditor" : {
+    "name" : "Cinder Tools Ltd",
+    "iban" : "NL95OTTR0000100364",
+    "bic" : "OTTRNL2LXXX",
+    "addressLines" : [ "149 Willow Lane Rietdam 10364" ]
+  },
+  "amount" : 57582.44,
+  "currency" : "GBP",
+  "valueDate" : "2026-10-31",
+  "remittanceInfo" : "Invoice 76124 / parts",
+  "chargeBearer" : "OUR",
+  "endToEndId" : "PAY000125"
+}

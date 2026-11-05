@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "GB47OTTR00000000100071",
+      "bic" : "OTTRGB2LXXX",
+      "addressLines" : [ "P.O. Box 271", "Merewick 10071", "GB" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods Ltd",
+      "iban" : "IE39OTTR00000000100311",
+      "bic" : "OTTRIE2LXXX",
+      "addressLines" : [ "P.O. Box 511", "Glenmere 10311", "IE" ]
+    },
+    "amount" : 74452.52,
+    "currency" : "USD",
+    "valueDate" : "2026-10-23",
+    "remittanceInfo" : "Invoice 76071 / services",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000072"
+  }
+}

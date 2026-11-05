@@ -1,0 +1,19 @@
+{4:
+:20:PAY000074
+:23B:CRED
+:32A:261009EUR43541,37
+:50K:/IE63OTTR00000000100073
+Fernlight Goods Ltd
+Juniper House
+89 Willow Lane
+Glenmere 10073 IE
+:52A:OTTRIE2LXXX
+:57A:OTTRES2LXXX
+:59:/ES2383010000000000100313
+Larkspur Parts Ltd
+Juniper House
+50 Willow Lane
+Solavilla 10313 ES
+:70:Invoice 76073 / freight
+:71A:OUR
+-}

@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Wren Paper Ltd",
+      "iban" : "NL47OTTR0000100161",
+      "bic" : "OTTRNL2LXXX",
+      "addressLines" : [ "P.O. Box 361", "Rietdam 10161", "NL" ]
+    },
+    "creditor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "ES7283010000000000100401",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "P.O. Box 601", "Solavilla 10401", "ES" ]
+    },
+    "amount" : 82240.31,
+    "currency" : "GBP",
+    "valueDate" : "2026-10-30",
+    "remittanceInfo" : "Invoice 76161 / freight",
+    "chargeBearer" : "BEN",
+    "endToEndId" : "PAY000162"
+  }
+}

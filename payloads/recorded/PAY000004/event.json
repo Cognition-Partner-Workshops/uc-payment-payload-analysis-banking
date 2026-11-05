@@ -1,0 +1,24 @@
+{
+  "eventType" : "OutboundPaymentCreated",
+  "schemaVersion" : 1,
+  "payment" : {
+    "debtor" : {
+      "name" : "Ember Glass Ltd",
+      "iban" : "DE63830017420000100003",
+      "bic" : "OTTRDE2LXXX",
+      "addressLines" : [ "Juniper House", "8 Willow Lane", "Lindenfels 10003 DE" ]
+    },
+    "creditor" : {
+      "name" : "Fernlight Goods & Sons",
+      "iban" : "ES7083010000000000100243",
+      "bic" : "OTTRES2LXXX",
+      "addressLines" : [ "Juniper House", "11 Willow Lane", "Solavilla 10243 ES" ]
+    },
+    "amount" : 69976.34,
+    "currency" : "USD",
+    "valueDate" : "2026-10-29",
+    "remittanceInfo" : "Invoice 76003 / services",
+    "chargeBearer" : "SHA",
+    "endToEndId" : "PAY000004"
+  }
+}

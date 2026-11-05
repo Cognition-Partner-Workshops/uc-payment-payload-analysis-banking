@@ -1,0 +1,19 @@
+{4:
+:20:PAY000219
+:23B:CRED
+:32A:261021USD62897,43
+:50K:/IE28OTTR00000000100218
+Bracken Ceramics Ltd
+Juniper House
+85 Willow Lane
+Glenmere 10218 IE
+:52A:OTTRIE2LXXX
+:57A:OTTRFR2LXXX
+:59:/FR2183001000000000000100458
+Wren Paper Ltd
+Juniper House
+46 Willow Lane
+Valbrune 10458 FR
+:70:Invoice 76218 / materials
+:71A:BEN
+-}

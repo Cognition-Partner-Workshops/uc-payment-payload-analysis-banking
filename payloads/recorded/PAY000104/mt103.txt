@@ -1,0 +1,19 @@
+{4:
+:20:PAY000104
+:23B:CRED
+:32A:261015EUR75936,16
+:50K:/NL61OTTR0000100103
+Bracken Ceramics Ltd
+Juniper House
+132 Willow Lane
+Rietdam 10103 NL
+:52A:OTTRNL2LXXX
+:57A:OTTRDE2LXXX
+:59:/DE98830017420000100343
+Cinder Tools Ltd
+Juniper House
+100 Willow Lane
+Lindenfels 10343 DE
+:70:Invoice 76103 / services
+:71A:OUR
+-}
