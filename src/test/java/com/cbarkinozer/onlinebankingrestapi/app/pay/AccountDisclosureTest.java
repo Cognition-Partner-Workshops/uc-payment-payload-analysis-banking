@@ -30,6 +30,22 @@ class AccountDisclosureTest {
     private final ObjectMapper json = PaymentCorpus.MAPPER;
 
     @Test
+    void commaAdjacentAccountsAreSeparateTokensNotDecimalAmounts() throws Exception {
+        assertEquals("****5432,****6789",
+                AccountDisclosure.redact("TR12000620000000000698765432,TR34000620000000000123456789"));
+        for (String value : new String[] {"12345678,87654321", "account 12345678,87654321"}) {
+            String expected = value.startsWith("account") ? "account ****5678,****4321" : "****5678,****4321";
+            assertEquals(expected, AccountDisclosure.redact(value));
+            LogMessage message = new LogMessage();
+            message.setMessage(value);
+            assertEquals(expected, json.readTree(json.writeValueAsString(message)).get("message").asText());
+            assertEquals(value, message.getMessage());
+        }
+        assertEquals("Amount 12345678,50", AccountDisclosure.redact("Amount 12345678,50"));
+        assertEquals("Amount 1,234,567.89", AccountDisclosure.redact("Amount 1,234,567.89"));
+    }
+
+    @Test
     void groupedNumbersAreMaskedInTextAndSerializedMessagesWithoutChangingInputs() throws Exception {
         for (String value : new String[] {"1234 5678 9012 3456", "1234-5678-9012-3456",
                 "1234 5678-9012 3456", "123 456 789 0123456"}) {
