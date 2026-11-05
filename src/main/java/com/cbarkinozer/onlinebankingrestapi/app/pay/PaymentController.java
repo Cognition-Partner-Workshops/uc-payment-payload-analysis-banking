@@ -24,4 +24,11 @@ public class PaymentController {
         publisher.publish(instruction.getEndToEndId(), payloads.getEvent());
         return ResponseEntity.ok(RestResponse.of(payloads));
     }
+
+    @ExceptionHandler(AddressIncompleteException.class)
+    public ResponseEntity<RestResponse<String>> addressIncomplete(AddressIncompleteException e) {
+        RestResponse<String> response = RestResponse.error(e.getMessage());
+        response.setMessages(e.getMessage());
+        return ResponseEntity.unprocessableEntity().body(response);
+    }
 }
