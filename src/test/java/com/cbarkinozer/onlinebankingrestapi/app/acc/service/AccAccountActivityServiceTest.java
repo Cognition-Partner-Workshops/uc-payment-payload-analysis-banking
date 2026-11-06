@@ -9,6 +9,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAcc
 import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.GenBusinessException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.IllegalFieldException;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -66,11 +67,11 @@ class AccAccountActivityServiceTest {
     @Test
     void shouldNotWithdraw_WhenAccountId_DoesNotExist(){
 
-        IllegalFieldException illegalFieldException = new IllegalFieldException(AccErrorMessage.ACCOUNT_NOT_FOUND);
+        ItemNotFoundException illegalFieldException = new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND);
 
-        doThrow(illegalFieldException).when(accAccountValidationService).controlIsAccountIdExist(0L);
+        doThrow(illegalFieldException).when(accAccountEntityService).getOwnedAccountOrThrow(0L);
 
-        IllegalFieldException result = assertThrows(IllegalFieldException.class,
+        ItemNotFoundException result = assertThrows(ItemNotFoundException.class,
                 () -> accAccountActivityService.withdraw(mock(AccMoneyActivityRequestDto.class)));
 
         assertEquals(illegalFieldException, result);
@@ -171,7 +172,8 @@ class AccAccountActivityServiceTest {
     private void stubAccount(BigDecimal balance) {
         AccAccount account = new AccAccount();
         account.setCurrentBalance(balance);
-        when(accAccountEntityService.getByIdWithControl(0L)).thenReturn(account);
+        lenient().when(accAccountEntityService.getByIdWithControl(0L)).thenReturn(account);
+        lenient().when(accAccountEntityService.getOwnedAccountOrThrow(0L)).thenReturn(account);
         when(accAccountActivityEntityService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
     }
 }

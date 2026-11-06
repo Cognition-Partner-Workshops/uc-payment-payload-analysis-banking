@@ -52,7 +52,7 @@ class LoaLoanServiceTest {
 
         LoaLoan loan = loan();
         loan.setDueDate(LocalDate.now().minusDays(5));
-        when(loaLoanEntityService.getByIdWithControl(1L)).thenReturn(loan);
+        when(loaLoanEntityService.getOwnedLoanOrThrow(1L)).thenReturn(loan);
         when(loaLoanValidationService.controlIsLoanDueDatePast(loan.getDueDate())).thenReturn(5L);
 
         LoaCalculateLateFeeResponseDto result = loaLoanService.calculateLateFee(1L);
@@ -68,7 +68,7 @@ class LoaLoanServiceTest {
         LoaLoan loaLoan = loan();
         loaLoan.setId(id);
 
-        when(loaLoanEntityService.getByIdWithControl(id)).thenReturn(loaLoan);
+        when(loaLoanEntityService.getOwnedLoanOrThrow(id)).thenReturn(loaLoan);
 
         LoaLoanDto loaLoanDto = loaLoanService.findLoanById(id);
 
@@ -97,7 +97,7 @@ class LoaLoanServiceTest {
     void shouldPayInstallment() {
 
         LoaLoan loan = loan();
-        when(loaLoanEntityService.getByIdWithControl(1L)).thenReturn(loan);
+        when(loaLoanEntityService.getOwnedLoanOrThrow(1L)).thenReturn(loan);
         when(loaLoanEntityService.save(loan)).thenReturn(loan);
         when(loaLoanPaymentEntityService.save(any())).thenAnswer(invocation -> invocation.getArgument(0));
 
@@ -114,12 +114,12 @@ class LoaLoanServiceTest {
 
         LoaLoan loaLoan = loan();
 
-        when(loaLoanEntityService.getByIdWithControl(anyLong())).thenReturn(loaLoan);
+        when(loaLoanEntityService.getOwnedLoanOrThrow(anyLong())).thenReturn(loaLoan);
         when(loaLoanEntityService.save(loaLoan)).thenReturn(loaLoan);
 
         loaLoanService.payLoanOff(1L);
 
-        verify(loaLoanEntityService).getByIdWithControl(anyLong());
+        verify(loaLoanEntityService).getOwnedLoanOrThrow(anyLong());
         verify(loaLoanEntityService).save(any());
     }
 

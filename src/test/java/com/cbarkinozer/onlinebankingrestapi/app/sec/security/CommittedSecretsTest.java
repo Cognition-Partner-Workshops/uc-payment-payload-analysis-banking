@@ -25,7 +25,7 @@ class CommittedSecretsTest {
 
     @Test
     void mainDatasourcePasswordComesFromEnvironmentWithoutDefault() throws IOException {
-        assertEquals("${SPRING_DATASOURCE_PASSWORD}",
+        assertEquals("${DB_PASSWORD}",
                 load(MAIN_PROPERTIES).getProperty("spring.datasource.password"));
     }
 

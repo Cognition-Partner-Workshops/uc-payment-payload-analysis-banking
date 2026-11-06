@@ -7,6 +7,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccMoneyTransferSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccMoneyTransfer;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccErrorMessage;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccMoneyTransferEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.GenBusinessException;
@@ -35,6 +36,9 @@ class AccMoneyTransferServiceTest {
 
     @Mock
     private AccAccountValidationService accAccountValidationService;
+
+    @Mock
+    private AccAccountEntityService accAccountEntityService;
 
     @InjectMocks
     private AccMoneyTransferService accMoneyTransferService;
