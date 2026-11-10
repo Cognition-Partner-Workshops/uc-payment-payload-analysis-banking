@@ -25,12 +25,16 @@ public class KafkaConsumerConfiguration {
     @Value("${cbarkinozer.kafka.group-id}")
     private String kafkaGroupId;
 
+    @Value("${spring.kafka.listener.auto-startup:true}")
+    private boolean autoStartup;
+
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, LogMessage> kafkaListenerContainerFactory(){
         ConcurrentKafkaListenerContainerFactory<String, LogMessage> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
 
         factory.setConsumerFactory(consumerFactory());
+        factory.setAutoStartup(autoStartup);
 
         return factory;
     }

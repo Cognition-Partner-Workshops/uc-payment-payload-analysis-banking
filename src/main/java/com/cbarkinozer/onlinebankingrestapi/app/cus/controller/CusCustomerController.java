@@ -1,6 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.cus.controller;
 
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerDto;
+import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerPasswordUpdateDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerUpdateDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.service.CusCustomerService;
@@ -28,7 +29,7 @@ public class CusCustomerController {
     @Operation(
             tags = "Customer Controller",
             summary = "All Customers",
-            description = "Gets all customers."
+            description = "Gets all customers. Requires the administrator role."
     )
     @GetMapping
     public ResponseEntity<RestResponse<List<CusCustomerDto>>> findAllCustomers(){
@@ -105,8 +106,8 @@ public class CusCustomerController {
 
     @Operation(
             tags="Customer Controller",
-            summary = "Update a customer",
-            description = "Updates customers all fields."
+            summary = "Update the current customer",
+            description = "Updates the signed-in customer's name and surname."
     )
     @PutMapping("/update-customer")
     public ResponseEntity<RestResponse<CusCustomerDto>> updateCustomer(@RequestBody CusCustomerUpdateDto cusCustomerUpdateDto){
@@ -118,8 +119,21 @@ public class CusCustomerController {
 
     @Operation(
             tags="Customer Controller",
+            summary = "Change password",
+            description = "Changes the signed-in customer's password. Requires the current password."
+    )
+    @PatchMapping("/password")
+    public ResponseEntity<RestResponse<?>> changePassword(@RequestBody CusCustomerPasswordUpdateDto cusCustomerPasswordUpdateDto){
+
+        cusCustomerService.changePassword(cusCustomerPasswordUpdateDto);
+
+        return ResponseEntity.ok(RestResponse.empty());
+    }
+
+    @Operation(
+            tags="Customer Controller",
             summary = "Delete a customer",
-            description = "Deletes a customer by id."
+            description = "Deletes a customer by id. Requires the administrator role."
     )
     @DeleteMapping("/{id}")
     public ResponseEntity<RestResponse<?>> deleteCustomer(@PathVariable Long id){

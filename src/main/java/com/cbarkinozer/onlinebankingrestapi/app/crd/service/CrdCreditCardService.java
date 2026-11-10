@@ -4,10 +4,13 @@ import com.cbarkinozer.onlinebankingrestapi.app.crd.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.entity.CrdCreditCard;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.entity.CrdCreditCardActivity;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.enums.CrdCreditCardActivityType;
+import com.cbarkinozer.onlinebankingrestapi.app.crd.enums.CrdErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.mapper.CrdCreditCardMapper;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.service.entityservice.CrdCreditCardActivityEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.service.entityservice.CrdCreditCardEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenStatusType;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.GenBusinessException;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.IllegalFieldException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.util.StringUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,6 +32,8 @@ public class CrdCreditCardService {
     private final CrdCreditCardValidationService crdCreditCardValidationService;
     private final CrdCreditCardActivityEntityService crdCreditCardActivityEntityService;
 
+    private static final int MAX_FAILED_CVV_ATTEMPTS = 5;
+
     public List<CrdCreditCardDto> findAllCreditCards() {
 
         List<CrdCreditCard> crdCreditCardList = crdCreditCardEntityService.findAllActiveCreditCardList();
@@ -40,7 +45,7 @@ public class CrdCreditCardService {
 
     public CrdCreditCardDto findCreditCardById(Long id) {
 
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(id);
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getOwnedCardOrThrow(id);
 
         CrdCreditCardDto result = CrdCreditCardMapper.INSTANCE.convertToCrdCreditCardDto(crdCreditCard);
 
@@ -50,7 +55,7 @@ public class CrdCreditCardService {
 
     public CrdCreditCardDetailsDto getCardDetails(Long id) {
 
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(id);
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getOwnedCardOrThrow(id);
         LocalDateTime termEndDate = crdCreditCard.getCutoffDate().atStartOfDay();
         Long crdCreditCardId = crdCreditCard.getId();
 
@@ -125,7 +130,7 @@ public class CrdCreditCardService {
 
     public void cancelCreditCard(Long cardId) {
 
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(cardId);
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getOwnedCardOrThrow(cardId);
 
         crdCreditCard.setStatusType(GenStatusType.PASSIVE);
         crdCreditCard.setCancelDate(LocalDateTime.now());
@@ -135,6 +140,8 @@ public class CrdCreditCardService {
 
     public List<CrdCreditCardActivityDto> findCreditCardActivityBetweenDates(Long creditCardId,
                                                                              LocalDate startDate, LocalDate endDate) {
+
+        crdCreditCardEntityService.getOwnedCardOrThrow(creditCardId);
 
         LocalDateTime startDateTime = startDate.atStartOfDay();
         LocalDateTime endDateTime   = endDate.atStartOfDay();
@@ -156,6 +163,8 @@ public class CrdCreditCardService {
 
         BigDecimal amount = crdCreditCardSpendDto.getAmount();
         String description = crdCreditCardSpendDto.getDescription();
+
+        controlIsAmountPositive(amount);
 
         CrdCreditCard crdCreditCard = getCreditCard(crdCreditCardSpendDto);
 
@@ -184,9 +193,35 @@ public class CrdCreditCardService {
 
         LocalDate expireDate = crdCreditCardSpendDto.getExpireDate();
 
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.findByCardNoAndCvvNoAndExpireDate(cardNo, cvvNo, expireDate);
+        Long currentCustomerId = crdCreditCardEntityService.getCurrentCustomerId();
+
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.findActiveCardByCardNo(cardNo)
+                .filter(card -> card.getCusCustomerId().equals(currentCustomerId))
+                .orElseThrow(() -> new GenBusinessException(CrdErrorMessage.INVALID_CREDIT_CARD));
+
+        Integer failedCvvAttemptCount = crdCreditCard.getFailedCvvAttemptCount();
+        if (failedCvvAttemptCount != null && failedCvvAttemptCount >= MAX_FAILED_CVV_ATTEMPTS) {
+            throw new GenBusinessException(CrdErrorMessage.CREDIT_CARD_LOCKED);
+        }
+
+        boolean credentialsMatch = crdCreditCard.getCvvNo().equals(cvvNo)
+                && crdCreditCard.getExpireDate().equals(expireDate);
+
+        if (!credentialsMatch) {
+            crdCreditCardEntityService.recordFailedCvvAttempt(crdCreditCard.getId());
+            throw new GenBusinessException(CrdErrorMessage.INVALID_CREDIT_CARD);
+        }
+
+        crdCreditCard.setFailedCvvAttemptCount(0);
 
         return crdCreditCard;
+    }
+
+    private void controlIsAmountPositive(BigDecimal amount) {
+
+        if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalFieldException(CrdErrorMessage.AMOUNT_MUST_BE_POSITIVE);
+        }
     }
 
     private CrdCreditCard updateCreditCardForSpend(CrdCreditCard crdCreditCard, BigDecimal currentDebt, BigDecimal currentAvailableLimit) {
@@ -217,12 +252,12 @@ public class CrdCreditCardService {
         CrdCreditCardActivity oldCrdCreditCardActivity = crdCreditCardActivityEntityService.getByIdWithControl(activityId);
 
         Long creditCardId = oldCrdCreditCardActivity.getCrdCreditCardId();
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(creditCardId);
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getOwnedCardOrThrow(creditCardId);
         crdCreditCardValidationService.controlIsCardCancelled(crdCreditCard.getStatusType());
 
         BigDecimal amount = oldCrdCreditCardActivity.getAmount();
 
-        crdCreditCard = updateCreditCardForRefund(oldCrdCreditCardActivity, amount);
+        crdCreditCard = addLimitToCard(crdCreditCard, amount);
 
         CrdCreditCardActivity crdCreditCardActivity = createCreditCardActivityForRefund(oldCrdCreditCardActivity, amount, crdCreditCard);
 
@@ -246,14 +281,6 @@ public class CrdCreditCardService {
         return crdCreditCardActivity;
     }
 
-    private CrdCreditCard updateCreditCardForRefund(CrdCreditCardActivity oldCrdCreditCardActivity, BigDecimal amount) {
-
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(oldCrdCreditCardActivity.getCrdCreditCardId());
-
-        crdCreditCard = addLimitToCard(crdCreditCard, amount);
-        return crdCreditCard;
-    }
-
     private CrdCreditCard addLimitToCard(CrdCreditCard crdCreditCard, BigDecimal amount) {
 
         BigDecimal currentDebt = crdCreditCard.getCurrentDebt().subtract(amount);
@@ -271,8 +298,9 @@ public class CrdCreditCardService {
         BigDecimal amount = crdCreditCardPaymentDto.getAmount();
 
         crdCreditCardValidationService.controlAreFieldsNull(creditCardId,amount);
+        controlIsAmountPositive(amount);
 
-        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getByIdWithControl(creditCardId);
+        CrdCreditCard crdCreditCard = crdCreditCardEntityService.getOwnedCardOrThrow(creditCardId);
 
         crdCreditCardValidationService.controlIsCardCancelled(crdCreditCard.getStatusType());
 

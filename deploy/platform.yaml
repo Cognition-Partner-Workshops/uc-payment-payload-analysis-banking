@@ -1,0 +1,8 @@
+app: uc-payment-payload-analysis-banking
+smoke:
+  - path: /health
+    expect: 200
+  - path: /health/readiness
+    expect: 200
+  - path: /v3/api-docs
+    expect: 200

@@ -4,7 +4,7 @@ import java.io.StringReader;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
-import javax.validation.ConstraintViolationException;
+import jakarta.validation.ConstraintViolationException;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.junit.jupiter.api.Test;
 import org.xml.sax.InputSource;

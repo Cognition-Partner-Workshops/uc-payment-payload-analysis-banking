@@ -16,7 +16,6 @@ public class CrdCreditCardDto {
     @JsonSerialize(using = AccountDisclosure.NumberSerializer.class)
     @Schema(type = "string", example = "****1234")
     private Long cardNo;
-    private Long cvvNo;
     private LocalDate expireDate;
     private BigDecimal totalLimit;
     private BigDecimal availableCardLimit;

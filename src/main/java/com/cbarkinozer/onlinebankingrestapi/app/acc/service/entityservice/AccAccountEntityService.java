@@ -22,12 +22,43 @@ public class AccAccountEntityService extends BaseEntityService<AccAccount, AccAc
 
     public List<AccAccount> findAllActiveAccounts() {
 
-        List<AccAccount> accAccountList = getDao().findAllByStatusType(GenStatusType.ACTIVE);
+        Long currentCustomerId = getCurrentCustomerId();
+
+        List<AccAccount> accAccountList = getDao().findAllByCustomerIdAndStatusType(currentCustomerId, GenStatusType.ACTIVE);
 
         return accAccountList;
     }
 
+    public AccAccount getOwnedAccountOrThrow(Long accountId) {
+
+        Long currentCustomerId = getCurrentCustomerId();
+
+        if (accountId == null || currentCustomerId == null) {
+            throw new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND);
+        }
+
+        return getDao().findByIdAndCustomerId(accountId, currentCustomerId)
+                .orElseThrow(() -> new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND));
+    }
+
+    public AccAccount getOwnedActiveAccountByIbanOrThrow(String ibanNo) {
+
+        Long currentCustomerId = getCurrentCustomerId();
+
+        if (ibanNo == null || currentCustomerId == null) {
+            throw new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND);
+        }
+
+        return getDao().findByIbanNoAndCustomerId(ibanNo, currentCustomerId)
+                .filter(accAccount -> accAccount.getStatusType() == GenStatusType.ACTIVE)
+                .orElseThrow(() -> new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND));
+    }
+
     public List<AccAccount> findAccountByCustomerId(Long customerId) {
+
+        if (customerId == null || !customerId.equals(getCurrentCustomerId())) {
+            throw new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND);
+        }
 
         List<AccAccount> accAccountList = getDao().findAllByCustomerId(customerId);
 

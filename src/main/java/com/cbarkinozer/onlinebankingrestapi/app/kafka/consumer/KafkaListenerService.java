@@ -37,13 +37,13 @@ public class KafkaListenerService {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.warn("Interrupted while processing log message", e);
         }
 
-        System.out.println("**********************************");
+        log.info("Saving log message");
 
         logDetail = logDetailEntityService.save(logDetail);
 
-        System.out.println("end");
+        log.info("Log message saved");
     }
 }

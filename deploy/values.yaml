@@ -1,0 +1,35 @@
+app: uc-payment-payload-analysis-banking
+owner: payments-team
+costCenter: BANK-PAYMENTS
+
+containerPort: 8080
+env:
+  DB_URL: jdbc:postgresql://postgres:5432/online-banking-rest-api
+  DB_DRIVER: org.postgresql.Driver
+  DB_DDL_AUTO: validate
+  KAFKA_ADDRESS: kafka:9092
+secretEnv:
+  DB_USERNAME:
+    secret: banking-config
+    key: DB_USERNAME
+  DB_PASSWORD:
+    secret: banking-config
+    key: DB_PASSWORD
+  JWT_SIGNING_KEY:
+    secret: banking-config
+    key: JWT_SIGNING_KEY
+
+writablePaths:
+  - /tmp
+probes:
+  path: /health
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  failureThreshold: 12
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi

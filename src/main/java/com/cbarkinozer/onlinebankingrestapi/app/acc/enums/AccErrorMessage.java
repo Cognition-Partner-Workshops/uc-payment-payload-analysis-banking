@@ -13,6 +13,8 @@ public enum AccErrorMessage implements BaseErrorMessage {
             ,"Some of the fields are null, please be sure to enter all fields"),
     BALANCE_CANNOT_BE_NEGATIVE("Balance cannot assigned negative"
             ,"Please be sure that you entered a balance that is not negative"),
+    CURRENCY_MISMATCH("Currency does not match the account"
+            ,"Please be sure that the payment currency matches the currency of the debtor account."),
     AMOUNT_MUST_BE_POSITIVE("Amount must be positive"
             ,"Please be sure that the entered amount value is larger than zero"),
     ;

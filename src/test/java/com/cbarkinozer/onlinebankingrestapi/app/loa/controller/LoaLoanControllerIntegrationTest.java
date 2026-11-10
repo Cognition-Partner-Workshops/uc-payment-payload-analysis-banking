@@ -5,7 +5,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.AccAccountSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccAccountType;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccCurrencyType;
 import com.cbarkinozer.onlinebankingrestapi.app.config.H2TestProfileJPAConfig;
-import com.cbarkinozer.onlinebankingrestapi.app.gen.BaseTest;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.IntegrationTestBase;
 import com.cbarkinozer.onlinebankingrestapi.app.loa.dto.LoaApplyLoanDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -20,6 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.filter.UrlHandlerFilter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -30,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = {OnlinebankingrestapiApplication.class, H2TestProfileJPAConfig.class})
-class LoaLoanControllerIntegrationTest extends BaseTest {
+class LoaLoanControllerIntegrationTest extends IntegrationTestBase {
 
     private static final String BASE_PATH = "/api/v1/loans";
 
@@ -41,7 +42,8 @@ class LoaLoanControllerIntegrationTest extends BaseTest {
 
     @BeforeEach
     void setUp() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
+                .addFilters(context.getBean(UrlHandlerFilter.class)).build();
         this.objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     }
 
@@ -49,7 +51,7 @@ class LoaLoanControllerIntegrationTest extends BaseTest {
     void calculateLoan() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+"/calculate-loan").param(String.valueOf(24)).param(String.valueOf(3000)).content("").contentType(MediaType.APPLICATION_JSON)
+                get(BASE_PATH+"/calculate-loan").param("installmentCount", "24").param("principalLoanAmount", "3000").content("").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -61,7 +63,7 @@ class LoaLoanControllerIntegrationTest extends BaseTest {
     void calculateLateFee() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH+"/calculate-late-fee"+"1").content("1L").contentType(MediaType.APPLICATION_JSON)
+                get(BASE_PATH+"/calculate-late-fee/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -103,7 +105,7 @@ class LoaLoanControllerIntegrationTest extends BaseTest {
     void payInstallment() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                post(BASE_PATH+"/pay_installment"+"1").content("1L").contentType(MediaType.APPLICATION_JSON)
+                post(BASE_PATH+"/pay-installment/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -115,7 +117,7 @@ class LoaLoanControllerIntegrationTest extends BaseTest {
     void payLoanOff() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                delete(BASE_PATH+"/pay_loan_off"+"1").content("1L").contentType(MediaType.APPLICATION_JSON)
+                delete(BASE_PATH+"/pay-loan-off/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);

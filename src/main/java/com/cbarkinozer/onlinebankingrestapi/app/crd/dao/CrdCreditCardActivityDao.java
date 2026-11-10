@@ -20,6 +20,14 @@ public interface CrdCreditCardActivityDao extends JpaRepository<CrdCreditCardAct
 
     List<CrdCreditCardActivity> findAllByAmountBetween(BigDecimal min, BigDecimal max);
 
+    @Query("SELECT activity FROM CrdCreditCardActivity activity, CrdCreditCard card " +
+            "WHERE activity.crdCreditCardId = card.id " +
+            "AND card.cusCustomerId = :customerId " +
+            "AND activity.amount BETWEEN :min AND :max")
+    List<CrdCreditCardActivity> findAllByCustomerIdAndAmountBetween(@Param("customerId") Long customerId,
+                                                                   @Param("min") BigDecimal min,
+                                                                   @Param("max") BigDecimal max);
+
     List<CrdCreditCardActivity> findAllByCrdCreditCardIdAndTransactionDateBetween(Long crdCreditCardId, LocalDateTime startDate, LocalDateTime endDate);
 
     Page<CrdCreditCardActivity> findAllByCrdCreditCardIdAndTransactionDateBetween(
