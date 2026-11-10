@@ -6,7 +6,8 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccMoneyTransfer;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccMoneyTransferType;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountEntityService;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccMoneyTransferEntityService;
-import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.GenBusinessException;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccErrorMessage;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +18,6 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
@@ -28,7 +28,6 @@ import static org.mockito.Mockito.*;
 class AccMoneyTransferServiceOwnershipTest {
 
     private static final Long CURRENT_CUSTOMER_ID = 7L;
-    private static final Long OTHER_CUSTOMER_ID = 99L;
     private static final Long ACCOUNT_ID_FROM = 1L;
     private static final Long ACCOUNT_ID_TO = 2L;
 
@@ -72,12 +71,13 @@ class AccMoneyTransferServiceOwnershipTest {
     @Test
     void shouldNotTransferMoney_WhenSourceAccount_DoesNotBelongToCurrentCustomer() {
 
-        when(accAccountEntityService.findAccountById(ACCOUNT_ID_FROM))
-                .thenReturn(Optional.of(accountOwnedBy(OTHER_CUSTOMER_ID)));
+        when(accAccountEntityService.getOwnedAccountOrThrow(ACCOUNT_ID_FROM))
+                .thenThrow(new ItemNotFoundException(AccErrorMessage.ACCOUNT_NOT_FOUND));
 
-        assertThrows(GenBusinessException.class,
+        assertThrows(ItemNotFoundException.class,
                 () -> accMoneyTransferService.transferMoney(accMoneyTransferSaveDto));
 
+        verify(accAccountEntityService).getOwnedAccountOrThrow(ACCOUNT_ID_FROM);
         verify(accAccountActivityService, never()).moneyOut(any());
         verify(accAccountActivityService, never()).moneyIn(any());
         verify(accMoneyTransferEntityService, never()).save(any());
@@ -86,8 +86,8 @@ class AccMoneyTransferServiceOwnershipTest {
     @Test
     void shouldTransferMoney_WhenSourceAccount_BelongsToCurrentCustomer() {
 
-        when(accAccountEntityService.findAccountById(ACCOUNT_ID_FROM))
-                .thenReturn(Optional.of(accountOwnedBy(CURRENT_CUSTOMER_ID)));
+        when(accAccountEntityService.getOwnedAccountOrThrow(ACCOUNT_ID_FROM))
+                .thenReturn(accountOwnedBy(CURRENT_CUSTOMER_ID));
 
         accMoneyTransferService.transferMoney(accMoneyTransferSaveDto);
 

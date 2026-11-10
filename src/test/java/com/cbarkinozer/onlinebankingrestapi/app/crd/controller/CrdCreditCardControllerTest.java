@@ -63,7 +63,6 @@ class CrdCreditCardControllerTest {
         crdCreditCardDto.setCurrentDebt(BigDecimal.valueOf(0));
         crdCreditCardDto.setCusCustomerId(1L);
         crdCreditCardDto.setCutoffDate(LocalDate.now().plusDays(30));
-        crdCreditCardDto.setCvvNo(111L);
         crdCreditCardDto.setDueDate(LocalDate.now().plusYears(4));
         crdCreditCardDto.setCancelDate(null);
 
@@ -272,9 +271,9 @@ class CrdCreditCardControllerTest {
     @Test
     void shouldCancelCreditCard() {
 
-        doNothing().when(crdCreditCardService.findCreditCardById(1L));
+        doNothing().when(crdCreditCardService).cancelCreditCard(1L);
 
-        ResponseEntity<RestResponse<CrdCreditCardDto>> result = crdCreditCardController.findCreditCardById(1L);
+        ResponseEntity<RestResponse<?>> result = crdCreditCardController.cancelCreditCard(1L);
 
         assertTrue(Objects.requireNonNull(result.getBody()).isSuccess());
         assertNull(result.getBody().getData());

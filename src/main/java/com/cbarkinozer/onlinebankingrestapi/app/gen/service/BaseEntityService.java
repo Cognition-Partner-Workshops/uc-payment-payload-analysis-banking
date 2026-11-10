@@ -128,5 +128,9 @@ public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepos
         return currentCustomerId;
     }
 
+    public boolean isCurrentCustomerAdmin() {
+        return authenticationService.isCurrentCustomerAdmin();
+    }
+
 
 }

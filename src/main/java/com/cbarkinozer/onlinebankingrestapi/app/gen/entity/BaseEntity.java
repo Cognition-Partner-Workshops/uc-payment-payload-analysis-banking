@@ -3,8 +3,8 @@ package com.cbarkinozer.onlinebankingrestapi.app.gen.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Embedded;
-import javax.persistence.MappedSuperclass;
+import jakarta.persistence.Embedded;
+import jakarta.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 @MappedSuperclass

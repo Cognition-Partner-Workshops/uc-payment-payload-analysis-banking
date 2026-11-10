@@ -38,6 +38,8 @@ public enum LoaErrorMessage implements BaseErrorMessage {
             , "Please check tax rate." ),
     INSTALLMENT_COUNT_CANNOT_BE_LARGER_THAN_LIMIT("Installment count cannot be larger than limit"
             , "Please enter an installment count that is smaller than the limit:" ),
+    LOAN_NOT_FOUND("Loan not found"
+            , "Please be sure that you entered correct loan id." ),
     LOAN_ALREADY_PAID_OFF("Loan is already paid off"
             , "Please be sure that you entered correct loan id." ),
     ;

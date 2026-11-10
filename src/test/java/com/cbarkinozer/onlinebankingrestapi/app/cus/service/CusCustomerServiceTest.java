@@ -10,6 +10,8 @@ import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenErrorMessage;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.IllegalFieldException;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.exceptions.ItemNotFoundException;
 import org.junit.jupiter.api.Test;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -32,6 +34,9 @@ class CusCustomerServiceTest {
     @Mock
     private CusCustomerValidationService cusCustomerValidationService;
 
+    @Mock
+    private PasswordEncoder passwordEncoder;
+
     @InjectMocks
     private CusCustomerService cusCustomerService;
 
@@ -42,6 +47,7 @@ class CusCustomerServiceTest {
 
         List<CusCustomerDto> expectedResult = createDummyCusCustomerDtoList();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.findAllCustomers()).thenReturn(cusCustomerList);
 
         List<CusCustomerDto> result = cusCustomerService.findAllCustomers();
@@ -98,6 +104,7 @@ class CusCustomerServiceTest {
         Long cusCustomerId = cusCustomer.getId();
         CusCustomerDto expectedResult = createDummyCusCustomerDto();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(cusCustomerId)).thenReturn(cusCustomer);
 
         CusCustomerDto result = cusCustomerService.findCustomerById(cusCustomerId);
@@ -111,10 +118,11 @@ class CusCustomerServiceTest {
 
         ItemNotFoundException itemNotFoundException = new ItemNotFoundException(GenErrorMessage.ITEM_NOT_FOUND);
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(anyLong())).thenThrow(itemNotFoundException);
 
         ItemNotFoundException result = assertThrows(ItemNotFoundException.class,
-                () -> cusCustomerService.findCustomerById(anyLong()));
+                () -> cusCustomerService.findCustomerById(1L));
 
         assertEquals(itemNotFoundException, result);
         assertEquals(itemNotFoundException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());
@@ -130,7 +138,7 @@ class CusCustomerServiceTest {
 
         when(cusCustomerEntityService.saveCustomer(any())).thenReturn(cusCustomer);
 
-        CusCustomerDto result = cusCustomerService.saveCustomer(any());
+        CusCustomerDto result = cusCustomerService.saveCustomer(createDummyCusCustomerSaveDto());
 
         assertEquals(cusCustomerDto, result);
         assertNotNull(result);
@@ -143,7 +151,7 @@ class CusCustomerServiceTest {
         CusCustomer cusCustomer = createDummyCusCustomer();
         IllegalFieldException illegalFieldException = new IllegalFieldException(CusErrorMessage.IDENTITY_NO_MUST_BE_UNIQUE);
 
-        doThrow(IllegalFieldException.class).when(cusCustomerValidationService).controlIsIdentityNoUnique(cusCustomer);
+        doThrow(illegalFieldException).when(cusCustomerValidationService).controlIsIdentityNoUnique(any());
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> cusCustomerService.saveCustomer(cusCustomerSaveDto));
@@ -162,7 +170,7 @@ class CusCustomerServiceTest {
 
         IllegalFieldException illegalFieldException = new IllegalFieldException(CusErrorMessage.FIELD_CANNOT_BE_NULL);
 
-        doThrow(IllegalFieldException.class).when(cusCustomerValidationService).controlAreFieldsNonNull(cusCustomer);
+        doThrow(illegalFieldException).when(cusCustomerValidationService).controlAreFieldsNonNull(any());
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> cusCustomerService.saveCustomer(cusCustomerSaveDto));
@@ -191,41 +199,26 @@ class CusCustomerServiceTest {
         CusCustomerDto cusCustomerDto = createDummyCusCustomerDto();
         CusCustomer cusCustomer = createDummyCusCustomer();
 
-        when(cusCustomerEntityService.saveCustomer(any())).thenReturn(cusCustomer);
-
-        CusCustomerDto result = cusCustomerService.saveCustomer(any());
-
-        assertEquals(cusCustomerDto, result);
-        assertNotNull(result);
-    }
-
-    @Test
-    void shouldNotUpdateCustomer_WhenIdentityNo_IsNotUnique() {
-
         CusCustomerUpdateDto cusCustomerUpdateDto = createDummyCusCustomerUpdateDto();
-        CusCustomer cusCustomer = createDummyCusCustomer();
-        IllegalFieldException illegalFieldException = new IllegalFieldException(CusErrorMessage.IDENTITY_NO_MUST_BE_UNIQUE);
 
-        doThrow(IllegalFieldException.class).when(cusCustomerValidationService).controlIsIdentityNoUnique(cusCustomer);
+        when(cusCustomerEntityService.getCurrentCustomerId()).thenReturn(cusCustomer.getId());
+        when(cusCustomerEntityService.getByIdWithControl(cusCustomer.getId())).thenReturn(cusCustomer);
+        when(cusCustomerEntityService.saveCustomer(cusCustomer)).thenReturn(cusCustomer);
 
-        IllegalFieldException result = assertThrows(IllegalFieldException.class,
-                () -> cusCustomerService.updateCustomer(cusCustomerUpdateDto));
+        CusCustomerDto result = cusCustomerService.updateCustomer(cusCustomerUpdateDto);
 
-        assertEquals(illegalFieldException, result);
-        assertEquals(illegalFieldException.getBaseErrorMessage().getMessage(), result.getBaseErrorMessage().getMessage());
-        assertEquals(illegalFieldException.getBaseErrorMessage().getDetailMessage(), result.getBaseErrorMessage().getDetailMessage());
         assertNotNull(result);
+        assertEquals(cusCustomerDto.getId(), result.getId());
+        assertEquals(cusCustomerUpdateDto.getName(), result.getName());
+        assertEquals(cusCustomerUpdateDto.getSurname(), result.getSurname());
     }
 
     private CusCustomerUpdateDto createDummyCusCustomerUpdateDto(){
 
         CusCustomerUpdateDto cusCustomerUpdateDto = new CusCustomerUpdateDto();
 
-        cusCustomerUpdateDto.setId(1L);
         cusCustomerUpdateDto.setName("testName");
         cusCustomerUpdateDto.setSurname("testSurname");
-        cusCustomerUpdateDto.setIdentityNo(11111111111L);
-        cusCustomerUpdateDto.setPassword("test1234");
 
         return cusCustomerUpdateDto;
     }
@@ -238,7 +231,9 @@ class CusCustomerServiceTest {
 
         IllegalFieldException illegalFieldException = new IllegalFieldException(CusErrorMessage.FIELD_CANNOT_BE_NULL);
 
-        doThrow(IllegalFieldException.class).when(cusCustomerValidationService).controlAreFieldsNonNull(cusCustomer);
+        when(cusCustomerEntityService.getCurrentCustomerId()).thenReturn(cusCustomer.getId());
+        when(cusCustomerEntityService.getByIdWithControl(cusCustomer.getId())).thenReturn(cusCustomer);
+        doThrow(illegalFieldException).when(cusCustomerValidationService).controlAreFieldsNonNull(any());
 
         IllegalFieldException result = assertThrows(IllegalFieldException.class,
                 () -> cusCustomerService.updateCustomer(cusCustomerUpdateDto));
@@ -254,9 +249,10 @@ class CusCustomerServiceTest {
 
         CusCustomer cusCustomer = createDummyCusCustomer();
 
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
         when(cusCustomerEntityService.getByIdWithControl(anyLong())).thenReturn(cusCustomer);
 
-        cusCustomerService.deleteCustomer(anyLong());
+        cusCustomerService.deleteCustomer(1L);
 
         verify(cusCustomerEntityService).getByIdWithControl(anyLong());
     }
@@ -268,11 +264,12 @@ class CusCustomerServiceTest {
 
         ItemNotFoundException itemNotFoundException = new ItemNotFoundException(GenErrorMessage.ITEM_NOT_FOUND);
 
-        doThrow(new ItemNotFoundException(GenErrorMessage.ITEM_NOT_FOUND)).
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(true);
+        doThrow(itemNotFoundException).
                 when(cusCustomerEntityService).getByIdWithControl(anyLong());
 
         ItemNotFoundException result = assertThrows(ItemNotFoundException.class,
-                () -> cusCustomerEntityService.delete(cusCustomer));
+                () -> cusCustomerService.deleteCustomer(1L));
 
         verify(cusCustomerEntityService).getByIdWithControl(anyLong());
         assertEquals(itemNotFoundException, result);
@@ -281,4 +278,35 @@ class CusCustomerServiceTest {
         assertNotNull(result);
     }
 
+
+    @Test
+    void shouldNotFindAllCustomers_WhenCurrentCustomerIsNotAdmin() {
+
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(AccessDeniedException.class, () -> cusCustomerService.findAllCustomers());
+
+        verify(cusCustomerEntityService, never()).findAllCustomers();
+    }
+
+    @Test
+    void shouldNotFindCustomerById_WhenCustomerIsNotCurrentCustomer() {
+
+        when(cusCustomerEntityService.getCurrentCustomerId()).thenReturn(2L);
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(ItemNotFoundException.class, () -> cusCustomerService.findCustomerById(1L));
+
+        verify(cusCustomerEntityService, never()).getByIdWithControl(anyLong());
+    }
+
+    @Test
+    void shouldNotDeleteCustomer_WhenCurrentCustomerIsNotAdmin() {
+
+        when(cusCustomerEntityService.isCurrentCustomerAdmin()).thenReturn(false);
+
+        assertThrows(AccessDeniedException.class, () -> cusCustomerService.deleteCustomer(1L));
+
+        verify(cusCustomerEntityService, never()).delete(any());
+    }
 }

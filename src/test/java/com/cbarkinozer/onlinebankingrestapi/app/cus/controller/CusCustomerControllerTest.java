@@ -192,11 +192,8 @@ class CusCustomerControllerTest{
 
         CusCustomerUpdateDto cusCustomerUpdateDto = mock(CusCustomerUpdateDto.class);
 
-        cusCustomerUpdateDto.setId(1L);
         cusCustomerUpdateDto.setName("testName");
         cusCustomerUpdateDto.setSurname("testSurname");
-        cusCustomerUpdateDto.setIdentityNo(1L);
-        cusCustomerUpdateDto.setPassword("test1234");
 
         return  cusCustomerUpdateDto;
     }

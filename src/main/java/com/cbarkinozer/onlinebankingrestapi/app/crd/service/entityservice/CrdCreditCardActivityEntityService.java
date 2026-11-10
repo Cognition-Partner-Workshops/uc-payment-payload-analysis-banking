@@ -24,7 +24,9 @@ public class CrdCreditCardActivityEntityService extends BaseEntityService<CrdCre
 
     public List<CrdCreditCardActivity> findCreditCardActivityByAmountInterval(BigDecimal min, BigDecimal max) {
 
-        List<CrdCreditCardActivity> crdCreditCardActivityList = getDao().findAllByAmountBetween(min,max);
+        Long currentCustomerId = getCurrentCustomerId();
+
+        List<CrdCreditCardActivity> crdCreditCardActivityList = getDao().findAllByCustomerIdAndAmountBetween(currentCustomerId, min, max);
 
         return crdCreditCardActivityList;
     }

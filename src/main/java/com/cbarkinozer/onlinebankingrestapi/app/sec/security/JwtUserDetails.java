@@ -1,6 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.sec.security;
 
 import com.cbarkinozer.onlinebankingrestapi.app.cus.entity.CusCustomer;
+import com.cbarkinozer.onlinebankingrestapi.app.cus.enums.CusCustomerRoleType;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,8 @@ import java.util.Collection;
 import java.util.List;
 
 public class JwtUserDetails implements UserDetails {
+
+    public static final String ROLE_ADMIN = "ROLE_ADMIN";
 
     private final Long id;
     private final String username;
@@ -31,6 +34,9 @@ public class JwtUserDetails implements UserDetails {
 
         List<GrantedAuthority> grantedAuthorityList = new ArrayList<>();
         grantedAuthorityList.add(new SimpleGrantedAuthority("user"));
+        if (cusCustomer.getRoleType() == CusCustomerRoleType.ADMIN) {
+            grantedAuthorityList.add(new SimpleGrantedAuthority(ROLE_ADMIN));
+        }
 
         return new JwtUserDetails(id, identityNo, password, grantedAuthorityList);
     }
