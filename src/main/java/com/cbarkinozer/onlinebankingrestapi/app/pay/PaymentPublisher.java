@@ -24,7 +24,7 @@ public class PaymentPublisher {
         template.send("outbound-payments", id, event);
     }
 
-    @javax.annotation.PreDestroy
+    @jakarta.annotation.PreDestroy
     public void close() {
         factory.destroy();
     }

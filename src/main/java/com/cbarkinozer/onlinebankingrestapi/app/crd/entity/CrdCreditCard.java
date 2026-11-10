@@ -5,7 +5,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.GenStatusType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -57,4 +57,7 @@ public class CrdCreditCard extends BaseEntity {
 
     @Column(name = "CANCEL_DATE")
     private LocalDateTime cancelDate;
+
+    @Column(name = "FAILED_CVV_ATTEMPT_COUNT", nullable = false)
+    private Integer failedCvvAttemptCount = 0;
 }

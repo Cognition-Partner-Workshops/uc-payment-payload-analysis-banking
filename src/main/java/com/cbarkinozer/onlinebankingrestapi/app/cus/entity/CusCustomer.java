@@ -1,10 +1,11 @@
 package com.cbarkinozer.onlinebankingrestapi.app.cus.entity;
 
+import com.cbarkinozer.onlinebankingrestapi.app.cus.enums.CusCustomerRoleType;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.entity.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Getter
@@ -27,5 +28,9 @@ public class CusCustomer extends BaseEntity {
 
     @Column(name = "PASSWORD",length=100, nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "ROLE_TYPE", length = 30, nullable = false)
+    private CusCustomerRoleType roleType = CusCustomerRoleType.USER;
 
 }

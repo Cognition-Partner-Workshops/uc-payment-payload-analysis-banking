@@ -40,10 +40,10 @@ public class KafkaListenerService {
             log.warn("Interrupted while delaying log persistence", e);
         }
 
-        System.out.println("**********************************");
+        log.info("Saving log message");
 
         logDetail = logDetailEntityService.save(logDetail);
 
-        System.out.println("end");
+        log.info("Log message saved");
     }
 }

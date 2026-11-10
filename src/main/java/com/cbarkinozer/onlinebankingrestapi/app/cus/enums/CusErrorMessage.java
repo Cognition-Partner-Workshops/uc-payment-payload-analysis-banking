@@ -5,6 +5,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.gen.enums.BaseErrorMessage;
 public enum CusErrorMessage implements BaseErrorMessage {
     CUSTOMER_NOT_FOUND("Customer Not Found!","Please check the id of the customer."),
     FIELD_CANNOT_BE_NULL("Field Cannot Be Null!","Please be sure that all fields are entered."),
+    CURRENT_PASSWORD_IS_WRONG("Current Password Is Wrong!","Please check your current password."),
     IDENTITY_NO_MUST_BE_UNIQUE("Identity No Must Be Unique!","Please check the identity no of the customer."),
     ;
 

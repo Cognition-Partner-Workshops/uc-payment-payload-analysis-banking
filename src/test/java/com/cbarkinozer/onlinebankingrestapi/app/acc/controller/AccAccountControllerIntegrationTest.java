@@ -8,7 +8,7 @@ import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccAccountType;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccCurrencyType;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccMoneyTransferType;
 import com.cbarkinozer.onlinebankingrestapi.app.config.H2TestProfileJPAConfig;
-import com.cbarkinozer.onlinebankingrestapi.app.gen.BaseTest;
+import com.cbarkinozer.onlinebankingrestapi.app.gen.IntegrationTestBase;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,6 +22,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.filter.UrlHandlerFilter;
 
 import java.math.BigDecimal;
 
@@ -31,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest(classes = {OnlinebankingrestapiApplication.class, H2TestProfileJPAConfig.class})
-class AccAccountControllerIntegrationTest extends BaseTest {
+class AccAccountControllerIntegrationTest extends IntegrationTestBase {
 
     private static final String BASE_PATH = "/api/v1/accounts";
 
@@ -42,7 +43,8 @@ class AccAccountControllerIntegrationTest extends BaseTest {
 
     @BeforeEach
     void setUp() {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context)
+                .addFilters(context.getBean(UrlHandlerFilter.class)).build();
         this.objectMapper = new ObjectMapper().registerModule(new JavaTimeModule());
     }
 
@@ -74,7 +76,7 @@ class AccAccountControllerIntegrationTest extends BaseTest {
     void findAccountByCustomerId() throws Exception{
 
         MvcResult result = mockMvc.perform(
-                get(BASE_PATH + "/1").content("1L").contentType(MediaType.APPLICATION_JSON)
+                get(BASE_PATH + "/account/customerId/1").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);
@@ -105,7 +107,7 @@ class AccAccountControllerIntegrationTest extends BaseTest {
     void cancelAccount() throws Exception {
 
         MvcResult result = mockMvc.perform(
-                put(BASE_PATH+"/cancel-account"+"/1").content("1L").contentType(MediaType.APPLICATION_JSON)
+                patch(BASE_PATH+"/1").content("1L").contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isOk()).andReturn();
 
         boolean isSuccess = isSuccess(result);

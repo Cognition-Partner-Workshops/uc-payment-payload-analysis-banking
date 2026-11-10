@@ -73,6 +73,14 @@ public class AuthenticationService {
         return jwtUserDetailsId;
     }
 
+    public boolean isCurrentCustomerAdmin() {
+
+        JwtUserDetails jwtUserDetails = getCurrentJwtUserDetails();
+
+        return jwtUserDetails != null && jwtUserDetails.getAuthorities().stream()
+                .anyMatch(authority -> JwtUserDetails.ROLE_ADMIN.equals(authority.getAuthority()));
+    }
+
     private JwtUserDetails getCurrentJwtUserDetails() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
