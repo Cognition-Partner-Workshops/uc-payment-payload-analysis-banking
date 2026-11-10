@@ -26,8 +26,8 @@ public class GenCustomizedResponseEntityExceptionHandler extends ResponseEntityE
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest webRequest){
 
         Date errorDate = new Date();
-        String message = ex.getMessage();
-        String description = webRequest.getDescription(false);
+        String message = "Request failed";
+        String description = "Unable to complete the request";
 
         GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
 
@@ -102,7 +102,7 @@ public class GenCustomizedResponseEntityExceptionHandler extends ResponseEntityE
 
         Date errorDate = new Date();
         String message = "Validation failed!";
-        String description = ex.getBindingResult().toString();
+        String description = "Request fields are invalid";
 
         GenExceptionResponse genExceptionResponse = new GenExceptionResponse(errorDate, message, description);
         RestResponse<GenExceptionResponse> restResponse = RestResponse.error(genExceptionResponse);
