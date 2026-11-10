@@ -2,12 +2,12 @@ package com.cbarkinozer.onlinebankingrestapi.app.pay;
 
 import com.cbarkinozer.onlinebankingrestapi.OnlinebankingrestapiApplication;
 import com.cbarkinozer.onlinebankingrestapi.app.config.H2TestProfileJPAConfig;
-import javax.servlet.RequestDispatcher;
+import jakarta.servlet.RequestDispatcher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.error.ErrorAttributeOptions;
-import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.boot.webmvc.error.ErrorAttributes;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.ServletWebRequest;
 import static org.junit.jupiter.api.Assertions.*;

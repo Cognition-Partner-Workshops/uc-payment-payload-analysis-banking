@@ -1,5 +1,9 @@
 package com.cbarkinozer.onlinebankingrestapi.app.pay;
 
+import com.cbarkinozer.onlinebankingrestapi.app.acc.entity.AccAccount;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.enums.AccCurrencyType;
+import com.cbarkinozer.onlinebankingrestapi.app.acc.service.entityservice.AccAccountEntityService;
+import java.util.Arrays;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.core.read.ListAppender;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.controller.AccAccountController;
@@ -21,6 +25,7 @@ import org.springframework.http.MediaType;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -187,7 +192,12 @@ class AccountDisclosureTest {
         PaymentRenderer renderer = new PaymentRenderer();
         PaymentPayloads wire = renderer.render(instruction);
         PaymentPublisher publisher = mock(PaymentPublisher.class);
-        var mvc = MockMvcBuilders.standaloneSetup(new PaymentController(renderer, publisher)).build();
+        AccAccountEntityService accounts = mock(AccAccountEntityService.class);
+        AccAccount debtorAccount = new AccAccount();
+        debtorAccount.setCurrencyType(Arrays.stream(AccCurrencyType.values())
+                .filter(currency -> currency.getIsoCode().equals(instruction.getCurrency())).findFirst().orElseThrow());
+        when(accounts.getOwnedActiveAccountByIbanOrThrow(anyString())).thenReturn(debtorAccount);
+        var mvc = MockMvcBuilders.standaloneSetup(new PaymentController(renderer, publisher, accounts)).build();
         for (String path : List.of("/payloads", "")) {
             String body = mvc.perform(post("/api/v1/outbound-payments" + path)
                     .contentType(MediaType.APPLICATION_JSON).content(json.writeValueAsString(instruction)))
@@ -221,7 +231,7 @@ class AccountDisclosureTest {
 
     @Test
     void validationErrorsNeverEchoRejectedAccounts() throws Exception {
-        var payments = MockMvcBuilders.standaloneSetup(new PaymentController(new PaymentRenderer(), mock(PaymentPublisher.class)))
+        var payments = MockMvcBuilders.standaloneSetup(new PaymentController(new PaymentRenderer(), mock(PaymentPublisher.class), mock(AccAccountEntityService.class)))
                 .setControllerAdvice(new GenCustomizedResponseEntityExceptionHandler()).build();
         PaymentInstruction invalid = PaymentCorpus.instruction(1, new Random(7));
         invalid.getDebtor().setIban("INVALID-" + IBAN);
