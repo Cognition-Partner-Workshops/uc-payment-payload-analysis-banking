@@ -36,7 +36,8 @@ public class KafkaListenerService {
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
-            log.warn("Interrupted while processing log message", e);
+            Thread.currentThread().interrupt();
+            log.warn("Interrupted while delaying log persistence", e);
         }
 
         log.info("Saving log message");
