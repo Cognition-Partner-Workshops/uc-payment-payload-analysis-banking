@@ -124,4 +124,36 @@ class LoaLoanControllerIntegrationTest extends IntegrationTestBase {
 
         assertTrue(isSuccess);
     }
+
+    @Test
+    void shouldNotApplyLoan_WhenPrincipal_IsNegative() throws Exception {
+        LoaApplyLoanDto dto = new LoaApplyLoanDto();
+        dto.setInstallmentCount(24);
+        dto.setPrincipalLoanAmount(BigDecimal.valueOf(-3000));
+        dto.setMonthlySalary(BigDecimal.valueOf(9000));
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/apply-loan").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
+
+    @Test
+    void shouldNotApplyLoan_WhenInstallmentCount_IsZero() throws Exception {
+        LoaApplyLoanDto dto = new LoaApplyLoanDto();
+        dto.setInstallmentCount(0);
+        dto.setPrincipalLoanAmount(BigDecimal.valueOf(3000));
+        dto.setMonthlySalary(BigDecimal.valueOf(9000));
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/apply-loan").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
 }

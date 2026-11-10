@@ -22,6 +22,7 @@ import org.springframework.web.filter.UrlHandlerFilter;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -201,5 +202,53 @@ class CrdCreditCardControllerIntegrationTest extends IntegrationTestBase {
         boolean isSuccess = isSuccess(result);
 
         assertTrue(isSuccess);
+    }
+
+    @Test
+    void shouldNotReceivePayment_WhenAmount_IsNegative() throws Exception {
+        CrdCreditCardPaymentDto dto = new CrdCreditCardPaymentDto();
+        dto.setCrdCreditCardId(1L);
+        dto.setAmount(BigDecimal.valueOf(-100));
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/receive-payment").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
+
+    @Test
+    void shouldNotSpendMoney_WhenAmount_IsNegative() throws Exception {
+        CrdCreditCardSpendDto dto = new CrdCreditCardSpendDto();
+        dto.setCardNo(1L);
+        dto.setCvvNo(111L);
+        dto.setExpireDate(LocalDate.now().plusYears(1));
+        dto.setAmount(BigDecimal.valueOf(-100));
+        dto.setDescription("Negative spend");
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/spend-money").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
+
+    @Test
+    void shouldNotSaveCreditCard_WhenCutOffDay_IsOutOfRange() throws Exception {
+        CrdCreditCardSaveDto dto = new CrdCreditCardSaveDto();
+        dto.setEarning(BigDecimal.valueOf(9000));
+        dto.setCutOffDay(32);
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/save-credit-card").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
     }
 }

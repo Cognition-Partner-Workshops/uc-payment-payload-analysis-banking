@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.crd.controller;
 
+import jakarta.validation.Valid;
+
 import com.cbarkinozer.onlinebankingrestapi.app.crd.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.service.CrdCreditCardActivityService;
 import com.cbarkinozer.onlinebankingrestapi.app.crd.service.CrdCreditCardService;
@@ -118,7 +120,7 @@ public class CrdCreditCardController {
             description = "Save a credit card."
     )
     @PostMapping("/save-credit-card")
-    public ResponseEntity<RestResponse<MappingJacksonValue>> saveCreditCard(@RequestBody CrdCreditCardSaveDto crdCreditCardSaveDto){
+    public ResponseEntity<RestResponse<MappingJacksonValue>> saveCreditCard(@Valid @RequestBody CrdCreditCardSaveDto crdCreditCardSaveDto){
 
         CrdCreditCardDto crdCreditCardDto = crdCreditCardService.saveCreditCard(crdCreditCardSaveDto);
 
@@ -146,7 +148,7 @@ public class CrdCreditCardController {
             description = "Spend money from credit card."
     )
     @PostMapping("/spend-money")
-    public ResponseEntity<RestResponse<CrdCreditCardActivityDto>> spendMoney(@RequestBody CrdCreditCardSpendDto crdCreditCardSpendDto){
+    public ResponseEntity<RestResponse<CrdCreditCardActivityDto>> spendMoney(@Valid @RequestBody CrdCreditCardSpendDto crdCreditCardSpendDto){
 
         CrdCreditCardActivityDto crdCreditCardActivityDto = crdCreditCardService.spendMoney(crdCreditCardSpendDto);
 
@@ -172,7 +174,7 @@ public class CrdCreditCardController {
             description = "Get payment money (card limit increase)."
     )
     @PostMapping("/receive-payment")
-    public ResponseEntity<RestResponse<CrdCreditCardActivityDto>> receivePayment(@RequestBody CrdCreditCardPaymentDto crdCreditCardPaymentDto){
+    public ResponseEntity<RestResponse<CrdCreditCardActivityDto>> receivePayment(@Valid @RequestBody CrdCreditCardPaymentDto crdCreditCardPaymentDto){
 
         CrdCreditCardActivityDto crdCreditCardActivityDto = crdCreditCardService.receivePayment(crdCreditCardPaymentDto);
 

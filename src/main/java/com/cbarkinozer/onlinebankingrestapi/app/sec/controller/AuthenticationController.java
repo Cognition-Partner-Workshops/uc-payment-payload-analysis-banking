@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.sec.controller;
 
+import jakarta.validation.Valid;
+
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerSaveDto;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.dto.RestResponse;
@@ -22,7 +24,7 @@ public class AuthenticationController {
 
     @Operation(tags = "Authentication Controller")
     @PostMapping("/login")
-    public ResponseEntity<RestResponse<String>> login(@RequestBody SecLoginRequestDto secLoginRequestDto){
+    public ResponseEntity<RestResponse<String>> login(@Valid @RequestBody SecLoginRequestDto secLoginRequestDto){
 
         String token = authenticationService.login(secLoginRequestDto);
 
@@ -31,7 +33,7 @@ public class AuthenticationController {
 
     @Operation(tags = "Authentication Controller")
     @PostMapping("/register")
-    public ResponseEntity<RestResponse<CusCustomerDto>> register(@RequestBody CusCustomerSaveDto cusCustomerSaveDto){
+    public ResponseEntity<RestResponse<CusCustomerDto>> register(@Valid @RequestBody CusCustomerSaveDto cusCustomerSaveDto){
 
         CusCustomerDto cusCustomerDto =authenticationService.register(cusCustomerSaveDto);
 

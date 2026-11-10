@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.cus.controller;
 
+import jakarta.validation.Valid;
+
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerPasswordUpdateDto;
 import com.cbarkinozer.onlinebankingrestapi.app.cus.dto.CusCustomerSaveDto;
@@ -82,7 +84,7 @@ public class CusCustomerController {
             )
     )
     @PostMapping("/save-customer")
-    public ResponseEntity<RestResponse<MappingJacksonValue>> saveCustomer(@RequestBody CusCustomerSaveDto cusCustomerSaveDto){
+    public ResponseEntity<RestResponse<MappingJacksonValue>> saveCustomer(@Valid @RequestBody CusCustomerSaveDto cusCustomerSaveDto){
 
         CusCustomerDto cusCustomerDto = cusCustomerService.saveCustomer(cusCustomerSaveDto);
 
@@ -110,7 +112,7 @@ public class CusCustomerController {
             description = "Updates the signed-in customer's name and surname."
     )
     @PutMapping("/update-customer")
-    public ResponseEntity<RestResponse<CusCustomerDto>> updateCustomer(@RequestBody CusCustomerUpdateDto cusCustomerUpdateDto){
+    public ResponseEntity<RestResponse<CusCustomerDto>> updateCustomer(@Valid @RequestBody CusCustomerUpdateDto cusCustomerUpdateDto){
 
         CusCustomerDto cusCustomerDto = cusCustomerService.updateCustomer(cusCustomerUpdateDto);
 

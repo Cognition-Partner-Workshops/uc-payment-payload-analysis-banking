@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.acc.controller;
 
+import jakarta.validation.Valid;
+
 import com.cbarkinozer.onlinebankingrestapi.app.acc.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.AccAccountActivityService;
 import com.cbarkinozer.onlinebankingrestapi.app.acc.service.AccAccountService;
@@ -111,7 +113,7 @@ public class AccAccountController {
     )
     @PostMapping("/transfer-money")
     public ResponseEntity<RestResponse<AccMoneyTransferDto>> transferMoney(
-            @RequestBody AccMoneyTransferSaveDto accMoneyTransferSaveDto){
+            @Valid @RequestBody AccMoneyTransferSaveDto accMoneyTransferSaveDto){
 
         AccMoneyTransferDto accMoneyTransferDto = accMoneyTransferService.transferMoney(accMoneyTransferSaveDto);
 
@@ -124,7 +126,7 @@ public class AccAccountController {
             description = "Withdraw money from an account."
     )
     @PostMapping("/withdraw")
-    public ResponseEntity<RestResponse<AccAccountActivityDto>> withdraw(@RequestBody AccMoneyActivityRequestDto accMoneyActivityRequestDto){
+    public ResponseEntity<RestResponse<AccAccountActivityDto>> withdraw(@Valid @RequestBody AccMoneyActivityRequestDto accMoneyActivityRequestDto){
 
         AccAccountActivityDto accAccountActivityDto = accAccountActivityService.withdraw(accMoneyActivityRequestDto);
 
@@ -137,7 +139,7 @@ public class AccAccountController {
             description = "Deposit money to an account."
     )
     @PostMapping("/deposit")
-    public ResponseEntity<RestResponse<AccAccountActivityDto>> deposit(@RequestBody AccMoneyActivityRequestDto accMoneyActivityRequestDto){
+    public ResponseEntity<RestResponse<AccAccountActivityDto>> deposit(@Valid @RequestBody AccMoneyActivityRequestDto accMoneyActivityRequestDto){
 
         AccAccountActivityDto accAccountActivityDto = accAccountActivityService.deposit(accMoneyActivityRequestDto);
 
