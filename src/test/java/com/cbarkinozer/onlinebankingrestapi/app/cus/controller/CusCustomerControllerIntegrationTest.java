@@ -193,4 +193,19 @@ public class CusCustomerControllerIntegrationTest extends IntegrationTestBase {
         assertFalse(isSuccess);
     }
 
+    @Test
+    void shouldNotSaveCustomer_WhenFields_AreMissing() throws Exception {
+        CusCustomerSaveDto dto = new CusCustomerSaveDto();
+        dto.setName(" ");
+        dto.setSurname("Test");
+        dto.setPassword("test-only-password");
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/save-customer/").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
 }

@@ -171,4 +171,50 @@ class AccAccountControllerIntegrationTest extends IntegrationTestBase {
 
         assertTrue(isSuccess);
     }
+
+    @Test
+    void shouldNotWithdraw_WhenAmount_IsNegative() throws Exception {
+        AccMoneyActivityRequestDto dto = new AccMoneyActivityRequestDto();
+        dto.setAccountId(1L);
+        dto.setAmount(BigDecimal.valueOf(-100));
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/withdraw/").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
+
+    @Test
+    void shouldNotDeposit_WhenAccountId_IsMissing() throws Exception {
+        AccMoneyActivityRequestDto dto = new AccMoneyActivityRequestDto();
+        dto.setAmount(BigDecimal.valueOf(100));
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/deposit/").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
+
+    @Test
+    void shouldNotTransferMoney_WhenAmount_IsZero() throws Exception {
+        AccMoneyTransferSaveDto dto = new AccMoneyTransferSaveDto();
+        dto.setAccountIdFrom(1L);
+        dto.setAccountIdTo(2L);
+        dto.setTransferType(AccMoneyTransferType.DUE);
+        dto.setAmount(BigDecimal.ZERO);
+
+        String content = objectMapper.writeValueAsString(dto);
+
+        MvcResult result = mockMvc.perform(
+                post(BASE_PATH+"/transfer-money/").content(content).contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isBadRequest()).andReturn();
+
+        assertFalse(isSuccess(result));
+    }
 }

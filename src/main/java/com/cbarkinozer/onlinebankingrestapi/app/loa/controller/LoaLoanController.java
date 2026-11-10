@@ -1,5 +1,7 @@
 package com.cbarkinozer.onlinebankingrestapi.app.loa.controller;
 
+import jakarta.validation.Valid;
+
 import com.cbarkinozer.onlinebankingrestapi.app.loa.dto.*;
 import com.cbarkinozer.onlinebankingrestapi.app.loa.service.LoaLoanService;
 import com.cbarkinozer.onlinebankingrestapi.app.gen.dto.RestResponse;
@@ -63,7 +65,7 @@ public class LoaLoanController {
             description = "Apply for a loan."
     )
     @PostMapping("/apply-loan")
-    public ResponseEntity<RestResponse<LoaLoanDto>> applyLoan(@RequestBody LoaApplyLoanDto loaApplyLoanDto){
+    public ResponseEntity<RestResponse<LoaLoanDto>> applyLoan(@Valid @RequestBody LoaApplyLoanDto loaApplyLoanDto){
 
         LoaLoanDto loaLoanDto = loaLoanService.applyLoan(loaApplyLoanDto);
 
