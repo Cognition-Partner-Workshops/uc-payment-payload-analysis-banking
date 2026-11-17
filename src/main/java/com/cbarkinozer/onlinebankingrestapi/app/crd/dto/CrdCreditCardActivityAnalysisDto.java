@@ -13,6 +13,6 @@ public class CrdCreditCardActivityAnalysisDto {
     private CrdCreditCardActivityType activityType;
     private BigDecimal minAmount;
     private BigDecimal maxAmount;
-    private Double avgAmount;
+    private BigDecimal avgAmount;
     private Long activityCount;
 }

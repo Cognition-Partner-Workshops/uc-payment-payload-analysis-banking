@@ -107,7 +107,7 @@ class CrdCreditCardActivityServiceTest {
         crdCreditCardActivityAnalysisDto.setActivityCount(12L);
         crdCreditCardActivityAnalysisDto.setMinAmount(BigDecimal.valueOf(100));
         crdCreditCardActivityAnalysisDto.setMaxAmount(BigDecimal.valueOf(10000));
-        crdCreditCardActivityAnalysisDto.setAvgAmount(505.0);
+        crdCreditCardActivityAnalysisDto.setAvgAmount(new BigDecimal("505.00"));
 
         return crdCreditCardActivityAnalysisDto;
     }
