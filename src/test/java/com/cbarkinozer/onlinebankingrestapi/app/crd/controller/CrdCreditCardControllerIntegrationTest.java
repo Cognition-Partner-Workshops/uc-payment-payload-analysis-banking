@@ -111,6 +111,18 @@ class CrdCreditCardControllerIntegrationTest extends IntegrationTestBase {
     }
 
     @Test
+    void getCardActivityAnalysisReturnsAverageAmountAsDecimal() throws Exception {
+
+        MvcResult result = mockMvc.perform(
+                get(BASE_PATH+"/get-card-activity-analysis"+"/1").contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isOk()).andReturn();
+
+        String body = result.getResponse().getContentAsString();
+
+        assertTrue(body.contains("\"avgAmount\":100.00"), body);
+    }
+
+    @Test
     void getCardDetails() throws Exception {
 
         MvcResult result = mockMvc.perform(

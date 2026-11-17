@@ -41,7 +41,7 @@ public interface CrdCreditCardActivityDao extends JpaRepository<CrdCreditCardAct
             "activity.cardActivityType,"+
             "min(activity.amount),"+
             "max(activity.amount),"+
-            "avg(activity.amount),"+
+            "cast(avg(activity.amount) as BigDecimal),"+
             "count(activity)" +
             " ) " +
             "FROM CrdCreditCard card "+
